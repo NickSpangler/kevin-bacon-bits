@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_160308) do
 
   create_table "movies", force: :cascade do |t|
     t.integer "tmdb_id"
-    t.integer "imdb_id"
+    t.string "imdb_id"
     t.string "title"
     t.string "poster_path"
     t.integer "release_year"
