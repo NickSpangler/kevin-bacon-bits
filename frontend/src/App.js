@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import SixDegreesSearch from './components/SixDegreesSearch';
 import SixDegreesChallenge from './components/SixDegreesChallenge';
-import FilmographyChallenge from './components/FilmographyChallenge';
+import FilmographyChallenge from './components/filmography-challenge/FilmographyChallenge';
 
 
 function App() {
