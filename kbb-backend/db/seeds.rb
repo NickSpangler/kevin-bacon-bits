@@ -1,7 +1,7 @@
 def getData
 
-    i = 1
-    while i <= 10000 do
+    i = 10001
+    while i <= 20000 do
         response = RestClient.get("https://api.themoviedb.org/3/movie/#{i}?api_key=f561f9632b29613ae5d1646d3298a753&language=en-US"){|response, request, result| response }
         if response.code == 200
             json = JSON.parse response
@@ -30,7 +30,7 @@ def getData
                     end
                 end
             end
-            puts json['title']
+            puts "#{json['id']}. #{json['title']}"
         else
             puts response.code
         end
