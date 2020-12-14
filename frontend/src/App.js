@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
-import SixDegreesSearch from './components/SixDegreesSearch';
-import SixDegreesChallenge from './components/SixDegreesChallenge';
+import SixDegreesSearch from './components/six-degrees-search/SixDegreesSearch';
+import SixDegreesChallenge from './components/six-degrees-challenge/SixDegreesChallenge';
 import FilmographyChallenge from './components/filmography-challenge/FilmographyChallenge';
 
 
