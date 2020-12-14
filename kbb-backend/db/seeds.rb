@@ -3,8 +3,8 @@ def getData
     Actor.all.destroy_all
     MovieActor.all.destroy_all
 
-    i = 1
-    while i <= 1000 do
+    i = 11
+    while i <= 11 do
         response = RestClient.get("https://api.themoviedb.org/3/movie/#{i}?api_key=f561f9632b29613ae5d1646d3298a753&language=en-US"){|response, request, result| response }
         if response.code == 200
             json = JSON.parse response
@@ -22,6 +22,7 @@ def getData
                 castJson['cast'].map do |person|
                     if actor = Actor.find_by(tmdb_id: person['id'])
                         MovieActor.create(movie_id: movie.id, actor_id: actor.id, character: person['character'])
+                        # MovieActor.create(movie_id: movie, actor_id: actor, character: person['character'])
                     else
                         actor = Actor.create(
                             tmdb_id: person['id'],
@@ -30,6 +31,7 @@ def getData
                             gender: person['gender']
                         )
                         MovieActor.create(movie_id: movie.id, actor_id: actor.id, character: person['character'])
+                        # MovieActor.create(movie_id: movie, actor_id: actor, character: person['character'])
                     end
                 end
             end
@@ -41,4 +43,4 @@ def getData
     end
 end
 
-# getData()   
+getData()   
