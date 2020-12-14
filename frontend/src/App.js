@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Nav from './components/Nav'
 import Home from './components/Home';
 import SixDegreesSearch from './components/six-degrees-search/SixDegreesSearch';
 import SixDegreesChallenge from './components/six-degrees-challenge/SixDegreesChallenge';
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Nav />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/six-degrees-search' component={SixDegreesSearch} />
