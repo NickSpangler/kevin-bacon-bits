@@ -25,11 +25,13 @@ ActiveRecord::Schema.define(version: 2020_12_14_160308) do
   end
 
   create_table "movie_actors", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "actor_id"
+    t.bigint "movie_id"
+    t.bigint "actor_id"
     t.string "character"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["actor_id"], name: "index_movie_actors_on_actor_id"
+    t.index ["movie_id"], name: "index_movie_actors_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
