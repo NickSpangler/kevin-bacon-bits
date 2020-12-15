@@ -1,7 +1,7 @@
 def getData
 
-    i = 20001
-    while i <= 40000 do
+    i = 80001
+    while i <= 250000 do
         response = RestClient.get("https://api.themoviedb.org/3/movie/#{i}?api_key=f561f9632b29613ae5d1646d3298a753&language=en-US"){|response, request, result| response }
         if response.code == 200
             json = JSON.parse response
