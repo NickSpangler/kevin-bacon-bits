@@ -1,11 +1,11 @@
 def getData
 
-    i = 80001
+    i = 84388
     while i <= 250000 do
         response = RestClient.get("https://api.themoviedb.org/3/movie/#{i}?api_key=f561f9632b29613ae5d1646d3298a753&language=en-US"){|response, request, result| response }
         if response.code == 200
             json = JSON.parse response
-            if json['original_language'] == 'en'
+            if json['original_language'] == 'en' && json['adult'] == false
                 movie = Movie.create(
                     tmdb_id: json['id'],
                     imdb_id: json['imdb_id'],
