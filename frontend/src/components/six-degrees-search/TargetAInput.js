@@ -8,7 +8,15 @@ const mockVal = (str, repeat = 1) => {
 };
 
 const getActors= (input) => {
-  fetch()
+  return (function() {
+    fetch(`http://localhost:3000/actors/auto_complete?input=${input}`)
+    .then(resp => resp.json())
+    .then(data => {
+      let names = data.map(person => ({value: person.name}))
+      console.log(names)
+      return names
+    })
+  })()
 }
 
 const TargetAInput = () => {
@@ -19,7 +27,8 @@ const TargetAInput = () => {
   const onSearch = (searchText) => {
 
     setOptions(
-      !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)],
+      // !searchText ? [] : [{value: "one"}, {value: "two"}, {value: "three"}]
+      // !searchText ? [] : [{value: getActors(searchText)[0].name}, {value: getActors(searchText)[1].name}, {value: getActors(searchText)[2].name}]
     );
 
   };
@@ -45,8 +54,16 @@ const TargetAInput = () => {
         onChange={onChange}
         placeholder="Find the link from..."
       />
+      <br></br>
+      <AutoComplete
+        style={{
+          width: 200,
+        }}
+        onChange={getActors}
+      />
     </>
   );
 };
 
 export default TargetAInput
+
