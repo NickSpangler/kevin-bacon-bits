@@ -5,4 +5,9 @@ class ActorsController < ApplicationController
         render json: actors
     end
 
+    def movie_list
+        actor = Actor.auto_complete(params[:input]).limit(1)
+        render json: actor, :include => [:movies]
+    end
+
 end
