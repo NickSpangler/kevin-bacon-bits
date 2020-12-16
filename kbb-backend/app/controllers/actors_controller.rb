@@ -13,6 +13,7 @@ class ActorsController < ApplicationController
     def link
         target_a = Actor.find_by(name: params[:target_a])
         target_b = Actor.find_by(name: params[:target_b])
+        
 
         render json: [target_a, target_b]
     end
