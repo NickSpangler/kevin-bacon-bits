@@ -1,59 +1,19 @@
-import React, { Component } from 'react'
-import { AutoComplete } from 'antd'
-
-export default class TargetBInput extends Component {
-    state = {
-        input: ''
-    }
-
-    handleChange = (e) => {
-        this.setState({
-            input: e.target.value
-        })
-    }
-
-    render() {
-        return (
-            <div>
-          
-                    <AutoComplete 
-                    name='targetB'
-                    placeholder='...to'
-                    value={this.state.input}
-                    onChange={e => this.handleChange(e)}
-                    style={{
-                    width: 200,
-                    }}
-                    />
-
-            </div>
-        )
-    }
-}
-
-
-
-
-
-
 import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
 
-const mockVal = (str, repeat = 1) => {
-  return {
-    value: str.repeat(repeat),
-  };
-};
+const TargetBInput = () => {
 
-const Complete = () => {
-    
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
 
   const onSearch = (searchText) => {
-    setOptions(
-      !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)],
-    );
+    fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
+    .then(resp => resp.json())
+    .then(data => {
+      setOptions(
+      !searchText ? [] : data.map(person => ({ value: person.name }))
+      )
+    })
   };
 
   const onSelect = (data) => {
@@ -67,17 +27,6 @@ const Complete = () => {
   return (
     <>
       <AutoComplete
-        options={options}
-        style={{
-          width: 200,
-        }}
-        onSelect={onSelect}
-        onSearch={onSearch}
-        placeholder="input here"
-      />
-      <br />
-      <br />
-      <AutoComplete
         value={value}
         options={options}
         style={{
@@ -86,10 +35,10 @@ const Complete = () => {
         onSelect={onSelect}
         onSearch={onSearch}
         onChange={onChange}
-        placeholder="control mode"
+        placeholder="...to"
       />
     </>
   );
 };
 
-ReactDOM.render(<Complete />, mountNode);
+export default TargetBInput
