@@ -1,11 +1,7 @@
 class ActorsController < ApplicationController
 
     def auto_complete
-
-        @shows = Show.search(params[:search])
-
-
-        actors = Actor.limit(10)
+        actors = Actor.auto_complete(params[:auto_complete]).limit(10)
         render json: actors
     end
 
