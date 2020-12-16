@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
 
-
-
 const mockVal = (str, repeat = 1) => {
   return {
     value: str.repeat(repeat),
   };
 };
 
+const getActors= (input) => {
+  fetch()
+}
+
 const TargetAInput = () => {
+
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
 
   const onSearch = (searchText) => {
+
     setOptions(
       !searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)],
     );
+
   };
 
   const onSelect = (data) => {
@@ -30,17 +35,6 @@ const TargetAInput = () => {
   return (
     <>
       <AutoComplete
-        options={options}
-        style={{
-          width: 200,
-        }}
-        onSelect={onSelect}
-        onSearch={onSearch}
-        placeholder="input here"
-      />
-      <br />
-      <br />
-      <AutoComplete
         value={value}
         options={options}
         style={{
@@ -49,12 +43,10 @@ const TargetAInput = () => {
         onSelect={onSelect}
         onSearch={onSearch}
         onChange={onChange}
-        placeholder="control mode"
+        placeholder="Find the link from..."
       />
     </>
   );
 };
 
 export default TargetAInput
-
-// ReactDOM.render(<Complete />, mountNode);

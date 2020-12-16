@@ -1,7 +1,7 @@
 class ActorsController < ApplicationController
 
     def auto_complete
-        actors = Actor.auto_complete(params[:input]).limit(10)
+        actors = Actor.auto_complete(params[:input]).limit(3)
         render json: actors
     end
 
