@@ -1,7 +1,7 @@
 import React from 'react'
 import silhouette from './silhouette.png'
 
-const TargetAPhoto = (props) => {
+const TargetBPhoto = (props) => {
     if (props.source !== '') {
         return (
             <img src={`https://image.tmdb.org/t/p/w200${props.source}`} height='100px'></img>
@@ -13,4 +13,4 @@ const TargetAPhoto = (props) => {
     }
 }
 
-export default TargetAPhoto
+export default TargetBPhoto

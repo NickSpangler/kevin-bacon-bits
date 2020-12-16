@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
+import TargetBPhoto from './TargetBPhoto'
 
 const TargetBInput = () => {
 
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
+  const [source, setSource] = useState('')
 
   const onSearch = (searchText) => {
     fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
@@ -18,6 +20,14 @@ const TargetBInput = () => {
 
   const onSelect = (data) => {
     console.log('onSelect', data);
+    fetch(`http://localhost:3000/actors/get_photo?input=${data}`)
+    .then(resp => resp.json())
+    .then(data => {
+      setSource(
+        data.profile_path
+      )
+    })
+
   };
 
   const onChange = (data) => {
@@ -36,7 +46,8 @@ const TargetBInput = () => {
         onSearch={onSearch}
         onChange={onChange}
         placeholder="...to"
-      />
+        />
+      <TargetBPhoto source={source} />
     </>
   );
 };
