@@ -7,8 +7,7 @@ export default function SixDegreesSearch() {
         <div>
             <h1>Search for the link between two actors:</h1>
             <TargetAInput />
-            <br></br>
-            <br></br>
+            <br/><br/>
             <TargetBInput />
         </div>
     )
