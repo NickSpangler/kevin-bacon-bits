@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AutoComplete } from 'antd';
+import { AutoComplete, Space } from 'antd';
 import TargetBPhoto from './TargetBPhoto'
 
 const TargetBInput = () => {
@@ -36,6 +36,7 @@ const TargetBInput = () => {
 
   return (
     <>
+    <Space>
       <AutoComplete
         value={value}
         options={options}
@@ -48,6 +49,7 @@ const TargetBInput = () => {
         placeholder="...to"
         />
       <TargetBPhoto source={source} />
+      </Space>
     </>
   );
 };

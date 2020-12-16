@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AutoComplete } from 'antd';
+import { AutoComplete, Space } from 'antd';
 import TargetAPhoto from './TargetAPhoto'
 
 const TargetAInput = () => {
@@ -36,6 +36,8 @@ const TargetAInput = () => {
 
   return (
     <>
+      <Space>
+      <TargetAPhoto source={source} />
       <AutoComplete
         value={value}
         options={options}
@@ -47,7 +49,8 @@ const TargetAInput = () => {
         onChange={onChange}
         placeholder="Find the link from..."
       />
-      <TargetAPhoto source={source} />
+      
+      </Space>
     </>
   );
 };
