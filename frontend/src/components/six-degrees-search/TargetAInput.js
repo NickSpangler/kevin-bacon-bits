@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { AutoComplete } from 'antd';
+import TargetAPhoto from './TargetAPhoto'
 
 const TargetAInput = () => {
 
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
+  const [source, setSource] = useState('')
 
   const onSearch = (searchText) => {
     fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
@@ -37,6 +39,7 @@ const TargetAInput = () => {
         onChange={onChange}
         placeholder="Find the link from..."
       />
+      <TargetAPhoto source={source} />
     </>
   );
 };
