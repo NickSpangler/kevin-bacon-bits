@@ -5,6 +5,11 @@ class ActorsController < ApplicationController
         render json: actors
     end
 
+    def get_photo
+        actor = Actor.find_by(name: params[:input])
+        render json: actor, :only => [:profile_path]
+    end
+
     def movie_list
         actor = Actor.auto_complete(params[:input]).limit(1)
         render json: actor, :include => [:movies, :movie_actors]
