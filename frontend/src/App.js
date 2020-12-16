@@ -1,4 +1,5 @@
 import './App.css';
+import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav'
 import Home from './components/Home';
