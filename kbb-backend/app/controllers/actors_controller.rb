@@ -19,12 +19,16 @@ class ActorsController < ApplicationController
         render json: actor, :include => [:movies, :movie_actors]
     end
 
-    def link
+    def search_for_link
+        # find both actors by name
         target_a = Actor.find_by(name: params[:target_a])
         target_b = Actor.find_by(name: params[:target_b])
-        
 
-        render json: [target_a, target_b]
+        # call find_link, defined in actor.rb, which returns structured results
+        results = Actor.find_link(target_a, target_b)
+
+        # render results as JSON
+        render json: results
     end
 
 end
