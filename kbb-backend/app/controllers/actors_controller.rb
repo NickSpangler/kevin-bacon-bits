@@ -21,8 +21,10 @@ class ActorsController < ApplicationController
 
     def search_for_link
         # find both actors by name
-        if target_a = Actor.find_by(name: params[:target_a]) && target_b = Actor.find_by(name: params[:target_b])
-            
+        target_a = Actor.find_by(name: params[:target_a])
+        target_b = Actor.find_by(name: params[:target_b])
+
+        if target_a && target_b
             # call find_link, defined in actor.rb, which returns structured results
             results = Actor.find_link(target_a, target_b)
         else
