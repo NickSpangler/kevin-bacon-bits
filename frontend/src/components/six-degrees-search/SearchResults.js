@@ -1,9 +1,10 @@
 import React from 'react'
+import Level from './Level'
 
-export default function SearchResults() {
+export default function SearchResults(props) {
     return (
         <div>
-            <h1>This is where search results go here</h1>
+            {props.results.map( level => <Level data={level} />)}
         </div>
     )
 }

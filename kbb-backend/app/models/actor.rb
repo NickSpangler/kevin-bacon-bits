@@ -28,6 +28,7 @@ class Actor < ApplicationRecord
                 }
         }]
         end
+        return []
     end
 
 end
