@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AutoComplete, Space } from 'antd';
 import TargetAPhoto from './TargetAPhoto'
 
-const TargetAInput = () => {
+const TargetAInput = (props) => {
 
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
@@ -33,6 +33,7 @@ const TargetAInput = () => {
 
   const onChange = (data) => {
     setValue(data);
+    props.updateTargetA(data)
   };
 
   return (
