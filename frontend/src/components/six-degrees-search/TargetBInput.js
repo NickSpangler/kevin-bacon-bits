@@ -32,6 +32,7 @@ const TargetBInput = () => {
 
   const onChange = (data) => {
     setValue(data);
+    props.updateTargetB(data)
   };
 
   return (

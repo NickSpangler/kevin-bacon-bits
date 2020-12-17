@@ -14,3 +14,10 @@ export const updateTargetA = (name) => {
         payload: name
     })
 }
+
+export const updateTargetB = (name) => {
+    return ({
+        type: 'UPDATE_TARGET_B',
+        payload: name
+    })
+}
