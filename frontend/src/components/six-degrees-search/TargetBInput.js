@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AutoComplete, Space } from 'antd';
 import TargetBPhoto from './TargetBPhoto'
 
-const TargetBInput = () => {
+const TargetBInput = (props) => {
 
   const [value, setValue] = useState('');
   const [options, setOptions] = useState([]);
