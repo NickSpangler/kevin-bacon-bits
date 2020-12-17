@@ -23,7 +23,7 @@ class SixDegreesSearch extends React.Component {
                     Search
                 </Button>
                 <br/><br/>
-                <SearchResults />
+                <SearchResults results={this.props.results}/>
             </div>
         )
     }
