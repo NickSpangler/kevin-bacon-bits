@@ -7,3 +7,10 @@ export const getResults = () => {
         })
     };
 };
+
+export const updateTargetA = (name) => {
+    return ({
+        type: 'UPDATE_TARGET_A',
+        payload: name
+    })
+}

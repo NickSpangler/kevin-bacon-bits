@@ -17,7 +17,9 @@ class SixDegreesSearch extends React.Component {
                 <br/><br/>
                 <TargetBInput />
                 <br/><br/>
-                <Button type="primary" icon={<SearchOutlined />}>
+                <Button type="primary" 
+                icon={<SearchOutlined />}
+                onClick={() => alert(`Target A: ${this.props.target_A} Target B: ${this.props.target_B}`)}>
                     Search
                 </Button>
                 <br/><br/>
