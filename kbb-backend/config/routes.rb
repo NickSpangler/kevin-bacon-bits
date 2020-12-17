@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/actors/auto_complete', to: 'actors#auto_complete'
   get '/actors/movie_list', to: 'actors#movie_list'
   get '/actors/get_photo', to: 'actors#get_photo'
+  get '/actors/search_for_link', to: 'actors#search_for_link'
   get '/link', to: 'actors#link'
   
   resources :movie_actors
