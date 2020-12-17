@@ -13,7 +13,7 @@ class Actor < ApplicationRecord
             movie = matches.first
             target_a_character = movie.movie_actors.where(actor_id: target_a.id).first.character
             target_b_character = movie.movie_actors.where(actor_id: target_b.id).first.character
-            return {
+            return [{
                 target_a: {
                     name: target_a.name,
                     profile_path: target_a.profile_path,
@@ -26,7 +26,7 @@ class Actor < ApplicationRecord
                     title: movie.title,
                     poster_path: movie.poster_path
                 }
-        }
+        }]
         end
     end
 
