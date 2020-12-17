@@ -5,7 +5,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import TargetAInput from './TargetAInput'
 import TargetBInput from './TargetBInput'
 import SearchResults from './SearchResults'
-import { getResults } from '../../redux/actions/searchActions'
+import { getResults, updateTargetA } from '../../redux/actions/searchActions'
 
 class SixDegreesSearch extends React.Component {
 
@@ -13,7 +13,7 @@ class SixDegreesSearch extends React.Component {
         return (
             <div>
                 <h1>Search for the link between two actors:</h1>
-                <TargetAInput />
+                <TargetAInput updateTargetA={this.props.updateTargetA}/>
                 <br/><br/>
                 <TargetBInput />
                 <br/><br/>
@@ -39,4 +39,4 @@ const mapStateToProps = ({ search }) => {
 
 
 
-export default connect(mapStateToProps, { getResults })(SixDegreesSearch)  
+export default connect(mapStateToProps, { getResults, updateTargetA })(SixDegreesSearch)  
