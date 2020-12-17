@@ -8,49 +8,38 @@ export default function Level(props) {
     return (
         <div>
             <Divider orientation="center">Results</Divider>
-            <Row gutter={16}>
-                <Col className="gutter-row" span={4}>
-                    <div style={style}>col-6</div>
+            <Row gutter={20} type="flex" align="middle">
+                <Col className="gutter-row" span={5} offset={4}>
+                    <div>
+                    <img src={`https://image.tmdb.org/t/p/w200${props.data.target_a.profile_path}`} height='200px'></img>
+                    <p>{`${props.data.target_a.name}`}</p>
+                    <p>{`played ${props.data.target_a.character} in:`}</p>
+                    </div>
                 </Col>
-                <Col className="gutter-row" span={3}>
+                <Col className="gutter-row" span={1}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
                 </Col>
                 <Col className="gutter-row" span={4}>
-                    <div style={style}>col-6</div>
+                    <div>
+                    <img src={`https://image.tmdb.org/t/p/w200${props.data.movie.poster_path}`} height='200px'></img>
+                    <p>{props.data.movie.title}</p>
+                    </div>
                 </Col>
-                <Col className="gutter-row" span={3}>
+                <Col className="gutter-row" span={1}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
                 </Col>
-                <Col className="gutter-row" span={4}>
-                    <div style={style}>col-6</div>
+                <Col className="gutter-row" span={5}>
+                    <div>
+                        <img src={`https://image.tmdb.org/t/p/w200${props.data.target_b.profile_path}`} height='200px'></img>
+                        <p>{`with ${props.data.target_b.name}`}</p>
+                        <p>{`who played ${props.data.target_b.character}.`}</p>
+                    </div>
                 </Col>
             </Row>
-
-            <br></br>
-            <br></br>
-
-            <Row>
-    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      Col
-    </Col>
-    <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      Col
-    </Col>
-    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      Col
-    </Col>
-  </Row>
-
-
-
-
-
-            
-            <p>{`${props.data.target_a.name} played ${props.data.target_a.character} in ${props.data.movie.title} with ${props.data.target_b.name} as ${props.data.target_b.character}`}</p>
         </div>
     )
 }
