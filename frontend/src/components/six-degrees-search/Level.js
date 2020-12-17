@@ -9,14 +9,14 @@ export default function Level(props) {
         <div>
             <Divider orientation="center">Results</Divider>
             <Row gutter={20} type="flex" align="middle">
-                <Col className="gutter-row" span={5} offset={4}>
+                <Col className="gutter-row" span={4} offset={4}>
                     <div>
                     <img src={`https://image.tmdb.org/t/p/w200${props.data.target_a.profile_path}`} height='200px'></img>
                     <p>{`${props.data.target_a.name}`}</p>
                     <p>{`played ${props.data.target_a.character} in:`}</p>
                     </div>
                 </Col>
-                <Col className="gutter-row" span={1}>
+                <Col className="gutter-row" span={2}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
@@ -27,12 +27,12 @@ export default function Level(props) {
                     <p>{props.data.movie.title}</p>
                     </div>
                 </Col>
-                <Col className="gutter-row" span={1}>
+                <Col className="gutter-row" span={2}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
                 </Col>
-                <Col className="gutter-row" span={5}>
+                <Col className="gutter-row" span={4}>
                     <div>
                         <img src={`https://image.tmdb.org/t/p/w200${props.data.target_b.profile_path}`} height='200px'></img>
                         <p>{`with ${props.data.target_b.name}`}</p>
