@@ -5,5 +5,5 @@ export const getResults = () => {
         .then(data => {
             dispatch({type: 'UPDATE_RESULTS', payload: data})
         })
-    }
-}
+    };
+};
