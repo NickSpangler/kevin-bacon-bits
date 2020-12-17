@@ -1,6 +1,7 @@
 import React from 'react'
 import TargetAInput from './TargetAInput'
 import TargetBInput from './TargetBInput'
+import SearchResults from './SearchResults'
 
 export default function SixDegreesSearch() {
     return (
@@ -9,6 +10,8 @@ export default function SixDegreesSearch() {
             <TargetAInput />
             <br/><br/>
             <TargetBInput />
+            <br/><br/>
+            <SearchResults />
         </div>
     )
 }
