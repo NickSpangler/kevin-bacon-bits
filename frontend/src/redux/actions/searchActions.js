@@ -21,3 +21,9 @@ export const updateTargetB = (name) => {
         payload: name
     })
 }
+
+export const toggleLoading = () => {
+    return ({
+        type: 'TOGGLE_LOADING',
+    })
+}
