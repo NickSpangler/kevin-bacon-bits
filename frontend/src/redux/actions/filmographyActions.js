@@ -14,12 +14,12 @@ export const initializeCurrentMovie = () => {
     })
 }
 
-// export const getPossibleMovies = (currentMovieYear, actorID) => {
-//     return (dispatch) = {
-//         fetch(`http://localhost:3000/movies/get_possible_movies?input=${selectedActor}`)
-//         .then(resp => resp.json())
-//         .then(movies => {
-//             dispatch({type: 'GET_POSSIBLE_MOVIES', movies: movies })
-//         })
-//     }
-// }
+export const getPossibleMovies = (currentMovieYear, actor_id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/movies/possible_movies?year=${currentMovieYear}&actor_id=${actor_id}`)
+        .then(resp => resp.json())
+        .then(movies => {
+            dispatch({type: 'GET_POSSIBLE_MOVIES', movies: movies })
+        })
+    }
+}
