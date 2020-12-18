@@ -5,9 +5,11 @@ import { Row, Col, Divider, Typography } from 'antd';
 const { Text } = Typography
 
 export default function Level(props) {
+    const degrees = props.degree === 1 ? "Degree" : "Degrees"
+
     return (
         <div>
-            <Divider orientation="center">Results</Divider>
+            <Divider orientation="center">{`${props.degree} ${degrees}`}</Divider>
             <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row" span={4} offset={4}>
                     <div>
