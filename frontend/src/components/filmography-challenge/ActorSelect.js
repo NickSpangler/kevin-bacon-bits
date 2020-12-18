@@ -27,7 +27,7 @@ const ActorSelect = (props) => {
       };
 
     const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
-    const button = props.actor === 'not selected' ? (<></>) : (<Button type="primary">Take the Challenge!</Button>)
+    const button = props.actor === 'not selected' ? (<></>) : (<Button type="primary" onClick={props.initializeCurrentMovie}>Take the Challenge!</Button>)
 
       return (
         <>
