@@ -8,12 +8,6 @@ export const setActor = (selectedActor) => {
     };
 };
 
-export const initializeCurrentMovie = () => {
-    return ({
-        type: 'INITIALIZE_CURRENT_MOVIE'
-    })
-}
-
 export const getPossibleMovies = (currentMovieYear, actor_id) => {
     return (dispatch) => {
         fetch(`http://localhost:3000/movies/possible_movies?year=${currentMovieYear}&actor_id=${actor_id}`)

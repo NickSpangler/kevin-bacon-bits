@@ -26,8 +26,14 @@ const ActorSelect = (props) => {
         setValue(data);
       };
 
+    // const beginChallenge = () => {
+    //     props.initializeCurrentMovie();
+    //     debugger
+    //     props.getPossibleMovies(props.movie.release_year, props.actor.id);
+    // }
+
     const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
-    const button = props.actor === 'not selected' ? (<></>) : (<Button type="primary" onClick={props.initializeCurrentMovie}>Take the Challenge!</Button>)
+    const button = props.actor === 'not selected' ? (<></>) : (<Button type="primary" onClick={() => props.getPossibleMovies(props.movie.release_year, props.actor.id)}>Take the Challenge!</Button>)
 
       return (
         <>
