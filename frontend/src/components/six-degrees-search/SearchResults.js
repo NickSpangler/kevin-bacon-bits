@@ -14,7 +14,7 @@ export default function SearchResults(props) {
     } else {
         return (
             <div>
-                {props.results.map( level => <Level data={level} />)}
+                {props.results.map( (level, index) => <Level data={level} degree={index}/>)}
             </div>
         )
     }
