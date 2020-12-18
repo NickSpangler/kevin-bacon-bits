@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/actors/get_photo', to: 'actors#get_photo'
   get '/actors/search_for_link', to: 'actors#search_for_link'
   get '/link', to: 'actors#link'
+
+  get '/movies/get_possible_movies', to: 'movies#get_possible_movies'
   
   resources :movie_actors
   resources :actors
