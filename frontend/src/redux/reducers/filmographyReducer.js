@@ -13,3 +13,5 @@ function filmographyReducer(state = {
             return state;
     }
 }
+
+export default filmographyReducer;
