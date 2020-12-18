@@ -18,19 +18,19 @@ const ActorSelect = (props) => {
         })
       };
     
-      const onSelect = (data) => {
+    const onSelect = (data) => {
           props.setActor(data)
       };
     
-      const onChange = (data) => {
+    const onChange = (data) => {
         setValue(data);
       };
 
-      const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
-    
+    const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
+    const button = props.actor === 'not selected' ? (<></>) : (<Button type="primary">Take the Challenge!</Button>)
+
       return (
         <>
-          {/* <Space> */}
           <AutoComplete
             value={value}
             options={options}
@@ -44,7 +44,8 @@ const ActorSelect = (props) => {
           />
           <br></br><br></br>
           <img src={source} height='200px'/>
-          {/* </Space> */}
+            <br></br><br></br>
+          {button}
         </>
       );
 }
