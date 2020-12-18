@@ -24,6 +24,7 @@ export default function Level(props) {
                 <Col className="gutter-row" span={4}>
                     <div>
                     <img src={`https://image.tmdb.org/t/p/w200${props.data.movie.poster_path}`} height='200px'></img>
+                    <p> </p>
                     <p>{props.data.movie.title}</p>
                     </div>
                 </Col>
