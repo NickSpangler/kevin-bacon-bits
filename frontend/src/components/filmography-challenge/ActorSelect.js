@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { AutoComplete, Space, Button } from 'antd';
+import silhouette from './silhouette.png'
 
 const ActorSelect = (props) => {
 
     const [value, setValue] = useState('');
     const [options, setOptions] = useState([]);
-    const [source, setSource] = useState('')
+    // const [source, setSource] = useState('')
 
     const onSearch = (searchText) => {
         fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
@@ -18,30 +19,18 @@ const ActorSelect = (props) => {
       };
     
       const onSelect = (data) => {
-          
-    
-        // THIS IS ONLY SETTING LOCAL SOURCE FOR PHOTO -> SHOULD NOW COME FROM STATE, SELECTED_ACTOR
-        // console.log('onSelect', data);
-        // fetch(`http://localhost:3000/actors/get_photo?input=${data}`)
-        // .then(resp => resp.json())
-        // .then(data => {
-        //   setSource(
-        //     data.profile_path
-        //   )
-        // })
-    
+          props.setActor(data)
       };
     
       const onChange = (data) => {
         setValue(data);
-        // HERE set value of state: actor
-        // WRONG!
-        // props.updateTargetA(data)
       };
+
+      const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
     
       return (
         <>
-          <Space>
+          {/* <Space> */}
           <AutoComplete
             value={value}
             options={options}
@@ -53,8 +42,9 @@ const ActorSelect = (props) => {
             onChange={onChange}
             placeholder="Select an Actor..."
           />
-          
-          </Space>
+          <br></br><br></br>
+          <img src={source} height='200px'/>
+          {/* </Space> */}
         </>
       );
 }

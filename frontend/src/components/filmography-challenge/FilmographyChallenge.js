@@ -2,12 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ActorSelect from './ActorSelect'
 import { setActor } from '../../redux/actions/filmographyActions'
+import { PropertySafetyFilled } from '@ant-design/icons'
 
-function FilmographyChallenge() {
+function FilmographyChallenge(props) {
     return (
         <div>
             <h1>How well do you know your favorite actor's career?</h1>
-            <ActorSelect />
+            <ActorSelect setActor={props.setActor} actor={props.actor} />
         </div>
     )
 }

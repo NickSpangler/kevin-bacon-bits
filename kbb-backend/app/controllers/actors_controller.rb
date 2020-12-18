@@ -32,7 +32,6 @@ class ActorsController < ApplicationController
             results = []
         end
 
-
         # render results as JSON
         render json: results
     end

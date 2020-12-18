@@ -1,5 +1,5 @@
 function filmographyReducer(state = {
-                                actor: {},
+                                actor: 'not selected',
                                 actor_movies: [],
                                 current_movie: {},
                                 possible_answers: [],
