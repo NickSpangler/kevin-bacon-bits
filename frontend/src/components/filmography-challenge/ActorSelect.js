@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AutoComplete, Space } from 'antd';
+import { AutoComplete, Space, Button } from 'antd';
 
 const ActorSelect = (props) => {
 
@@ -18,6 +18,7 @@ const ActorSelect = (props) => {
       };
     
       const onSelect = (data) => {
+          
     
         // THIS IS ONLY SETTING LOCAL SOURCE FOR PHOTO -> SHOULD NOW COME FROM STATE, SELECTED_ACTOR
         // console.log('onSelect', data);
