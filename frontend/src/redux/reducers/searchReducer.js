@@ -1,4 +1,4 @@
-function searchReducer(state = { target_A: '', target_B: '', results: [] }, action) {
+function searchReducer(state = { target_A: '', target_B: '', results: [], loading: false }, action) {
     switch(action.type) {
         case 'UPDATE_TARGET_A':
             return { ...state, target_A: action.payload };

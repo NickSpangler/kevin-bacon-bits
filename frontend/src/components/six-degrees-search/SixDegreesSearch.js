@@ -23,7 +23,7 @@ class SixDegreesSearch extends React.Component {
                     Search
                 </Button>
                 <br/><br/>
-                <SearchResults results={this.props.results}/>
+                <SearchResults results={this.props.results} loading={this.props.loading}/>
             </div>
         )
     }
@@ -33,7 +33,8 @@ const mapStateToProps = ({ search }) => {
     return {
         target_A: search.target_A,
         target_B: search.target_B,
-        results: search.results
+        results: search.results,
+        loading: search.loading
     }
 }
 
