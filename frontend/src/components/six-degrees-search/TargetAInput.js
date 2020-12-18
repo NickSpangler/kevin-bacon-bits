@@ -57,4 +57,4 @@ const TargetAInput = (props) => {
   );
 };
 
-export default TargetAInput
+export default TargetAInput;
