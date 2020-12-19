@@ -14,15 +14,15 @@ export default function Home() {
                 So why not have a taste?
             </Paragraph>
             <Paragraph>
-                In <Text strong underline>Six Degrees Search</Text> you can search any two actors in our database 
+                <Text strong underline>Six Degrees Search</Text> you can search any two actors in our database 
                 and see if they can be connected with six degrees of separation or less.
             </Paragraph>
             <Paragraph>
-                The <Text strong underline>Six Degrees Challenge</Text> let's you choose an actor and a number of 
+                <Text strong underline>Six Degrees Challenge</Text> lets you choose an actor and a number of 
                 degrees you want to be challenged by, and we'll tell you who to connect them with!
             </Paragraph>
             <Paragraph>
-                And the <Text strong underline>Filmography Challenge</Text> let's you choose an actor and we'll 
+                <Text strong underline>Filmography Challenge</Text> let's you choose an actor and we'll 
                 test your knowledge of their filmography by making you select posters from the films they've been in. Good luck!
             </Paragraph>
         </Typography>
