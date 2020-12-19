@@ -3,7 +3,7 @@ import { Button, Space, Upload, Popconfirm } from 'antd';
 import filmographyReducer from '../../redux/reducers/filmographyReducer';
 
 const OptionsContainer = (props) => {
-    if (props.possible_answers === 'between rounds') {
+    if (props.possible_answers.length === 0) {
         return (
             <></>
     )} else {

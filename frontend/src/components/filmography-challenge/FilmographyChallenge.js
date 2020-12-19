@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ActorSelect from './ActorSelect'
 import { setActor, getPossibleMovies, selectNewActor } from '../../redux/actions/filmographyActions'
-import { PropertySafetyFilled } from '@ant-design/icons'
+// import { PropertySafetyFilled } from '@ant-design/icons'
 import OptionsContainer from './OptionsContainer'
+import RoundResult from './RoundResult'
 
 function FilmographyChallenge(props) {
     return (
@@ -16,6 +17,7 @@ function FilmographyChallenge(props) {
                         getPossibleMovies={props.getPossibleMovies} 
                         selectNewActor={props.selectNewActor} />
             <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} />
+            <RoundResult />
         </div>
     )
 }
