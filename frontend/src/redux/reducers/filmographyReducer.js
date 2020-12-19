@@ -5,7 +5,8 @@ function filmographyReducer(state = {
                                 possible_answers: [],
                                 round_result: 'waiting',
                                 history: [],
-                                challenge_active: false
+                                challenge_active: false,
+                                total_history: 0
                             }, action) {
     switch(action.type) {
         case 'SET_ACTOR':
@@ -42,7 +43,8 @@ function filmographyReducer(state = {
                 history: [...state.history, state.current_movie],
                 current_movie: next_movie,
                 round_result: true,
-                possible_answers: []
+                possible_answers: [],
+                total_history: state.total_history++
             }
         case 'WRONG_ANSWER':
             return {

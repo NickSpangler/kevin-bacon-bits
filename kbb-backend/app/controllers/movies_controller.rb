@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
         movies_that_year = []
         cast.each do |a|
             a.movies.each do |m|
-                if m.release_year >= current_movie.release_year - 1 && m.release_year <= current_movie.release_year - 1 && !m.actors.include?(actor)
+                if m.release_year >= current_movie.release_year - 1 && m.release_year <= current_movie.release_year + 1 && !m.actors.include?(actor)
                     movies_that_year << m
                 end
             end
