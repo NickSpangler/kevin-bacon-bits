@@ -3,6 +3,15 @@ import { Button, Space, Upload, Popconfirm } from 'antd';
 import filmographyReducer from '../../redux/reducers/filmographyReducer';
 
 const OptionsContainer = (props) => {
+
+    const makeChoice = (choice) => {
+        if (choice === props.film.title) {
+            debugger
+        } else {
+            alert('Nope!')
+        }
+    }
+
     if (props.possible_answers.length === 0) {
         return (
             <></>
@@ -17,7 +26,8 @@ const OptionsContainer = (props) => {
                             okText="Yes" 
                             cancelText="No" 
                             placement="bottom"
-                            onConfirm={() => alert('This worked!')}>
+                            onConfirm={() => makeChoice(option.title)}
+                            data='you found me'>
                                 <img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`} height='250px'></img>
                             </Popconfirm>)}
                         )
