@@ -44,7 +44,7 @@ export default function Level(props) {
                 </Col>
             </Row>
             <br></br>
-            <p sytle='text-align: center'><Text keyboard>{`${props.data.target_a.name}`}</Text>{`(as ${props.data.target_a.character}) was in `}<Text keyboard>{`${props.data.movie.title}`}</Text>{` with `}<Text keyboard>{`${props.data.target_b.name}`}</Text>{` (as ${props.data.target_b.character}).`}</p>
+            <p sytle='text-align: center'><Text keyboard>{`${props.data.target_a.name}`}</Text>{`  (as ${props.data.target_a.character}) was in  `}<Text keyboard>{`${props.data.movie.title}`}</Text>{` with `}<Text keyboard>{`${props.data.target_b.name}`}</Text>{` (as ${props.data.target_b.character}).`}</p>
         </div>
     )
 }
