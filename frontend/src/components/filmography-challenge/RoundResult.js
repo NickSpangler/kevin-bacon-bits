@@ -18,7 +18,7 @@ const RoundResult = (props) => {
                 extra={[
                 <Button 
                     type="primary"
-                    onClick={() => alert("Take me to the next round!")}>
+                    onClick={() => props.getPossibleMovies(props.current_movie.id, props.actor.id)}>
                     Next Round
                 </Button>,
                 ]}

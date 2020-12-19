@@ -23,7 +23,9 @@ function filmographyReducer(state = {
                 ...state, 
                 possible_answers: movies,
                 actor_movies: state.actor_movies.filter(m => m.id !== state.current_movie.id),
-                challenge_active: true}
+                challenge_active: true,
+                round_result: 'waiting'
+            }
         case 'SELECT_NEW_ACTOR':
             return {
                 actor: 'not selected',
