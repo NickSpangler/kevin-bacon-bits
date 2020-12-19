@@ -1,5 +1,6 @@
 import React from 'react'
 import { Typography, Divider } from 'antd';
+import '../css/animista.css'
 
 const { Title, Paragraph, Text} = Typography;
 

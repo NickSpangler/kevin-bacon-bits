@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ActorSelect from './ActorSelect'
-import { setActor, getPossibleMovies } from '../../redux/actions/filmographyActions'
+import { setActor, getPossibleMovies, selectNewActor } from '../../redux/actions/filmographyActions'
 import { PropertySafetyFilled } from '@ant-design/icons'
 import OptionsContainer from './OptionsContainer'
 
@@ -13,7 +13,8 @@ function FilmographyChallenge(props) {
                         actor={props.actor} 
                         movie={props.current_movie} 
                         challenge_active={props.challenge_active}
-                        getPossibleMovies={props.getPossibleMovies} />
+                        getPossibleMovies={props.getPossibleMovies} 
+                        selectNewActor={props.selectNewActor} />
             <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} />
         </div>
     )
@@ -31,4 +32,4 @@ const mapStateToProps = ({ filmography }) => {
     }
 }
 
-export default connect(mapStateToProps, { setActor, getPossibleMovies })(FilmographyChallenge)
+export default connect(mapStateToProps, { setActor, getPossibleMovies, selectNewActor })(FilmographyChallenge)
