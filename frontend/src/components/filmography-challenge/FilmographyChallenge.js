@@ -8,7 +8,11 @@ function FilmographyChallenge(props) {
     return (
         <div>
             <h1>How well do you know your favorite actor's career?</h1>
-            <ActorSelect setActor={props.setActor} actor={props.actor} movie={props.current_movie} getPossibleMovies={props.getPossibleMovies}/>
+            <ActorSelect setActor={props.setActor} 
+                        actor={props.actor} 
+                        movie={props.current_movie} 
+                        challenge_active={props.challenge_active}
+                        getPossibleMovies={props.getPossibleMovies}/>
         </div>
     )
 }
@@ -20,7 +24,8 @@ const mapStateToProps = ({ filmography }) => {
         current_movie: filmography.current_movie,
         possible_answers: filmography.possible_answers,
         round_result: filmography.round_result,
-        history: filmography.history
+        history: filmography.history,
+        challenge_active: filmography.challenge_active
     }
 }
 

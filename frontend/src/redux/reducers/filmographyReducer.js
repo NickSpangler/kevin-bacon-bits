@@ -4,7 +4,8 @@ function filmographyReducer(state = {
                                 current_movie: {},
                                 possible_answers: [],
                                 round_result: 'waiting',
-                                history: []
+                                history: [],
+                                challenge_active: false
                             }, action) {
     switch(action.type) {
         case 'SET_ACTOR':
@@ -17,7 +18,8 @@ function filmographyReducer(state = {
             return {
                 ...state, 
                 possible_answers: movies,
-                actor_movies: state.actor_movies.filter(m => m.id !== state.current_movie.id)}
+                actor_movies: state.actor_movies.filter(m => m.id !== state.current_movie.id),
+                challenge_active: true}
         default:
             return state;
     }
