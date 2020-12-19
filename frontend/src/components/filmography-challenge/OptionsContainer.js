@@ -9,7 +9,7 @@ const OptionsContainer = (props) => {
         return (
             <>
                 <Space>
-                    {props.possible_answers.map( option => <img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`}></img>)}
+                    {props.possible_answers.map( option => <Popconfirm title="Are you sure he was in this movie?" okText="Yes" cancelText="No"><img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`}></img></Popconfirm>)}
                 </Space>
             </>
         )
