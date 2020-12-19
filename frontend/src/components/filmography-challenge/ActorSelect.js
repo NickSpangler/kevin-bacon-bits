@@ -6,7 +6,6 @@ const ActorSelect = (props) => {
 
     const [value, setValue] = useState('');
     const [options, setOptions] = useState([]);
-    // const [source, setSource] = useState('')
 
     const onSearch = (searchText) => {
         fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
@@ -26,12 +25,6 @@ const ActorSelect = (props) => {
         setValue(data);
       };
 
-    // const beginChallenge = () => {
-    //     props.initializeCurrentMovie();
-    //     debugger
-    //     props.getPossibleMovies(props.movie.release_year, props.actor.id);
-    // }
-
     const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
     const button = props.actor === 'not selected' || props.challenge_active === true ? (<></>) : (<Button type="primary" onClick={() => props.getPossibleMovies(props.movie.release_year, props.actor.id)}>Take the Challenge!</Button>)
 
@@ -49,8 +42,11 @@ const ActorSelect = (props) => {
             placeholder="Select an Actor..."
           />
           <br></br><br></br>
+
           <img src={source} height='200px'/>
+
             <br></br><br></br>
+            
           {button}
         </>
       );
