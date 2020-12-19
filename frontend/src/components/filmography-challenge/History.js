@@ -7,7 +7,7 @@ const History = (props) => {
     } else {
         return (
             <div>
-                <Divider orientation="left">History</Divider>
+                <Divider orientation="left">Correct Answers</Divider>
                     <Space size={[8, 16]} wrap>
                         {props.history.map(m => <img src={`https://image.tmdb.org/t/p/w200${m.poster_path}`} height='130px'></img>)}
                     </Space>
