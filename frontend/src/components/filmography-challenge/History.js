@@ -7,7 +7,7 @@ const History = (props) => {
     } else {
         return (
             <div>
-                <Divider orientation="left">
+                <Divider orientation="center">
                 <Badge count={props.history.length} offset={[-55, 28]}>
                     Correct Answers  
                     </Badge>
