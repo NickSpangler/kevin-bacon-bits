@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ActorSelect from './ActorSelect'
-import { setActor, getPossibleMovies, selectNewActor } from '../../redux/actions/filmographyActions'
+import { setActor, getPossibleMovies, selectNewActor, rightAnswer, wrongAnswer } from '../../redux/actions/filmographyActions'
 // import { PropertySafetyFilled } from '@ant-design/icons'
 import OptionsContainer from './OptionsContainer'
 import RoundResult from './RoundResult'
@@ -34,4 +34,4 @@ const mapStateToProps = ({ filmography }) => {
     }
 }
 
-export default connect(mapStateToProps, { setActor, getPossibleMovies, selectNewActor })(FilmographyChallenge)
+export default connect(mapStateToProps, { setActor, getPossibleMovies, selectNewActor, rightAnswer, wrongAnswer })(FilmographyChallenge)
