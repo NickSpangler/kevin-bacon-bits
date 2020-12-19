@@ -6,7 +6,9 @@ const OptionsContainer = (props) => {
             <></>
     )} else {
         return (
-            <p>Now there are options.</p>
+            <>
+            {props.possible_answers.map( option => <img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`}></img>)}
+            </>
         )
     }
 }
