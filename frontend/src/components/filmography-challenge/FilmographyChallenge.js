@@ -13,8 +13,8 @@ function FilmographyChallenge(props) {
                         actor={props.actor} 
                         movie={props.current_movie} 
                         challenge_active={props.challenge_active}
-                        getPossibleMovies={props.getPossibleMovies}/>
-            <OptionsContainer />
+                        getPossibleMovies={props.getPossibleMovies} />
+            <OptionsContainer possible_answers={props.possible_answers} />
         </div>
     )
 }
