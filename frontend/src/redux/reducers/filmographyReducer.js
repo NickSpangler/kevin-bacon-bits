@@ -43,7 +43,11 @@ function filmographyReducer(state = {
                 possible_answers: []
             }
         case 'WRONG_ANSWER':
-            return state;
+            return {
+                ...state,
+                round_result: false,
+                possible_answers: []
+            }
         default:
             return state;
     }
