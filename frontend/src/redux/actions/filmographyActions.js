@@ -17,3 +17,11 @@ export const getPossibleMovies = (currentMovieId, actor_id) => {
         })
     }
 }
+
+export const selectNewActor = () => {
+    return (
+        {
+            type: 'SELECT_NEW_ACTOR'
+        }
+    )
+}
