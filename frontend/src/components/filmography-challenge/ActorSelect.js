@@ -27,10 +27,21 @@ const ActorSelect = (props) => {
 
     const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
     const button = props.actor === 'not selected' || props.challenge_active === true ? (<></>) : (<Button type="primary" onClick={() => props.getPossibleMovies(props.movie.release_year, props.actor.id)}>Take the Challenge!</Button>)
+    const input_or_select = props.challenge_active === false ? (<AutoComplete
+        value={value}
+        options={options}
+        style={{
+          width: 200,
+        }}
+        onSelect={onSelect}
+        onSearch={onSearch}
+        onChange={onChange}
+        placeholder="Select an Actor..."
+      />) : (<button>Conditinally Rendered!</button>)
 
       return (
         <>
-          <AutoComplete
+          {/* <AutoComplete
             value={value}
             options={options}
             style={{
@@ -40,13 +51,14 @@ const ActorSelect = (props) => {
             onSearch={onSearch}
             onChange={onChange}
             placeholder="Select an Actor..."
-          />
+          /> */}
+          {input_or_select}
           <br></br><br></br>
 
           <img src={source} height='200px'/>
 
             <br></br><br></br>
-            
+
           {button}
         </>
       );
