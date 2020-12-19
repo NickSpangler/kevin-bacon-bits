@@ -37,7 +37,7 @@ const ActorSelect = (props) => {
         onSearch={onSearch}
         onChange={onChange}
         placeholder="Select an Actor..."
-      />) : (<button>Conditinally Rendered!</button>)
+      />) : (<Button type='primary'>Select A New Actor</Button>)
 
       return (
         <>
