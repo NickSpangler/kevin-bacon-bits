@@ -11,7 +11,17 @@ const OptionsContainer = (props) => {
             <>
                 <p>Which of these films featured {props.actor.name} in {props.film.release_year}?</p>
                 <Space>
-                    {props.possible_answers.map( option => <Popconfirm title={`Are you sure ${props.actor.name.split(' ')[0]} was in this movie?`} okText="Yes" cancelText="No"><img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`}></img></Popconfirm>)}
+                    {props.possible_answers.map( option => {
+                        return (
+                            <Popconfirm title={`Are you sure ${props.actor.name.split(' ')[0]} was in ${option.title}?`} 
+                            okText="Yes" 
+                            cancelText="No" 
+                            placement="bottom"
+                            onConfirm={() => alert('This worked!')}>
+                                <img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`} height='250px'></img>
+                            </Popconfirm>)}
+                        )
+                    }
                 </Space>
             </>
         )
