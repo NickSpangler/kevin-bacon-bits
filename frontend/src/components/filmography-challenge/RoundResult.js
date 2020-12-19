@@ -19,7 +19,7 @@ const RoundResult = (props) => {
                 extra={[
                 <Button 
                     type="primary"
-                    onClick={() => alert('Time for a new challenge! ')}>
+                    onClick={props.selectNewActor}>
                     Start A New Challenge
                 </Button>,
                 ]}
