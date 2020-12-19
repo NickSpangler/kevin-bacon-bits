@@ -25,3 +25,19 @@ export const selectNewActor = () => {
         }
     )
 }
+
+export const rightAnswer = () => {
+    return (
+        {
+            type: 'RIGHT_ANSWER'
+        }
+    )
+}
+
+export const wrongAnswer = () => {
+    return (
+        {
+            type: 'WRONG_ANSWER'
+        }
+    )
+}
