@@ -16,7 +16,7 @@ function FilmographyChallenge(props) {
                         challenge_active={props.challenge_active}
                         getPossibleMovies={props.getPossibleMovies} 
                         selectNewActor={props.selectNewActor} />
-            <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} />
+            <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} rightAnswer={props.rightAnswer} wrongAnswer={props.wrongAnswer} />
             <RoundResult round_result={props.round_result}/>
         </div>
     )

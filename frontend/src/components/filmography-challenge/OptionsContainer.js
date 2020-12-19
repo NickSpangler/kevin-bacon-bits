@@ -6,9 +6,9 @@ const OptionsContainer = (props) => {
 
     const makeChoice = (choice) => {
         if (choice === props.film.title) {
-            debugger
+            props.rightAnswer()
         } else {
-            alert('Nope!')
+            props.wrongAnswer()
         }
     }
 
