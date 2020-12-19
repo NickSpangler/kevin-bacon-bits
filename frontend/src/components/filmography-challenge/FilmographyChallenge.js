@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import ActorSelect from './ActorSelect'
 import { setActor, getPossibleMovies } from '../../redux/actions/filmographyActions'
 import { PropertySafetyFilled } from '@ant-design/icons'
+import OptionsContainer from './OptionsContainer'
 
 function FilmographyChallenge(props) {
     return (
@@ -13,6 +14,7 @@ function FilmographyChallenge(props) {
                         movie={props.current_movie} 
                         challenge_active={props.challenge_active}
                         getPossibleMovies={props.getPossibleMovies}/>
+            <OptionsContainer />
         </div>
     )
 }
