@@ -1,4 +1,5 @@
 import React from 'react'
+import { Result, Button } from 'antd'
 
 const RoundResult = (props) => {
 
@@ -10,9 +11,18 @@ const RoundResult = (props) => {
         )
     } else if (props.round_result === true) {
         return (
-            <>
-                YAY! YOU GOT IT RIGHT!
-            </>
+            <Result
+                status="success"
+                title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}`}
+                subTitle="Ready for another round?"
+                extra={[
+                <Button 
+                    type="primary"
+                    onClick={() => alert("Take me to the next round!")}>
+                    Next Round
+                </Button>,
+                ]}
+            />
         )
     } else {
         return (
