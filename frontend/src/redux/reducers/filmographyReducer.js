@@ -2,7 +2,7 @@ function filmographyReducer(state = {
                                 actor: 'not selected',
                                 actor_movies: [],
                                 current_movie: {},
-                                possible_answers: [],
+                                possible_answers: 'between rounds',
                                 round_result: 'waiting',
                                 history: [],
                                 challenge_active: false

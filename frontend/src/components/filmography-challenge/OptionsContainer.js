@@ -1,11 +1,16 @@
 import React from 'react'
 
 const OptionsContainer = (props) => {
-    return (
-        <div>
-            <p>This is where the options will go.</p>
-        </div>
-    )
+    if (props.possible_answers === 'between rounds') {
+        return (
+            <div>
+                <p>No options yet.</p>
+            </div>
+    )} else {
+        return (
+            <p>Now there are options.</p>
+        )
+    }
 }
 
 export default OptionsContainer
