@@ -4,11 +4,21 @@ import { Result, Button } from 'antd'
 const RoundResult = (props) => {
 
     const gender = props.actor.gender === 1 ? ('her') : ('his')
+    const gender2 = props.actor.gender === 1 ? ('She') : ('He')
     if (props.round_result === false) {
         return (
-            <>
-                NOPE! YOU GOT IT WRONG, DUMMY!
-            </>
+            <Result
+                status="error"
+                title={`Sorry, ${props.actor.name} was not in that movie.`}
+                subTitle={`${gender2} was actually in ${props.current_movie.title}.`}
+                extra={[
+                <Button type="primary" key="console" onClick={props.selectNewActor}>
+                    Start A New Challenge
+                </Button>,
+                <Button key="buy">Try Again With {props.actor.name.split(' ')[0]}</Button>,
+                ]}
+            >
+            </Result>
         )
     } else if (props.round_result === true && props.actor_movies.length === 0) {
         return (
