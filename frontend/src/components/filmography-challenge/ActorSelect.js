@@ -46,17 +46,6 @@ const ActorSelect = (props) => {
 
       return (
         <>
-          {/* <AutoComplete
-            value={value}
-            options={options}
-            style={{
-              width: 200,
-            }}
-            onSelect={onSelect}
-            onSearch={onSearch}
-            onChange={onChange}
-            placeholder="Select an Actor..."
-          /> */}
           {input_or_select}
           <br></br><br></br>
 
