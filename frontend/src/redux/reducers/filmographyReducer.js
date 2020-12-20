@@ -35,16 +35,20 @@ function filmographyReducer(state = {
                 possible_answers: [],
                 round_result: 'waiting',
                 history: [],
-                challenge_active: false}
+                challenge_active: false,
+                total_history: state.total_history
+            }
         case 'RIGHT_ANSWER':
+            console.log(action)
             let next_movie = state.actor_movies[Math.floor(Math.random()*state.actor_movies.length)]
+            let new_total = state.total_history + 1
             return {
                 ...state,
                 history: [...state.history, state.current_movie],
                 current_movie: next_movie,
                 round_result: true,
                 possible_answers: [],
-                total_history: state.total_history++
+                total_history: new_total
             }
         case 'WRONG_ANSWER':
             return {
