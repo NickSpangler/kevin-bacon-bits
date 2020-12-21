@@ -6,11 +6,15 @@ import Home from './components/Home';
 import SixDegreesSearch from './components/six-degrees-search/SixDegreesSearch';
 import SixDegreesChallenge from './components/six-degrees-challenge/SixDegreesChallenge';
 import FilmographyChallenge from './components/filmography-challenge/FilmographyChallenge';
+import { Helmet } from 'react-helmet'
 
 
 function App() {
   return (
     <div className="App">
+      <Helmet>
+          <title>Kevin Bacon Bits</title>
+      </Helmet>
       <Router>
         <Nav />
         <Switch>
