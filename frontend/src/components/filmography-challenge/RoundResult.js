@@ -12,10 +12,10 @@ const RoundResult = (props) => {
                 title={`Sorry, ${props.actor.name} was not in that movie.`}
                 subTitle={`${gender2} was actually in ${props.current_movie.title}.`}
                 extra={[
-                <Button type="primary" key="console" onClick={props.selectNewActor}>
+                <Button type="primary" key="start_challenge" onClick={props.selectNewActor}>
                     Start A New Challenge
                 </Button>,
-                <Button key="buy">Try Again With {props.actor.name.split(' ')[0]}</Button>,
+                <Button key="try_again" onClick={() => alert('You wanna try again?')}>Try Again With {props.actor.name.split(' ')[0]}</Button>,
                 ]}
             >
             </Result>

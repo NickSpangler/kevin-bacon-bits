@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ActorSelect from './ActorSelect'
-import { setActor, getPossibleMovies, selectNewActor, rightAnswer, wrongAnswer } from '../../redux/actions/filmographyActions'
+import { setActor, getPossibleMovies, selectNewActor, rightAnswer, wrongAnswer, tryAgain } from '../../redux/actions/filmographyActions'
 import OptionsContainer from './OptionsContainer'
 import RoundResult from './RoundResult'
 import History from './History'
@@ -18,7 +18,7 @@ function FilmographyChallenge(props) {
                         selectNewActor={props.selectNewActor} />
             <History history={props.history} />
             <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} rightAnswer={props.rightAnswer} wrongAnswer={props.wrongAnswer} />
-            <RoundResult round_result={props.round_result} actor={props.actor} history={props.history} current_movie={props.current_movie} actor_movies={props.actor_movies} getPossibleMovies={props.getPossibleMovies} selectNewActor={props.selectNewActor} />
+            <RoundResult round_result={props.round_result} actor={props.actor} history={props.history} current_movie={props.current_movie} actor_movies={props.actor_movies} getPossibleMovies={props.getPossibleMovies} selectNewActor={props.selectNewActor} tryAgain={props.tryAgain} />
         </div>
     )
 }
@@ -35,4 +35,4 @@ const mapStateToProps = ({ filmography }) => {
     }
 }
 
-export default connect(mapStateToProps, { setActor, getPossibleMovies, selectNewActor, rightAnswer, wrongAnswer })(FilmographyChallenge)
+export default connect(mapStateToProps, { setActor, getPossibleMovies, selectNewActor, rightAnswer, wrongAnswer, tryAgain })(FilmographyChallenge)
