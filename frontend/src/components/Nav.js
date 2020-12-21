@@ -3,7 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Badge } from 'antd'
 import { connect } from 'react-redux';
-import { PropertySafetyFilled } from '@ant-design/icons';
 
 function Nav(props) {
     return (

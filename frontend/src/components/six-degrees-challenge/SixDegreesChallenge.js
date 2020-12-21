@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Result, Button } from 'antd';
+import { Link } from 'react-router-dom';
 
 export default function SixDegreesChallenge() {
     return (
@@ -7,8 +8,12 @@ export default function SixDegreesChallenge() {
             status="404"
             title="Sorry, we're still unboxing this feature."
             subTitle="Check back later for updates, and enjoy another feature at this time."
-            extra={[<Button type="primary">Six Degrees Search</Button>,
-                    <Button type="primary">Filmography Challenge</Button>
+            extra={[<Link to='/six-degrees-search'>
+                        <Button type="primary">Six Degrees Search</Button>
+                    </Link>,
+                    <Link to='/filmography-challenge'>
+                        <Button type="primary">Filmography Challenge</Button>
+                    </Link>
             ]}
         />
     )
