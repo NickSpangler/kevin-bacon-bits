@@ -1,6 +1,6 @@
 class Actor < ApplicationRecord
     has_many :movie_actors
-    has_many :movies, :through => :movie_actors
+    has_many :movies, :through => :movie_actors, counter_cache: true
 
     scope :auto_complete, -> (query) { where("name ILIKE (?)", "#{query}%" ).order(:name)}
 
@@ -70,9 +70,11 @@ class Actor < ApplicationRecord
 
 
 
-    # RETURNS ARRAY OF TWO LEVELS OF LINKS, CALLS first_degree_search, ONLY USE AFTER CHECKING FIRST DEGREE CONNECTION
+    
+    # RETURNS ARRAY OF MULTIPLE LEVELS OF LINKS, CALLS first_degree_search, ONLY USE AFTER CHECKING FIRST DEGREE CONNECTION
     def self.second_degree_search(target_a, target_b)
         target_c = []
+        target_d = []
         results= []
         levels = {
             target_a_actors: [],
@@ -82,18 +84,23 @@ class Actor < ApplicationRecord
             target_d_actors: [],
             target_b_actors: []
         }
+
+        # <----------------# THIS BEGINS THE SECOND-DEGREE SEARCH BRANCH----------->
+
+
+
         
         # put all target_a associated actors in first key of hash
         target_a.movies.each do |m|
             m.actors.each do |a|
-                levels[:target_a_actors] << a
+                levels[:target_a_actors] << a unless a == target_a
             end
         end
 
         # put all target_b associated actors in second key of hash
         target_b.movies.each do |m|
             m.actors.each do |a|
-                levels[:target_b_actors] << a
+                levels[:target_b_actors] << a unless a == target_b
             end
         end
 
@@ -110,12 +117,57 @@ class Actor < ApplicationRecord
             results << Actor.first_degree_search(target_c, target_b)
         end
 
-        # return results
+
+        # CHECKS FOR SECOND-DEGREE MATCH, RETURNS RESULT IF TRUE
         if results.length > 0
             return results
+
+
+        # <----------------THIS ENDS THE SECOND DEGREE SEARCH BRANCH ----------------->
+
+
+
+
+
+        # <----------------# THIS BEGINS THE THIRD-DEGREE SEARCH BRANCH----------->
+
         else
-            return { value: 'Sorry, no link could be found.' }
+            levels[:target_a_actors].each do |a|
+                a.movies.each do |m|
+                    m.actors.each do |a2|
+                        levels[:target_c_actors] << a2 unless levels[:target_a_actors].include?(a2)
+                    end
+                end
+            end
+
+            levels[:target_b_actors].each{|a| target_d << a if levels[:target_c_actors].include?(a)}
+            target_d = target_d.first
+
+            results << Actor.first_degree_search(target_d, target_b)
+            
+            target_d.movies.each do |m|
+                m.actors.each do |a|
+                    target_c = a if levels[:target_a_actors].include?(a)
+                end
+            end
+
+            results << Actor.first_degree_search(target_c, target_d)
+
+            results << Actor.first_degree_search(target_a, target_c)
+
+            results = results.reverse
+
+            if results.length > 0
+                return results
+            else
+                return { value: 'Sorry, no link could be found.' }
+            end
+
         end
+
+
+
+
     end
 
 

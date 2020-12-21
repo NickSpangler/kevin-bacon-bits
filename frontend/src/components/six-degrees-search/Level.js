@@ -1,19 +1,22 @@
 import React from 'react'
 import { RightCircleTwoTone } from '@ant-design/icons';
 import { Row, Col, Divider, Typography } from 'antd';
+import silhouette from './silhouette.png'
 
 const { Text } = Typography
 
 export default function Level(props) {
     const degrees = props.degree === 1 ? "Degree" : "Degrees"
-
+    const target_a_path = props.data.target_a.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.data.target_a.profile_path}`)
+    const target_b_path = props.data.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.data.target_b.profile_path}`)
     return (
         <div>
             <Divider orientation="center">{`${props.degree} ${degrees}`}</Divider>
             <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row" span={4} offset={4}>
                     <div>
-                    <img src={`https://image.tmdb.org/t/p/w200${props.data.target_a.profile_path}`} height='200px'></img>
+                    <img src={target_a_path} height='200px'></img>
+                    {/* <img src={props.data.target_a.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.data.target_a.profile_path}`)} height='200px'></img> */}
                     {/* <p>{`${props.data.target_a.name}`}</p>
                     <p>{`played ${props.data.target_a.character} in:`}</p> */}
                     </div>
@@ -37,7 +40,8 @@ export default function Level(props) {
                 </Col>
                 <Col className="gutter-row" span={4}>
                     <div>
-                        <img src={`https://image.tmdb.org/t/p/w200${props.data.target_b.profile_path}`} height='200px'></img>
+                        <img src={target_b_path} height='200px'></img>
+                        {/* <img src={`https://image.tmdb.org/t/p/w200${props.data.target_b.profile_path}`} height='200px'></img> */}
                         {/* <p>{`with ${props.data.target_b.name}`}</p>
                         <p>{`who played ${props.data.target_b.character}.`}</p> */}
                     </div>
