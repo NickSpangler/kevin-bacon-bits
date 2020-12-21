@@ -56,6 +56,17 @@ function filmographyReducer(state = {
                 round_result: false,
                 possible_answers: []
             }
+        case 'TRY_AGAIN':
+            let new_first_movie = state.actor_movies[Math.floor(Math.random()*state.actor_movies.length)]
+            return {
+                ...state,
+                current_movie: new_first_movie,
+                actor_movies: [...state.actor_movies, ...state.history],
+                possible_answers: [],
+                round_result: 'waiting',
+                history: [],
+                challenge_active: false
+            }
         default:
             return state;
     }
