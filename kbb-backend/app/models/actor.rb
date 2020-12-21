@@ -92,6 +92,7 @@ class Actor < ApplicationRecord
                 levels[:target_a_actors] << a
             end
         end
+
         # put all target_b associated actors in second key of hash
         target_b.movies.each do |m|
             m.actors.each do |a|
@@ -108,6 +109,7 @@ class Actor < ApplicationRecord
 
         # call first_degree_search on target_c, target_b => shovel into results
         results << Actor.first_degree_search(target_c, target_b)
+        
         # return results 
         return results
     end

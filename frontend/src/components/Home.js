@@ -8,7 +8,8 @@ const { Title, Paragraph, Text} = Typography;
 export default function Home() {
     return (
         <Typography>
-            <Title>Welcome to Kevin Bacon Bits</Title>
+            <Title class='scale-in-center' >Welcome to Kevin Bacon Bits</Title>
+            <p class='red scale-in-center'>Test</p>
             <Paragraph>
                 At KBB we know the bits are just good as the whole strip... if not better!
                 So why not have a taste?
