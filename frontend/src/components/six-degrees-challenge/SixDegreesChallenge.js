@@ -7,7 +7,9 @@ export default function SixDegreesChallenge() {
             status="404"
             title="Sorry, we're still unboxing this feature."
             subTitle="Check back later for updates, and enjoy another feature at this time."
-            extra={<Button type="primary">Back Home</Button>}
+            extra={[<Button type="primary">Six Degrees Search</Button>,
+                    <Button type="primary">Filmography Challenge</Button>
+            ]}
         />
     )
 }
