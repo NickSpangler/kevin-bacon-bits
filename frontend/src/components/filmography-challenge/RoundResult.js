@@ -15,7 +15,7 @@ const RoundResult = (props) => {
                 <Button type="primary" key="start_challenge" onClick={props.selectNewActor}>
                     Start A New Challenge
                 </Button>,
-                <Button key="try_again" onClick={() => alert('You wanna try again?')}>Try Again With {props.actor.name.split(' ')[0]}</Button>,
+                <Button key="try_again" onClick={props.tryAgain}>Try Again With {props.actor.name.split(' ')[0]}</Button>,
                 ]}
             >
             </Result>
