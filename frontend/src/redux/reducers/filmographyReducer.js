@@ -62,7 +62,6 @@ function filmographyReducer(state = {
             return {
                 ...state,
                 current_movie: new_first_movie,
-                // actor_movies: [...state.actor_movies, state.current_movie, ...state.history],
                 possible_answers: [],
                 round_result: 'waiting',
                 history: [],
