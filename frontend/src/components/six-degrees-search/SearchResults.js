@@ -11,6 +11,12 @@ export default function SearchResults(props) {
             </div>
         )
 
+    } else if (props.results.value) {
+        return (
+            <div>
+                <p>{props.results.value}</p>
+            </div>
+        )
     } else {
         return (
             <div>
