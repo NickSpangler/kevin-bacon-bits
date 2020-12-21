@@ -41,3 +41,11 @@ export const wrongAnswer = () => {
         }
     )
 }
+
+export const tryAgain = () => {
+    return (
+        {
+            type: 'TRY_AGAIN'
+        }
+    )
+}
