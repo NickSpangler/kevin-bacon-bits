@@ -31,9 +31,6 @@ class ActorsController < ApplicationController
         else
             # call find_link, defined in actor.rb, which returns structured results
             results = Actor.find_link(target_a, target_b)
-        # else
-        #     # NEED TO HANDLE CASE WHERE ACTORS ARE NOT FOUND
-        #     results = 'One of those actors was not found'
         end
 
         # render results as JSON
