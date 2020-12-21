@@ -114,7 +114,7 @@ class Actor < ApplicationRecord
         if results.length > 0
             return results
         else
-            return 'Sorry, no link could be found.'
+            return { value: 'Sorry, no link could be found.' }
         end
     end
 
