@@ -13,6 +13,7 @@ class Actor < ApplicationRecord
 
     end
 
+    # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
     def self.check_first_degree(target_a, target_b)
         aMovies = target_a.movies
         bMovies = target_b.movies
@@ -40,11 +41,7 @@ class Actor < ApplicationRecord
         return nil
     end
 
-
-
-    # <------------------BELOW THIS LINE STILL IN DEVELOPMENT---------------->
-
-    # ALWAYS RETURNS ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> ONLY USE WHEN FIRST DEGREE LINK IS CONFIRMED
+    # ALWAYS RETURNS ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> ONLY USED WHEN FIRST DEGREE LINK IS CONFIRMED
     def self.first_degree_search(target_a, target_b)
         aMovies = target_a.movies
         bMovies = target_b.movies
@@ -104,14 +101,21 @@ class Actor < ApplicationRecord
         levels[:target_a_actors].each{|a| target_c << a if levels[:target_b_actors].include?(a)}
         target_c = target_c.first
 
-        # call first_degree_search on target_a, target_c => shovel into results
-        results << Actor.first_degree_search(target_a, target_c)
+        # checks if target_c has been found. if so, finds first-degree link between A and C, then first-degree link between C and B
+        if target_c != nil
+            # call first_degree_search on target_a, target_c => shovel into results
+            results << Actor.first_degree_search(target_a, target_c)
+    
+            # call first_degree_search on target_c, target_b => shovel into results
+            results << Actor.first_degree_search(target_c, target_b)
+        end
 
-        # call first_degree_search on target_c, target_b => shovel into results
-        results << Actor.first_degree_search(target_c, target_b)
-        
-        # return results 
-        return results
+        # return results
+        if results.length > 0
+            return results
+        else
+            return 'Sorry, no link could be found.'
+        end
     end
 
 

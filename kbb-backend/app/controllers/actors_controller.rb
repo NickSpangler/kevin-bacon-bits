@@ -24,12 +24,16 @@ class ActorsController < ApplicationController
         target_a = Actor.find_by(name: params[:target_a])
         target_b = Actor.find_by(name: params[:target_b])
 
-        if target_a && target_b
+        if !target_a 
+            results = "Sorry, #{params[:target_a]} is not in our database. Please search for another actor."
+        elsif !target_b
+            results = "Sorry, #{params[:target_b]} is not in our database. Please search for another actor."
+        else
             # call find_link, defined in actor.rb, which returns structured results
             results = Actor.find_link(target_a, target_b)
-        else
-            # NEED TO HANDLE CASE WHERE ACTORS ARE NOT FOUND
-            results = []
+        # else
+        #     # NEED TO HANDLE CASE WHERE ACTORS ARE NOT FOUND
+        #     results = 'One of those actors was not found'
         end
 
         # render results as JSON
