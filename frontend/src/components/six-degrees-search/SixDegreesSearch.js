@@ -24,11 +24,13 @@ class SixDegreesSearch extends React.Component {
                 <TargetBInput updateTargetB={this.props.updateTargetB} />
                 </div>
                 <br/><br/>
+                <div className='slide-in-bck-bottom'>
                 <Button type="primary" 
                 icon={<SearchOutlined />}
                 onClick={() => this.props.getResults(this.props.target_A, this.props.target_B)}>
                     Search
                 </Button>
+                </div>
                 <br/><br/>
                 <SearchResults results={this.props.results} loading={this.props.loading}/>
             </div>
