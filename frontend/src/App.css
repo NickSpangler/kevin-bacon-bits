@@ -59,6 +59,23 @@
   border-radius: 25px;
 }
 
+/* <-----------------------FILMOGRAPHY COMPONENTS---------------> */
+
+.filmography-container {
+  background-image: url(./images/poster_collage.jpg);
+  height: 120vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.filmography-content {
+  height: 120vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
 /* <------------------ANIMATIONS FOR SIX-DEGREES-SEARCH COMPONENTS-------------> */
 
 .slide-in-elliptic-top-fwd {

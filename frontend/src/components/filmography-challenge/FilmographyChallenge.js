@@ -9,7 +9,8 @@ import History from './History'
 function FilmographyChallenge(props) {
     return (
         <div className='filmography-container'>
-            <h1>How well do you know your favorite actor's career?</h1>
+            <div className='filmography-content'>
+            <h1 style={{color: 'white'}}>How well do you know your favorite actor's career?</h1>
             <ActorSelect setActor={props.setActor} 
                         actor={props.actor} 
                         movie={props.current_movie} 
@@ -19,6 +20,7 @@ function FilmographyChallenge(props) {
             <History history={props.history} />
             <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} rightAnswer={props.rightAnswer} wrongAnswer={props.wrongAnswer} actor_movies={props.actor_movies} />
             <RoundResult round_result={props.round_result} actor={props.actor} history={props.history} current_movie={props.current_movie} actor_movies={props.actor_movies} getPossibleMovies={props.getPossibleMovies} selectNewActor={props.selectNewActor} tryAgain={props.tryAgain} />
+            </div>
         </div>
     )
 }
