@@ -7,6 +7,8 @@ import TargetBInput from './TargetBInput'
 import SearchResults from './SearchResults'
 import { getResults, updateTargetA, updateTargetB } from '../../redux/actions/searchActions'
 import Animista, { AnimistaTypes } from "react-animista";
+import { Attention, Background, Basic, Entrances, Exits, Text } from "css-magic";
+
 
 class SixDegreesSearch extends React.Component {
 
@@ -14,9 +16,13 @@ class SixDegreesSearch extends React.Component {
         return (
             <div className='search-container'>
                 <h1>Search for the link between two actors:</h1>
-                <TargetAInput className='slide-in-left' updateTargetA={this.props.updateTargetA} />
+                <div className='slide-in-left'>
+                <TargetAInput updateTargetA={this.props.updateTargetA} />
+                </div>
                 <br/><br/>
+                <div className='slide-in-right'>
                 <TargetBInput updateTargetB={this.props.updateTargetB} />
+                </div>
                 <br/><br/>
                 <Button type="primary" 
                 icon={<SearchOutlined />}
