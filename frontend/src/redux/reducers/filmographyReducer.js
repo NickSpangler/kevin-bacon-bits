@@ -39,7 +39,6 @@ function filmographyReducer(state = {
                 total_history: state.total_history
             }
         case 'RIGHT_ANSWER':
-            console.log(action)
             let next_movie = state.actor_movies[Math.floor(Math.random()*state.actor_movies.length)]
             let new_total = state.total_history + 1
             return {

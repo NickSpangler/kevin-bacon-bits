@@ -3,18 +3,20 @@ import { Space, Popconfirm } from 'antd';
 import useSound from 'use-sound';
 import Win from '../../sounds/zapsplat_multimedia_game_sound_synth_bright_pluck_digital_award_achievement_008_40718.mp3'
 import Fail from '../../sounds/multimedia_game_sound_synth_tone_bold_fail_52993.mp3'
+import Fanfare from '../../sounds/final_fanfare.mp3'
 
 const OptionsContainer = (props) => {
 
-    // const [winSound] = useSound(Win, { volume: 0.25 });
-    // const [failSound] = useSound(Fail, { volume: 0.25 });
+    const [winSound] = useSound(Win, { volume: 0.25 });
+    const [failSound] = useSound(Fail, { volume: 0.25 });
+    const [finalFanfare] = useSound(Fanfare, { volume: 0.25 });
 
     const makeChoice = (choice) => {
         if (choice === props.film.title) {
-            // winSound();
+            props.actor_movies.length === 0 ? finalFanfare() : winSound()
             props.rightAnswer()
         } else {
-            // failSound();
+            failSound();
             props.wrongAnswer()
         }
     }
