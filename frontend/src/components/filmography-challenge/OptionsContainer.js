@@ -22,6 +22,7 @@ const OptionsContainer = (props) => {
                 <Space>
                     {props.possible_answers.map( option => {
                         return (
+                            <div className='slide-in-elliptic-top-fwd'>
                             <Popconfirm title={`Are you sure ${props.actor.name.split(' ')[0]} was in ${option.title}?`} 
                             okText="Yes" 
                             cancelText="No" 
@@ -29,7 +30,8 @@ const OptionsContainer = (props) => {
                             onConfirm={() => makeChoice(option.title)}
                             data='you found me'>
                                 <img src={`https://image.tmdb.org/t/p/w200${option.poster_path}`} height='250px'></img>
-                            </Popconfirm>)}
+                            </Popconfirm>
+                            </div>)}
                         )
                     }
                 </Space>

@@ -7,6 +7,7 @@ const RoundResult = (props) => {
     const gender2 = props.actor.gender === 1 ? ('She') : ('He')
     if (props.round_result === false) {
         return (
+            <div className='bounce-in-bottom'>
             <Result
                 status="error"
                 title={`Sorry, ${props.actor.name} was not in that movie.`}
@@ -19,9 +20,11 @@ const RoundResult = (props) => {
                 ]}
             >
             </Result>
+            </div>
         )
     } else if (props.round_result === true && props.actor_movies.length === 0) {
         return (
+            <div className='bounce-in-bottom'>
             <Result
                 status="success"
                 title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}.`}
@@ -34,9 +37,11 @@ const RoundResult = (props) => {
                 </Button>,
                 ]}
             />
+            </div>
         )
     } else if (props.round_result === true) {
         return (
+            <div className='bounce-in-bottom'>
             <Result
                 status="success"
                 title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}`}
@@ -49,6 +54,7 @@ const RoundResult = (props) => {
                 </Button>,
                 ]}
             />
+            </div>
         )
     } else {
         return (
