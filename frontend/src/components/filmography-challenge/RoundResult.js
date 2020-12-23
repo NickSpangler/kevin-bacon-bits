@@ -1,10 +1,20 @@
 import React from 'react'
 import { Result, Button } from 'antd'
+import useSound from 'use-sound';
+import Whoosh from '../../sounds/loud_buzz.mp3'
 
 const RoundResult = (props) => {
 
     const gender = props.actor.gender === 1 ? ('her') : ('his')
     const gender2 = props.actor.gender === 1 ? ('She') : ('He')
+
+    const [whoosh] = useSound(Whoosh, { volume: 0.25 });
+
+    const nextRound = () => {
+        whoosh();
+        props.getPossibleMovies(props.current_movie.id, props.actor.id);
+    }
+
     if (props.round_result === false) {
         return (
             <div className='bounce-in-bottom'>
@@ -52,7 +62,9 @@ const RoundResult = (props) => {
                 extra={[
                 <Button 
                     type="primary"
-                    onClick={() => props.getPossibleMovies(props.current_movie.id, props.actor.id)}>
+                    // onClick={() => props.getPossibleMovies(props.current_movie.id, props.actor.id)}
+                    onClick={nextRound}
+                    >
                     Next Round
                 </Button>,
                 ]}

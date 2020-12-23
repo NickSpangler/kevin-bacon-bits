@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { AutoComplete, Space, Button } from 'antd';
 import silhouette from './silhouette.png'
+import useSound from 'use-sound';
+import Whoosh from '../../sounds/loud_buzz.mp3'
 
 const ActorSelect = (props) => {
 
     const [value, setValue] = useState('');
     const [options, setOptions] = useState([]);
+
+    const [whoosh] = useSound(Whoosh, { volume: 0.25 });
 
     const onSearch = (searchText) => {
         fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
@@ -31,6 +35,7 @@ const ActorSelect = (props) => {
     }
 
     const startChallenge = () => {
+      whoosh();
       props.getPossibleMovies(props.movie.id, props.actor.id);
       setValue('');
     }

@@ -7,6 +7,8 @@ import Fanfare from '../../sounds/final_fanfare.mp3'
 
 const OptionsContainer = (props) => {
 
+
+
     const [winSound] = useSound(Win, { volume: 0.25 });
     const [failSound] = useSound(Fail, { volume: 0.25 });
     const [finalFanfare] = useSound(Fanfare, { volume: 0.25 });
