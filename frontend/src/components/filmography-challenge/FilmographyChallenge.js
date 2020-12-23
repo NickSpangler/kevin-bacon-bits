@@ -8,7 +8,7 @@ import History from './History'
 
 function FilmographyChallenge(props) {
     return (
-        <div>
+        <div className='filmography-container'>
             <h1>How well do you know your favorite actor's career?</h1>
             <ActorSelect setActor={props.setActor} 
                         actor={props.actor} 

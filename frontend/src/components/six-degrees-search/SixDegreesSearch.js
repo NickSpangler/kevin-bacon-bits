@@ -11,9 +11,11 @@ class SixDegreesSearch extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='search-container'>
+                <div>
                 <h1>Search for the link between two actors:</h1>
-                <TargetAInput updateTargetA={this.props.updateTargetA} />
+                </div>
+                <TargetAInput className='slide-in-left' updateTargetA={this.props.updateTargetA} />
                 <br/><br/>
                 <TargetBInput updateTargetB={this.props.updateTargetB} />
                 <br/><br/>

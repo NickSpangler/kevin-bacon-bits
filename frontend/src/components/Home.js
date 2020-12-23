@@ -7,6 +7,7 @@ const { Title, Paragraph, Text} = Typography;
 
 export default function Home() {
     return (
+        <div>
         <Typography>
             <Title>Welcome to Kevin Bacon Bits</Title>
             <Paragraph>
@@ -26,5 +27,6 @@ export default function Home() {
                 test your knowledge of their filmography by making you select posters from the films they've been in. Good luck!
             </Paragraph>
         </Typography>
+        </div>
     )
 }
