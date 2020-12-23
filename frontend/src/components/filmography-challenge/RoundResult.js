@@ -9,6 +9,7 @@ const RoundResult = (props) => {
         return (
             <div className='bounce-in-bottom'>
             <Result
+                style={{padding: '0px'}}
                 status="error"
                 title={`Sorry, ${props.actor.name} was not in that movie.`}
                 subTitle={`${gender2} was actually in ${props.current_movie.title}.`}
@@ -26,6 +27,7 @@ const RoundResult = (props) => {
         return (
             <div className='bounce-in-bottom'>
             <Result
+                style={{padding: '0px'}}
                 status="success"
                 title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}.`}
                 subTitle={`And that's ${gender} entire filmography! You really know ${gender} career!`}
@@ -43,6 +45,7 @@ const RoundResult = (props) => {
         return (
             <div className='bounce-in-bottom'>
             <Result
+                style={{padding: '0px'}}
                 status="success"
                 title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}`}
                 subTitle="Ready for another round?"

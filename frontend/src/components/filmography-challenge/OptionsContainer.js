@@ -6,15 +6,15 @@ import Fail from '../../sounds/multimedia_game_sound_synth_tone_bold_fail_52993.
 
 const OptionsContainer = (props) => {
 
-    const [winSound] = useSound(Win, { volume: 0.25 });
-    const [failSound] = useSound(Fail, { volume: 0.25 });
+    // const [winSound] = useSound(Win, { volume: 0.25 });
+    // const [failSound] = useSound(Fail, { volume: 0.25 });
 
     const makeChoice = (choice) => {
         if (choice === props.film.title) {
-            winSound();
+            // winSound();
             props.rightAnswer()
         } else {
-            failSound();
+            // failSound();
             props.wrongAnswer()
         }
     }
