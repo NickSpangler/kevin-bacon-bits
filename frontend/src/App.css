@@ -37,50 +37,27 @@
   }
 }
 
-/* .test {
-  opacity: 1;
-} */
+/* <-----------------------BACKGROUND FOR SEARCH---------------> */
 
-/* .test::after {
-  background-image: url(./images/poster_collage.jpg);
-  /* background-repeat: no-repeat; */
-  /* background-size: 1500px;
-  opacity: .8;
-  content: "";
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; 
-} */ 
 
-/* .test::before {    
-  content: "";
-  background-image: url(./images/projector.jpg);
-  background-size: cover;
-  background-repeat: repeat;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.25;
-} */
 
-/* .search-container {
-  background-image: url(./images/actor_collage.jpg);
-  background-size: cover;
-} */
-
-.search-input {
+/* .search-input {
   background-color: white;
+} */
+
+.search-container {
+  background-image: url(./images/actor_collage.jpg);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.search-container h1 {
-  background-color: white;
-  opacity: .75;
+.search-content {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 /* <------------------ANIMATIONS FOR SIX-DEGREES-SEARCH COMPONENTS-------------> */
