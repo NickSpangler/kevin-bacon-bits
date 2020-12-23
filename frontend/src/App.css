@@ -41,14 +41,14 @@
 
 .search-container {
   background-image: url(./images/actor_collage.jpg);
-  height: 100vh;
+  height: 120vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .search-content {
-  height: 100vh;
+  height: 120vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
