@@ -11,7 +11,7 @@ export default function Level(props) {
     const target_b_path = props.data.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.data.target_b.profile_path}`)
     const level_class = props.degree % 2 === 0 ? 'slide-in-right' : 'slide-in-left'
     return (
-        <div className={level_class}>
+        <div className={`${level_class} level-tier`}>
             <Divider orientation="center">{`${props.degree} ${degrees}`}</Divider>
             <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row" span={4} offset={4}>

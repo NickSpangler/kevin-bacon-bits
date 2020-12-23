@@ -6,9 +6,6 @@ import TargetAInput from './TargetAInput'
 import TargetBInput from './TargetBInput'
 import SearchResults from './SearchResults'
 import { getResults, updateTargetA, updateTargetB } from '../../redux/actions/searchActions'
-import Animista, { AnimistaTypes } from "react-animista";
-import { Attention, Background, Basic, Entrances, Exits, Text } from "css-magic";
-
 
 class SixDegreesSearch extends React.Component {
 
