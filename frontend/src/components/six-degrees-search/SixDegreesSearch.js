@@ -6,15 +6,14 @@ import TargetAInput from './TargetAInput'
 import TargetBInput from './TargetBInput'
 import SearchResults from './SearchResults'
 import { getResults, updateTargetA, updateTargetB } from '../../redux/actions/searchActions'
+import Animista, { AnimistaTypes } from "react-animista";
 
 class SixDegreesSearch extends React.Component {
 
     render() {
         return (
             <div className='search-container'>
-                <div>
                 <h1>Search for the link between two actors:</h1>
-                </div>
                 <TargetAInput className='slide-in-left' updateTargetA={this.props.updateTargetA} />
                 <br/><br/>
                 <TargetBInput updateTargetB={this.props.updateTargetB} />
