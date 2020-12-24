@@ -58,7 +58,7 @@ const ActorSelect = (props) => {
         <>
           {input_or_select}
           <br></br><br></br>
-          <div className='slit-in-vertical'>
+          <div className='slide-in-bottom'>
             <img src={source} height='200px'/>
           </div>
             <br></br><br></br>

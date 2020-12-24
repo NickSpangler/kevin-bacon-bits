@@ -9,7 +9,7 @@ const { Title, Paragraph, Text} = Typography;
 export default function Home() {
     return (
         <div className='home-container'>
-            <div className='home-content'>
+            <div className='home-content fade-in'>
             <br></br><br></br><br></br>
             <br></br><br></br><br></br>
             <br></br><br></br>
