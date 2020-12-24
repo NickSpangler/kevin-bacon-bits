@@ -41,14 +41,14 @@
 
 .search-container {
   background-image: url(./images/actor_collage.jpg);
-  height: 120vh;
+  height: 150vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .search-content {
-  height: 120vh;
+  height: 150vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
@@ -57,6 +57,9 @@
 .level-tier {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 25px;
+  padding: 0px 0px 1px 0px;
+  width: 60%;
+  margin: auto;
 }
 
 /* <-----------------------FILMOGRAPHY COMPONENTS---------------> */
