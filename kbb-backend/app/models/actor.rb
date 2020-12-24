@@ -20,7 +20,7 @@ class Actor < ApplicationRecord
         matches = []
         aMovies.each{|m| matches << m if bMovies.include?(m)}
         if matches.length > 0
-            movie = matches.first
+            movie = matches[rand(matches.length)]
             target_a_character = movie.movie_actors.where(actor_id: target_a.id).first.character
             target_b_character = movie.movie_actors.where(actor_id: target_b.id).first.character
             return [{
