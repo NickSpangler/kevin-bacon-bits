@@ -6,7 +6,7 @@ const History = (props) => {
         return (<></>)
     } else {
         return (
-            <div className='slide-in-right'>
+            <div className='slide-in-right filmography-component'>
                 <Divider orientation="center">
                 <Badge count={props.history.length} offset={[-55, 28]} style={{position: 'absolute', 'z-index': '10'}}>
                     Correct Answers  

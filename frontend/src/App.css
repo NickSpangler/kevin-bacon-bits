@@ -76,6 +76,11 @@
   color: white;
 }
 
+.filmography-component {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 25px;
+}
+
 /* <------------------ANIMATIONS FOR SIX-DEGREES-SEARCH COMPONENTS-------------> */
 
 .slide-in-elliptic-top-fwd {

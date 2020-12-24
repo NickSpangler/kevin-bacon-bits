@@ -5,7 +5,7 @@
     height: 30px;
     line-height: 30px;
     margin-bottom: 16px;
-    background: #f8f8f8;
+    background: hsl(0, 0%, 8%);
   }
   .demo-nav a {
     line-height: 30px;
