@@ -7,7 +7,7 @@ export default function SixDegreesChallenge() {
         <div className='challenge-container'>
         <div className='challenge-content'>
         <br></br><br></br><br></br>
-        <div className='challenge-component'>
+        <div className='challenge-component slide-in-bottom'>
         <Result
             status="404"
             title="Sorry, we're still unboxing this feature."

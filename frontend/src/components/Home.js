@@ -11,14 +11,15 @@ export default function Home() {
         <div className='home-container'>
             <div className='home-content'>
             <br></br><br></br><br></br>
+            <br></br><br></br><br></br>
+            <br></br><br></br>
                 <div id="f1_container">
                     <div id="f1_card" class="shadow">
                         <div class="front face">
                         <img src={ Logo } width='600px'></img>
                         </div>
                         <div class="back face center">
-                            {/* <p>This is nice for exposing more information about an image.</p>
-                            <p>Any content can go here.</p> */}
+                        <br></br>
             <Typography>
                 <Title>Welcome to Kevin Bacon Bits</Title>
                 <Paragraph>

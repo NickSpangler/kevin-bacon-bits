@@ -12,7 +12,7 @@ function Nav(props) {
                 <Link to='/six-degrees-search'>Six Degrees Search</Link>
                 <Link to='/six-degrees-challenge'>Six Degrees Challenge</Link>
                 <Badge count={props.total_history} offset={[10, 15]} size="small">
-                <Link to='/filmography-challenge'>Filmography Challenge</Link>
+                <Link to='/filmography-challenge' style={{fontSize: 'large'}}>Filmography Challenge</Link>
                 </Badge>
             </div>
         </div>
