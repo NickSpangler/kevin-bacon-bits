@@ -17,7 +17,7 @@ const RoundResult = (props) => {
 
     if (props.round_result === false) {
         return (
-            <div className='bounce-in-bottom filmography-component'>
+            <div className='bounce-in-bottom filmography-component round-result'>
             <Result
                 status="error"
                 title={`Sorry, ${props.actor.name} was not in that movie.`}
@@ -34,7 +34,7 @@ const RoundResult = (props) => {
         )
     } else if (props.round_result === true && props.actor_movies.length === 0) {
         return (
-            <div className='bounce-in-bottom filmography-component'>
+            <div className='bounce-in-bottom filmography-component round-result'>
             <Result
                 status="success"
                 title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}.`}
@@ -51,7 +51,7 @@ const RoundResult = (props) => {
         )
     } else if (props.round_result === true) {
         return (
-            <div className='bounce-in-bottom filmography-component'>
+            <div className='bounce-in-bottom filmography-component round-result'>
             <Result
                 status="success"
                 title={`Correct! ${props.actor.name} was in ${props.history[props.history.length -1].title}`}

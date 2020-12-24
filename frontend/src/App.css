@@ -84,6 +84,11 @@
   border-radius: 25px;
 }
 
+.round-result {
+  width: 40%;
+  margin: auto;
+}
+
 /* <------------------ANIMATIONS FOR SIX-DEGREES-SEARCH COMPONENTS-------------> */
 
 .slide-in-elliptic-top-fwd {
