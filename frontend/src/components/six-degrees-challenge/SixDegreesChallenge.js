@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 export default function SixDegreesChallenge() {
     return (
+        <div className='challenge-container'>
+        <div className='challenge-content'>
+        <br></br><br></br><br></br>
+        <div className='challenge-component'>
         <Result
             status="404"
             title="Sorry, we're still unboxing this feature."
@@ -16,5 +20,8 @@ export default function SixDegreesChallenge() {
                     </Link>
             ]}
         />
+        </div>
+        </div>
+        </div>
     )
 }
