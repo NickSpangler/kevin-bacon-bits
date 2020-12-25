@@ -35,9 +35,7 @@ const ActorSelect = (props) => {
     }
 
     const startChallenge = () => {
-      if (props.sound === true) {
-        whoosh();
-      }
+      if (props.sound === true) whoosh();
       props.getPossibleMovies(props.movie.id, props.actor.id);
       setValue('');
     }
