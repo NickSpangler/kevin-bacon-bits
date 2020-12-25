@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import { Badge } from 'antd'
 import { connect } from 'react-redux';
 import { SoundOutlined, SoundTwoTone } from '@ant-design/icons';
+import { toggleSound } from '../redux/actions/settingsActions'
 
 
 function Nav(props) {
-    const soundOff = <SoundOutlined className='soundIcon' style={{color: 'grey'}}/>
-    const soundOn = <SoundTwoTone className='soundIcon' />
+    const soundOff = <SoundOutlined className='soundIcon' style={{color: 'grey'}} onClick={props.toggleSound} />
+    const soundOn = <SoundTwoTone className='soundIcon' onClick={props.toggleSound} />
     const soundIcon = props.sound === true ? soundOn : soundOff
-    
+
     return (
         <div className="demo">
             <div className="demo-nav">
@@ -35,4 +36,4 @@ const mapStateToProps = ({filmography, settings}) => {
     })
 }
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, { toggleSound })(Nav)
