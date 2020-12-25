@@ -11,7 +11,7 @@ const RoundResult = (props) => {
     const [whoosh] = useSound(Whoosh, { volume: 0.25 });
 
     const nextRound = () => {
-        whoosh();
+        if (props.sound === true) whoosh();
         props.getPossibleMovies(props.current_movie.id, props.actor.id);
     }
 
