@@ -5,9 +5,25 @@ import { Badge } from 'antd'
 import { connect } from 'react-redux';
 import { SoundOutlined, SoundTwoTone } from '@ant-design/icons';
 import { toggleSound } from '../redux/actions/settingsActions'
+import useSound from 'use-sound';
+import buttonDown from '../sounds/pop_1.mp3'
+import buttonUp from '../sounds/pop_2.mp3'
 
 
 function Nav(props) {
+    const [playDown] = useSound(
+        buttonDown,
+        { volume: 0.25 }
+      );
+      const [playUp] = useSound(
+        buttonUp,
+        { volume: 0.25 }
+      );
+    //   const [playOff] = useSound(
+    //     '/sounds/pop-up-off.mp3',
+    //     { volume: 0.25 }
+    //   );
+
     const soundOff = <SoundOutlined className='soundIcon' style={{color: 'grey'}} onClick={props.toggleSound} />
     const soundOn = <SoundTwoTone className='soundIcon' onClick={props.toggleSound} />
     const soundIcon = props.sound === true ? soundOn : soundOff
