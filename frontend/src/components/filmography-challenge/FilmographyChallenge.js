@@ -16,7 +16,8 @@ function FilmographyChallenge(props) {
                         movie={props.current_movie} 
                         challenge_active={props.challenge_active}
                         getPossibleMovies={props.getPossibleMovies} 
-                        selectNewActor={props.selectNewActor} />
+                        selectNewActor={props.selectNewActor}
+                        sound={props.sound} />
             <History history={props.history} />
             <OptionsContainer possible_answers={props.possible_answers} actor={props.actor} film={props.current_movie} rightAnswer={props.rightAnswer} wrongAnswer={props.wrongAnswer} actor_movies={props.actor_movies} />
             <RoundResult round_result={props.round_result} actor={props.actor} history={props.history} current_movie={props.current_movie} actor_movies={props.actor_movies} getPossibleMovies={props.getPossibleMovies} selectNewActor={props.selectNewActor} tryAgain={props.tryAgain} />
@@ -25,7 +26,7 @@ function FilmographyChallenge(props) {
     )
 }
 
-const mapStateToProps = ({ filmography }) => {
+const mapStateToProps = ({ filmography, settings }) => {
     return {
         actor: filmography.actor,
         actor_movies: filmography.actor_movies,
@@ -33,7 +34,8 @@ const mapStateToProps = ({ filmography }) => {
         possible_answers: filmography.possible_answers,
         round_result: filmography.round_result,
         history: filmography.history,
-        challenge_active: filmography.challenge_active
+        challenge_active: filmography.challenge_active,
+        sound: settings.sound
     }
 }
 
