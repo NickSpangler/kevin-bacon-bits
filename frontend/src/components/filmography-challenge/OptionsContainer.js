@@ -15,10 +15,12 @@ const OptionsContainer = (props) => {
 
     const makeChoice = (choice) => {
         if (choice === props.film.title) {
-            props.actor_movies.length === 0 ? finalFanfare() : winSound()
+            if (props.sound === true) {
+                props.actor_movies.length === 0 ? finalFanfare() : winSound()
+            }
             props.rightAnswer()
         } else {
-            failSound();
+            if (props.sound === true) failSound();
             props.wrongAnswer()
         }
     }
