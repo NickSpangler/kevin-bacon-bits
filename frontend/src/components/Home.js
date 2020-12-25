@@ -19,23 +19,26 @@ export default function Home() {
                         <img src={ Logo } width='600px'></img>
                         </div>
                         <div class="back face center">
-                        <br></br>
-            <Typography>
-                <Title>Welcome to Kevin Bacon Bits</Title>
-                <br></br>
-                <Paragraph>
-                    <Text strong underline>Six Degrees Search:</Text> search any two actors in our database 
-                    and see if they can be connected with six degrees of separation or less.
-                </Paragraph>
-                <Paragraph>
-                    <Text strong underline>Six Degrees Challenge:</Text> choose an actor and a number of 
-                    degrees you want to be challenged by, and we'll tell you who to connect them with!
-                </Paragraph>
-                <Paragraph>
-                    <Text strong underline>Filmography Challenge:</Text> choose an actor and we'll 
-                    test your knowledge of their filmography by making you select posters from the films they've been in. Good luck!
-                </Paragraph>
-            </Typography>
+                            <br></br>
+                            <Typography>
+                                <Title>Welcome to Kevin Bacon Bits</Title>
+                                <br></br>
+                                <Paragraph>
+                                    <Text strong underline>Six Degrees Search:</Text> search any two actors in our database 
+                                    and see if they can be connected with six degrees of separation or less.
+                                </Paragraph>
+                                <Paragraph>
+                                    <Text strong underline>Six Degrees Challenge:</Text> choose an actor and a number of 
+                                    degrees you want to be challenged by, and we'll tell you who to connect them with.
+                                </Paragraph>
+                                <Paragraph>
+                                    <Text strong underline>Filmography Challenge:</Text> choose an actor and we'll 
+                                    test your knowledge of their filmography by making you select posters from the films they've been in.
+                                </Paragraph>
+                                <Paragraph>
+                                    Good luck!
+                                </Paragraph>
+                            </Typography>
                         </div>
                     </div>
                 </div>
