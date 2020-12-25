@@ -37,6 +37,21 @@
   }
 }
 
+/* <------------------------SOUND ICON---------------------> */
+
+.soundIcon {
+  float: right;
+  font-size: 22px;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.soundIcon:active {
+  /* background-color: #3e8e41; */
+  /* box-shadow: 0 5px #666; */
+  transform: translateY(2px);
+}
+
 /* <-----------------------HOME COMPONENT-----------------> */
 
 .home-container {
