@@ -5,10 +5,12 @@ import { Badge } from 'antd'
 import { connect } from 'react-redux';
 import { SoundOutlined, SoundTwoTone } from '@ant-design/icons';
 
-const soundIcon = <SoundOutlined className='soundIcon' style={{color: 'grey'}}/>
-const colorSoundIcon = <SoundTwoTone className='soundIcon' />
 
 function Nav(props) {
+    const soundOff = <SoundOutlined className='soundIcon' style={{color: 'grey'}}/>
+    const soundOn = <SoundTwoTone className='soundIcon' />
+    const soundIcon = props.sound === true ? soundOn : soundOff
+    
     return (
         <div className="demo">
             <div className="demo-nav">
@@ -26,9 +28,10 @@ function Nav(props) {
     )
 }
 
-const mapStateToProps = ({filmography}) => {
+const mapStateToProps = ({filmography, settings}) => {
     return ({
-        total_history: filmography.total_history
+        total_history: filmography.total_history,
+        sound: settings.sound
     })
 }
 
