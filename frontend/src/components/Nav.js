@@ -24,8 +24,8 @@ function Nav(props) {
     //     { volume: 0.25 }
     //   );
 
-    const soundOff = <SoundOutlined className='soundIcon' style={{color: 'grey'}} onClick={props.toggleSound} />
-    const soundOn = <SoundTwoTone className='soundIcon' onClick={props.toggleSound} />
+    const soundOff = <SoundOutlined className='soundIcon' style={{color: 'grey'}} onClick={props.toggleSound} onMouseDown={playDown} onMouseUp={playUp}/>
+    const soundOn = <SoundTwoTone className='soundIcon' onClick={props.toggleSound} onMouseDown={playDown} onMouseUp={playUp}/>
     const soundIcon = props.sound === true ? soundOn : soundOff
 
     return (
