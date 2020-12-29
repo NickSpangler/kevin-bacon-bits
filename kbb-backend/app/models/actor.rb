@@ -13,7 +13,7 @@ class Actor < ApplicationRecord
     end
 
     def self.get_associated_actors(target)
-        return (Actor.find_by_sql(`
+            Actor.find_by_sql("
             SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at
             FROM
             actors target
@@ -34,7 +34,7 @@ class Actor < ApplicationRecord
             ON
             target_actors.id = rest.actor_id
             WHERE
-            target.id = #{target.id}`) - [target] )
+            target.id = #{target.id}") - [target]
     end
 
     # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
@@ -117,18 +117,20 @@ class Actor < ApplicationRecord
 
         
         # put all target_a associated actors in first key of hash
-        target_a.movies.each do |m|
-            m.actors.each do |a|
-                levels[:target_a_actors] << a unless a == target_a
-            end
-        end
+        # target_a.movies.each do |m|
+        #     m.actors.each do |a|
+        #         levels[:target_a_actors] << a unless a == target_a
+        #     end
+        # end
+        levels[:target_a_actors].concat(Actor.get_associated_actors(target_a))
 
         # put all target_b associated actors in second key of hash
-        target_b.movies.each do |m|
-            m.actors.each do |a|
-                levels[:target_b_actors] << a unless a == target_b
-            end
-        end
+        # target_b.movies.each do |m|
+        #     m.actors.each do |a|
+        #         levels[:target_b_actors] << a unless a == target_b
+        #     end
+        # end
+        levels[:target_b_actors].concat(Actor.get_associated_actors(target_b))
 
         # matching actor is target_c
         # levels[:target_a_actors].each{|a| target_c << a if levels[:target_b_actors].include?(a)}
