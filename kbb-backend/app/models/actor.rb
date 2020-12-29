@@ -10,7 +10,31 @@ class Actor < ApplicationRecord
         else
             Actor.second_degree_search(target_a, target_b)
         end
+    end
 
+    def self.get_associated_actors(target)
+        return (Actor.find_by_sql(`
+            SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at
+            FROM
+            actors target
+            JOIN
+            movie_actors target_movies
+            ON
+            target.id = actor_id
+            JOIN
+            movies movies
+            ON
+            movies.id = target_movies.movie_id
+            JOIN
+            movie_actors rest
+            ON
+            rest.movie_id = target_movies.movie_id
+            JOIN
+            actors target_actors
+            ON
+            target_actors.id = rest.actor_id
+            WHERE
+            target.id = #{target.id}`) - [target] )
     end
 
     # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
