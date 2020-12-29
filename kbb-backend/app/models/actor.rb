@@ -15,10 +15,11 @@ class Actor < ApplicationRecord
 
     # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
     def self.check_first_degree(target_a, target_b)
-        aMovies = target_a.movies
-        bMovies = target_b.movies
-        matches = []
-        aMovies.each{|m| matches << m if bMovies.include?(m)}
+        # aMovies = target_a.movies
+        # bMovies = target_b.movies
+        # matches = []
+        # aMovies.each{|m| matches << m if bMovies.include?(m)}
+        matches = target_a.movies & target_b.movies
         if matches.length > 0
             movie = matches[rand(matches.length)]
             target_a_character = movie.movie_actors.where(actor_id: target_a.id).first.character
@@ -43,12 +44,13 @@ class Actor < ApplicationRecord
 
     # ALWAYS RETURNS ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> ONLY USED WHEN FIRST DEGREE LINK IS CONFIRMED
     def self.first_degree_search(target_a, target_b)
-        aMovies = target_a.movies
-        bMovies = target_b.movies
-        matches = []
-        aMovies.each{|m| matches << m if bMovies.include?(m)}
+        # aMovies = target_a.movies
+        # bMovies = target_b.movies
+        # matches = []
+        # aMovies.each{|m| matches << m if bMovies.include?(m)}
+        matches = target_a.movies & target_b.movies
         if matches.length > 0
-            movie = matches.first
+            movie = matches[rand(matches.length)]
             target_a_character = movie.movie_actors.where(actor_id: target_a.id).first.character
             target_b_character = movie.movie_actors.where(actor_id: target_b.id).first.character
             return {
@@ -105,8 +107,9 @@ class Actor < ApplicationRecord
         end
 
         # matching actor is target_c
-        levels[:target_a_actors].each{|a| target_c << a if levels[:target_b_actors].include?(a)}
-        target_c = target_c.first
+        # levels[:target_a_actors].each{|a| target_c << a if levels[:target_b_actors].include?(a)}
+        # target_c = target_c.first
+        target_c = (levels[:target_a_actors] & levels[:target_b_actors]).first
 
         # checks if target_c has been found. if so, finds first-degree link between A and C, then first-degree link between C and B
         if target_c != nil
@@ -140,8 +143,9 @@ class Actor < ApplicationRecord
                 end
             end
 
-            levels[:target_b_actors].each{|a| target_d << a if levels[:target_c_actors].include?(a)}
-            target_d = target_d.first
+            # levels[:target_b_actors].each{|a| target_d << a if levels[:target_c_actors].include?(a)}
+            # target_d = target_d.first
+            target_d = (levels[:target_b_actors] & levels[:target_c_actors]).first
 
             results << Actor.first_degree_search(target_d, target_b)
             
