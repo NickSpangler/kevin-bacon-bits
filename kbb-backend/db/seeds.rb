@@ -5,7 +5,7 @@ def getData
         response = RestClient.get("https://api.themoviedb.org/3/movie/#{i}?api_key=f561f9632b29613ae5d1646d3298a753&language=en-US"){|response, request, result| response }
         if response.code == 200
             json = JSON.parse response
-            if json['original_language'] == 'en' && json['adult'] == false
+            if json['original_language'] == 'en' && json['adult'] == false && json['poster_path'] != nil && json['poster_path'] != ""
                 movie = Movie.create(
                     tmdb_id: json['id'],
                     imdb_id: json['imdb_id'],
