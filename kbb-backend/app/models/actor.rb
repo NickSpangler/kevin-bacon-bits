@@ -161,13 +161,18 @@ class Actor < ApplicationRecord
         # <----------------# THIS BEGINS THE THIRD-DEGREE SEARCH BRANCH----------->
 
         else
+            # GETS ASSOCIATED ACTORS FROM ALL TARGET_A_ACTORS, PUTS THEM IN TARGET_C_ACTORS
+            # levels[:target_a_actors].each do |a|
+            #     a.movies.each do |m|
+            #         m.actors.each do |a2|
+            #             levels[:target_c_actors] << a2 unless levels[:target_a_actors].include?(a2)
+            #         end
+            #     end
+            # end
             levels[:target_a_actors].each do |a|
-                a.movies.each do |m|
-                    m.actors.each do |a2|
-                        levels[:target_c_actors] << a2 unless levels[:target_a_actors].include?(a2)
-                    end
-                end
+                levels[:target_c_actors].concat(Actor.get_associated_actors(a))
             end
+
 
             # levels[:target_b_actors].each{|a| target_d << a if levels[:target_c_actors].include?(a)}
             # target_d = target_d.first
