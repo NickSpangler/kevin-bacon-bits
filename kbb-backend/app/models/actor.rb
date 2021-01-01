@@ -178,19 +178,23 @@ class Actor < ApplicationRecord
             # target_d = target_d.first
             target_d = (levels[:target_b_actors] & levels[:target_c_actors]).first
 
-            results << Actor.first_degree_search(target_d, target_b)
-            
-            target_d.movies.each do |m|
-                m.actors.each do |a|
-                    target_c = a if levels[:target_a_actors].include?(a)
+            if target_d != nil
+
+                results << Actor.first_degree_search(target_d, target_b)
+                
+                target_d.movies.each do |m|
+                    m.actors.each do |a|
+                        target_c = a if levels[:target_a_actors].include?(a)
+                    end
                 end
+
+                results << Actor.first_degree_search(target_c, target_d)
+
+                results << Actor.first_degree_search(target_a, target_c)
+
+                results = results.reverse
+
             end
-
-            results << Actor.first_degree_search(target_c, target_d)
-
-            results << Actor.first_degree_search(target_a, target_c)
-
-            results = results.reverse
 
             if results.length > 0
                 return results
