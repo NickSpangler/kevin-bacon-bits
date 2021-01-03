@@ -60,7 +60,32 @@ class Actor < ApplicationRecord
         target_actors.id = rest.actor_id
         WHERE
         target.id IN (#{array.join(", ")})") - array
-end
+    end
+
+    def self.search_back_one_level(target, array)
+        Actor.find_by_sql("
+        SELECT DISTINCT actor_b.id, actor_b.tmdb_id, actor_b.name, actor_b.profile_path, actor_b.gender, actor_b.created_at, actor_b.updated_at
+        FROM
+        movie_actors target_a
+        JOIN
+        movie_actors target_b
+        ON
+        target_a.movie_id = target_b.movie_id
+        JOIN
+        movies movies
+        ON
+        target_a.movie_id = movies.id
+        JOIN
+        actors actor_a
+        ON
+        target_a.actor_id = actor_a.id
+        JOIN
+        actors actor_b 
+        ON
+        target_b.actor_id = actor_b.id
+        WHERE
+        target_a.actor_id = #{target.id} AND target_b.actor_id IN (#{array.join(", ")})")
+    end
 
 
     # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
@@ -203,6 +228,7 @@ end
             # end
 
             # VERSION THREE
+            # SQL QUERY WHICH ACCEPTS ARRAY OF PREVIOUS LEVEL ACTOR IDS AND RETURNS NEXT LEVEL OF ASSOCIATED ACTORS
             levels[:target_c_actors] = Actor.get_associated_actors_from_array(levels[:target_a_actors].map{|a| a.id})
 
 
@@ -215,18 +241,24 @@ end
 
                 results << Actor.first_degree_search(target_d, target_b)
                 
-                target_d.movies.each do |m|
-                    m.actors.each do |a|
-                        target_c = a if levels[:target_a_actors].include?(a)
-                    end
-                end
+                # VERSION ONE
+                # ITERATE THROUGH FOUND TARGETS MOVIES/LOOK AT THEIR CAST LISTS LOOKING FOR ACTORS IN PREVIOUS LEVEL
+                # target_d.movies.each do |m|
+                #     m.actors.each do |a|
+                #         target_c = a if levels[:target_a_actors].include?(a)
+                #     end
+                # end
+
+                target_c = Actor.search_back_one_level(target_d, levels[:target_a_actors].map{|a| a.id}).first
+                # # byebug
+                # target_c = target_c.first
 
                 results << Actor.first_degree_search(target_c, target_d)
 
                 results << Actor.first_degree_search(target_a, target_c)
 
                 results = results.reverse
-
+                # byebug
             end
 
             if results.length > 0
