@@ -13,20 +13,27 @@ const TargetAInput = (props) => {
     .then(resp => resp.json())
     .then(data => {
       setOptions(
-      !searchText ? [] : data.map(person => ({ value: person.name }))
+      !searchText ? [] : data.map(person => (
+        { value: 
+            <div className='autocomplete-container'>
+            <div className='autocomplete-one'>{person.name}</div>
+            <div className='autocomplete-two'>
+            <img src={`https://image.tmdb.org/t/p/w200${person.profile_path}`} height='50px'></img>
+            </div>
+            </div>
+            }
+        ))
       )
     })
   };
 
   const onSelect = (data) => {
-
+    alert(data)
     // console.log('onSelect', data);
     fetch(`http://localhost:3000/actors/get_photo?input=${data}`)
     .then(resp => resp.json())
     .then(data => {
-      setSource(
-        data.profile_path
-      )
+      setSource(data.profile_path)
     })
 
   };

@@ -145,6 +145,20 @@
   margin: auto;
 }
 
+/* .autocomplete-container {
+  display: inline-block;
+} */
+
+.autocomplete-one {
+  float: left;
+  margin-top: 8%;
+}
+
+.autocomplete-two {
+  float: right;
+  height: 50px;
+}
+
 /* <-----------------------SIX DEGREES CHALLENGE COMPONENTS---------------> */
 
 .challenge-container {
