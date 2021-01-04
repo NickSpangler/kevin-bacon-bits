@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AutoComplete, Space } from 'antd';
 import TargetAPhoto from './TargetAPhoto'
+import silhouette from './silhouette.png'
 
 const TargetAInput = (props) => {
 
@@ -15,11 +16,11 @@ const TargetAInput = (props) => {
       setOptions(
       !searchText ? [] : data.map(person => (
         { value: 
-            <div className='autocomplete-container'>
-            <div className='autocomplete-one'>{person.name}</div>
-            <div className='autocomplete-two'>
-            <img src={`https://image.tmdb.org/t/p/w200${person.profile_path}`} height='50px'></img>
-            </div>
+            <div className='autocomplete-container' data-person={person}>
+              <div className='autocomplete-one'>{person.name}</div>
+              <div className='autocomplete-two'>
+                <img src={person.profile_path ? `https://image.tmdb.org/t/p/w200${person.profile_path}` : silhouette } height='50px'></img>
+              </div>
             </div>
             }
         ))
