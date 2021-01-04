@@ -2,7 +2,8 @@ class Actor < ApplicationRecord
     has_many :movie_actors
     has_many :movies, :through => :movie_actors, counter_cache: true
 
-    scope :auto_complete, -> (query) { where("name ILIKE (?)", "#{query}%" ).order(:name)}
+    # scope :auto_complete, -> (query) { where("name ILIKE (?)", "#{query}%" ).order(:name)}
+    scope :auto_complete, -> (query) { where("name ILIKE (?)", "#{query}%" ).order("profile_path = '', name")}
 
     def self.find_link(target_a, target_b)
         if Actor.check_first_degree(target_a, target_b) != nil

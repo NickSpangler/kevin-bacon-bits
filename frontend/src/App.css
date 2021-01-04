@@ -145,13 +145,11 @@
   margin: auto;
 }
 
-/* .autocomplete-container {
-  display: inline-block;
-} */
-
 .autocomplete-one {
   float: left;
   margin-top: 8%;
+  overflow: scroll;
+  width: 142px;
 }
 
 .autocomplete-two {
