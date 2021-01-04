@@ -20,7 +20,7 @@ const TargetAInput = (props) => {
 
   const onSelect = (data) => {
 
-    console.log('onSelect', data);
+    // console.log('onSelect', data);
     fetch(`http://localhost:3000/actors/get_photo?input=${data}`)
     .then(resp => resp.json())
     .then(data => {
