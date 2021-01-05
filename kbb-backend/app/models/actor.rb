@@ -91,10 +91,6 @@ class Actor < ApplicationRecord
 
     # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
     def self.check_first_degree(target_a, target_b)
-        # aMovies = target_a.movies
-        # bMovies = target_b.movies
-        # matches = []
-        # aMovies.each{|m| matches << m if bMovies.include?(m)}
         matches = target_a.movies & target_b.movies
         if matches.length > 0
             movie = matches[rand(matches.length)]
@@ -120,10 +116,6 @@ class Actor < ApplicationRecord
 
     # ALWAYS RETURNS ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> ONLY USED WHEN FIRST DEGREE LINK IS CONFIRMED
     def self.first_degree_search(target_a, target_b)
-        # aMovies = target_a.movies
-        # bMovies = target_b.movies
-        # matches = []
-        # aMovies.each{|m| matches << m if bMovies.include?(m)}
         matches = target_a.movies & target_b.movies
         if matches.length > 0
             movie = matches[rand(matches.length)]
