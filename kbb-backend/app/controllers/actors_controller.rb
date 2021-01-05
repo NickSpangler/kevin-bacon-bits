@@ -6,39 +6,25 @@ class ActorsController < ApplicationController
     end
 
     def get_photo
-        # actor = Actor.find_by(name: params[:input])
         actor = Actor.find(params[:input])
-        # if actor.profile_path
-            # render json: actor, :only => [:profile_path]
             render json: actor
-        # else
-        #     render json: {profile_path: 'No image available'}
-        # end
     end
 
     def movie_list
-        # actor = Actor.auto_complete(params[:input]).limit(1)
         actor = Actor.find(params[:input])
         render json: actor, :include => [:movies, :movie_actors]
     end
 
     def search_for_link
-        # find both actors by name
-        # target_a = Actor.find_by(name: params[:target_a])
-        # target_b = Actor.find_by(name: params[:target_b])
         target_a = Actor.find(params[:target_a])
         target_b = Actor.find(params[:target_b])
-
         if !target_a 
             results = { value: "Sorry, #{params[:target_a]} is not in our database. Please search for another actor."}
         elsif !target_b
             results = { value: "Sorry, #{params[:target_b]} is not in our database. Please search for another actor."}
         else
-            # call find_link, defined in actor.rb, which returns structured results
             results = Actor.find_link(target_a, target_b)
         end
-
-        # render results as JSON
         render json: results
     end
 
