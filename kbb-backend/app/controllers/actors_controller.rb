@@ -16,13 +16,11 @@ class ActorsController < ApplicationController
     end
 
     def search_for_link
-        target_a = Actor.find(params[:target_a])
-        target_b = Actor.find(params[:target_b])
-        if !target_a 
-            results = { value: "Sorry, #{params[:target_a]} is not in our database. Please search for another actor."}
-        elsif !target_b
-            results = { value: "Sorry, #{params[:target_b]} is not in our database. Please search for another actor."}
+        if params[:target_a] == "" || params[:target_b] == ""
+            results = { value: "Please enter two actors' names, and click to select them from the dropdown menus."}
         else
+            target_a = Actor.find(params[:target_a])
+            target_b = Actor.find(params[:target_b])
             results = Actor.find_link(target_a, target_b)
         end
         render json: results
