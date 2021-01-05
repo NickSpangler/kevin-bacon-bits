@@ -50,7 +50,7 @@ const ActorSelect = (props) => {
       setValue('');
     }
 
-    const source = props.actor === 'not selected' ? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`)
+    const source = props.actor === 'not selected' ? (silhouette) : (props.actor.profile_path === null? (silhouette) : (`https://image.tmdb.org/t/p/w200${props.actor.profile_path}`))
     const button = props.actor === 'not selected' || props.challenge_active === true ? (<></>) : (<Button type="primary" onClick={startChallenge}>Take the Challenge!</Button>)
     const input_or_select = props.challenge_active === false ? (<AutoComplete
         value={value}
