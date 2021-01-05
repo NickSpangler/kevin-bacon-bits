@@ -201,7 +201,57 @@ class Actor < ApplicationRecord
 
         # <----------------# THIS BEGINS THE FOURTH-DEGREE SEARCH BRANCH----------->
             else
-                return { value: 'Sorry, no link could be found.' }
+                levels[:target_d_actors] = Actor.get_associated_actors_from_array(levels[:target_b_actors].map{|a| a.id}) - levels[:target_b_actors]
+
+                target_e = (levels[:target_c_actors] & levels[:target_d_actors]).sample
+
+                if target_e != nil
+
+                    target_d = Actor.search_back_one_level(target_e, levels[:target_b_actors].map{|a| a.id}).sample
+                    results << Actor.first_degree_search(target_e, target_d)
+                    results << Actor.first_degree_search(target_d, target_b)
+
+                    results = results.reverse
+
+                    target_c = Actor.search_back_one_level(target_e, levels[:target_a_actors].map{|a| a.id}).sample
+                    results << Actor.first_degree_search(target_c, target_e)
+                    results << Actor.first_degree_search(target_a, target_c)
+
+                    results = results.reverse
+                end
+
+                if results.length > 0
+                    return results
+        # <----------------THIS ENDS THE FOURTH-DEGREE SEARCH BRANCH ----------------->
+
+        # <----------------# THIS BEGINS THE FIFTH-DEGREE SEARCH BRANCH----------->
+                else
+                    levels[:target_e_actors] = Actor.get_associated_actors_from_array(levels[:target_c_actors].map{|a| a.id}) - levels[:target_c_actors]
+                    target_f = (levels[:target_e_actors] & levels[:target_d_actors]).sample
+
+                    if target_e != nil
+                        target_d = Actor.search_back_one_level(target_f, levels[:target_b_actors].map{|a| a.id}).sample
+                        results << Actor.first_degree_search(target_f, target_d)
+                        results << Actor.first_degree_search(target_d, target_b)
+
+                        results = results.reverse
+
+                        target_e = Actor.search_back_one_level(target_f, levels[:target_c_actors].map{|a| a.id}).sample
+                        results << Actor.first_degree_search(target_e, target_f)
+
+                        target_c = Actor.search_back_one_level(target_e, levels[:target_a_actors].map{|a| a.id}).sample
+                        results << Actor.first_degree_search(target_c, target_e)
+                        results << Actor.first_degree_search(target_a, target_c)
+
+                        results = results.reverse
+                    end
+
+                    if results.length > 0
+                        return results
+                    else
+                        return { value: 'Sorry, no link could be found.' }
+                    end
+                end
             end
 
         # FINAL END
