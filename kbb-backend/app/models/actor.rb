@@ -88,7 +88,6 @@ class Actor < ApplicationRecord
         target_a.actor_id = #{target.id} AND target_b.actor_id IN (#{array.join(", ")})")
     end
 
-
     # ALWAYS RETURNS AN ARRAY OF ONE OBJECT OF ONE LINK BETWEEN TWO ACTORS -> THIS IS USED TO TEST IF A FIRST-DEGREE LINK EXISTS
     def self.check_first_degree(target_a, target_b)
         matches = target_a.movies & target_b.movies
@@ -138,9 +137,6 @@ class Actor < ApplicationRecord
         end
     end
 
-
-
-    
     # RETURNS ARRAY OF MULTIPLE LEVELS OF LINKS, CALLS first_degree_search, ONLY USE AFTER CHECKING FIRST DEGREE CONNECTION
     def self.second_degree_search(target_a, target_b)
         target_c = []
@@ -156,30 +152,15 @@ class Actor < ApplicationRecord
         }
 
         # <----------------# THIS BEGINS THE SECOND-DEGREE SEARCH BRANCH----------->
-
-
-
         
         # put all target_a associated actors in first key of hash
-        # target_a.movies.each do |m|
-        #     m.actors.each do |a|
-        #         levels[:target_a_actors] << a unless a == target_a
-        #     end
-        # end
         levels[:target_a_actors].concat(Actor.get_associated_actors(target_a))
 
         # put all target_b associated actors in second key of hash
-        # target_b.movies.each do |m|
-        #     m.actors.each do |a|
-        #         levels[:target_b_actors] << a unless a == target_b
-        #     end
-        # end
         levels[:target_b_actors].concat(Actor.get_associated_actors(target_b))
 
         # matching actor is target_c
-        # levels[:target_a_actors].each{|a| target_c << a if levels[:target_b_actors].include?(a)}
-        # target_c = target_c.first
-        target_c = (levels[:target_a_actors] & levels[:target_b_actors]).first
+        target_c = (levels[:target_a_actors] & levels[:target_b_actors]).sample
 
         # checks if target_c has been found. if so, finds first-degree link between A and C, then first-degree link between C and B
         if target_c != nil
