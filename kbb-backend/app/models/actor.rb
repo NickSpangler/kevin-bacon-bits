@@ -150,7 +150,6 @@ class Actor < ApplicationRecord
             target_d_actors: [],
             target_b_actors: []
         }
-
         # <----------------# THIS BEGINS THE SECOND-DEGREE SEARCH BRANCH----------->
         
         # put all target_a associated actors in first key of hash
@@ -164,83 +163,48 @@ class Actor < ApplicationRecord
 
         # checks if target_c has been found. if so, finds first-degree link between A and C, then first-degree link between C and B
         if target_c != nil
-            # call first_degree_search on target_a, target_c => shovel into results
+            # call first_degree_search on target_a, target_c THEN target_c, target_b => shovel into results
             results << Actor.first_degree_search(target_a, target_c)
-    
-            # call first_degree_search on target_c, target_b => shovel into results
             results << Actor.first_degree_search(target_c, target_b)
         end
-
 
         # CHECKS FOR SECOND-DEGREE MATCH, RETURNS RESULT IF TRUE
         if results.length > 0
             return results
 
-
         # <----------------THIS ENDS THE SECOND DEGREE SEARCH BRANCH ----------------->
-
-
-
-
 
         # <----------------# THIS BEGINS THE THIRD-DEGREE SEARCH BRANCH----------->
 
         else
-            # VERSION ONE
-            # GETS ASSOCIATED ACTORS FROM ALL TARGET_A_ACTORS, PUTS THEM IN TARGET_C_ACTORS
-            # levels[:target_a_actors].each do |a|
-            #     a.movies.each do |m|
-            #         m.actors.each do |a2|
-            #             levels[:target_c_actors] << a2 unless levels[:target_a_actors].include?(a2)
-            #         end
-            #     end
-            # end
-
-            # VERSION TWO
-            # levels[:target_a_actors].each do |a|
-            #     levels[:target_c_actors].concat(Actor.get_associated_actors(a))
-            # end
-
-            # VERSION THREE
-            # SQL QUERY WHICH ACCEPTS ARRAY OF PREVIOUS LEVEL ACTOR IDS AND RETURNS NEXT LEVEL OF ASSOCIATED ACTORS
-            levels[:target_c_actors] = Actor.get_associated_actors_from_array(levels[:target_a_actors].map{|a| a.id})
-
-
-
-            # levels[:target_b_actors].each{|a| target_d << a if levels[:target_c_actors].include?(a)}
-            # target_d = target_d.first
-            target_d = (levels[:target_b_actors] & levels[:target_c_actors]).first
+            # SQL QUERY WHICH ACCEPTS ARRAY OF PREVIOUS LEVEL ACTOR IDS AND RETURNS NEXT LEVEL OF ASSOCIATED ACTORS, also subtracting previous level of actors
+            levels[:target_c_actors] = Actor.get_associated_actors_from_array(levels[:target_a_actors].map{|a| a.id}) - levels[:target_a_actors]
+            
+            target_d = (levels[:target_b_actors] & levels[:target_c_actors]).sample
 
             if target_d != nil
 
                 results << Actor.first_degree_search(target_d, target_b)
-                
-                # VERSION ONE
-                # ITERATE THROUGH FOUND TARGETS MOVIES/LOOK AT THEIR CAST LISTS LOOKING FOR ACTORS IN PREVIOUS LEVEL
-                # target_d.movies.each do |m|
-                #     m.actors.each do |a|
-                #         target_c = a if levels[:target_a_actors].include?(a)
-                #     end
-                # end
 
-                target_c = Actor.search_back_one_level(target_d, levels[:target_a_actors].map{|a| a.id}).first
-                # # byebug
-                # target_c = target_c.first
+                # SQL QUERY WHICH ACCEPTS CURRENT TARGET AND ARRAY OF PREVIOUS LEVEL ACTORS AND RETURNS PREVIOUS TARGET
+                target_c = Actor.search_back_one_level(target_d, levels[:target_a_actors].map{|a| a.id}).sample
 
                 results << Actor.first_degree_search(target_c, target_d)
-
                 results << Actor.first_degree_search(target_a, target_c)
-
+                # REVERSES RESULTS, BECAUSE LINK HAS BEEN BUILT BACKWARDS
                 results = results.reverse
-                # byebug
             end
 
             if results.length > 0
                 return results
+        # <----------------THIS ENDS THE THIRD DEGREE SEARCH BRANCH ----------------->
+
+        # <----------------# THIS BEGINS THE FOURTH-DEGREE SEARCH BRANCH----------->
             else
                 return { value: 'Sorry, no link could be found.' }
             end
 
+        # FINAL END
         end
 
 
