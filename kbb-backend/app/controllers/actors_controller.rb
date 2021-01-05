@@ -23,8 +23,10 @@ class ActorsController < ApplicationController
 
     def search_for_link
         # find both actors by name
-        target_a = Actor.find_by(name: params[:target_a])
-        target_b = Actor.find_by(name: params[:target_b])
+        # target_a = Actor.find_by(name: params[:target_a])
+        # target_b = Actor.find_by(name: params[:target_b])
+        target_a = Actor.find(params[:target_a])
+        target_b = Actor.find(params[:target_b])
 
         if !target_a 
             results = { value: "Sorry, #{params[:target_a]} is not in our database. Please search for another actor."}

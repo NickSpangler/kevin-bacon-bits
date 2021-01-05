@@ -8,10 +8,7 @@ const TargetAPhoto = (props) => {
         )
     } else if (props.source === null) {
         return (
-            <>
             <img src={silhouette} height='100px'></img>
-            <p>No image available</p>
-            </>
             )
     } 
     else {
