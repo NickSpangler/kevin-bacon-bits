@@ -16,7 +16,7 @@ const TargetAInput = (props) => {
       setOptions(
       !searchText ? [] : data.map(person => (
         { value: 
-            <div className='autocomplete-container' data-person={person}>
+            <div className='autocomplete-container' actor_id={person.id} profile_path={person.profile_path} name={person.name}>
               <div className='autocomplete-one'>{person.name}</div>
               <div className='autocomplete-two'>
                 <img src={person.profile_path ? `https://image.tmdb.org/t/p/w200${person.profile_path}` : silhouette } height='50px'></img>
@@ -29,19 +29,22 @@ const TargetAInput = (props) => {
   };
 
   const onSelect = (data) => {
-    alert(data)
-    // console.log('onSelect', data);
-    fetch(`http://localhost:3000/actors/get_photo?input=${data}`)
+    // alert(data.props.profile_path, data.props.actor_id);
+    fetch(`http://localhost:3000/actors/get_photo?input=${data.props.actor_id}`)
     .then(resp => resp.json())
     .then(data => {
+      setValue(data.name)
       setSource(data.profile_path)
+      props.updateTargetA(data.id)
     })
 
   };
 
   const onChange = (data) => {
+    if (typeof data !== 'object') {
     setValue(data);
-    props.updateTargetA(data)
+    }
+    // props.updateTargetA(data)
   };
 
   return (

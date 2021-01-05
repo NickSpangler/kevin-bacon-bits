@@ -6,12 +6,14 @@ class ActorsController < ApplicationController
     end
 
     def get_photo
-        actor = Actor.find_by(name: params[:input])
-        if actor.profile_path
-            render json: actor, :only => [:profile_path]
-        else
-            render json: {profile_path: 'No image available'}
-        end
+        # actor = Actor.find_by(name: params[:input])
+        actor = Actor.find(params[:input])
+        # if actor.profile_path
+            # render json: actor, :only => [:profile_path]
+            render json: actor
+        # else
+        #     render json: {profile_path: 'No image available'}
+        # end
     end
 
     def movie_list
