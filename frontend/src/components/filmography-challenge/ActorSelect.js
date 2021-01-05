@@ -16,17 +16,27 @@ const ActorSelect = (props) => {
         .then(resp => resp.json())
         .then(data => {
           setOptions(
-          !searchText ? [] : data.map(person => ({ value: person.name }))
+          !searchText ? [] : data.map(person => (
+            { value: 
+              <div className='autocomplete-container' actor_id={person.id} profile_path={person.profile_path} name={person.name}>
+                <div className='autocomplete-one'>{person.name}</div>
+                <div className='autocomplete-two'>
+                  <img src={person.profile_path ? `https://image.tmdb.org/t/p/w200${person.profile_path}` : silhouette } height='50px'></img>
+                </div>
+              </div>
+            }))
           )
         })
       };
     
     const onSelect = (data) => {
-          props.setActor(data)
+          props.setActor(data.props.actor_id);
       };
     
     const onChange = (data) => {
+        if (typeof data !== 'object') {
         setValue(data);
+        }
       };
 
     const selectNewActor = () => {
