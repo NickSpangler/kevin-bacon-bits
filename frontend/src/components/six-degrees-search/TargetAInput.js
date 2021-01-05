@@ -44,7 +44,6 @@ const TargetAInput = (props) => {
     if (typeof data !== 'object') {
     setValue(data);
     }
-    // props.updateTargetA(data)
   };
 
   return (
