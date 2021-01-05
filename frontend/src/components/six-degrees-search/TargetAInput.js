@@ -29,7 +29,6 @@ const TargetAInput = (props) => {
   };
 
   const onSelect = (data) => {
-    // alert(data.props.profile_path, data.props.actor_id);
     fetch(`http://localhost:3000/actors/get_photo?input=${data.props.actor_id}`)
     .then(resp => resp.json())
     .then(data => {
