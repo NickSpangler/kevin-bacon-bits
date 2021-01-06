@@ -249,8 +249,38 @@ class Actor < ApplicationRecord
 
                     if results.length > 0
                         return results
+        # <----------------THIS ENDS THE FIFTH-DEGREE SEARCH BRANCH ----------------->
+
+        # <----------------# THIS BEGINS THE SIXTH-DEGREE SEARCH BRANCH----------->
                     else
-                        return { value: 'Sorry, no link could be found.' }
+                        levels[:target_f_actors] = Actor.get_associated_actors_from_array(levels[:target_d_actors].map{|a| a.id}) - levels[:target_d_actors]
+                        target_g = (levels[:target_e_actors] & levels[:target_f_actors]).sample
+
+                        if target_g != nil
+                            target_f = Actor.search_back_one_level(target_g, levels[:target_d_actors].map{|a| a.id}).sample
+                            results << Actor.first_degree_search(target_g, target_f)
+
+                            target_d = Actor.search_back_one_level(target_f, levels[:target_b_actors].map{|a| a.id}).sample
+                            results << Actor.first_degree_search(target_f, target_d)
+                            results << Actor.first_degree_search(target_d, target_b)
+
+                            results = results.reverse
+
+                            target_e = Actor.search_back_one_level(target_g, levels[:target_c_actors].map{|a| a.id}).sample
+                            results << Actor.first_degree_search(target_e, target_g)
+
+                            target_c = Actor.search_back_one_level(target_e, levels[:target_a_actors].map{|a| a.id}).sample
+                            results << Actor.first_degree_search(target_c, target_e)
+                            results << Actor.first_degree_search(target_a, target_c)
+
+                            results = results.reverse
+                        end
+
+                        if results.length > 0
+                            return results
+                        else
+                            return { value: 'Sorry, no link could be found within six degrees!' }
+                        end
                     end
                 end
             end
