@@ -178,6 +178,13 @@ class Actor < ApplicationRecord
         # <----------------# THIS BEGINS THE THIRD-DEGREE SEARCH BRANCH----------->
 
         else
+            if levels[:target_a_actors].length == 0
+                return { value: "Sorry, #{target_a.name} is not connected to any other actors."}
+            end
+            if levels[:target_b_actors].length == 0
+                return { value: "Sorry, #{target_b.name} is not connected to any other actors."}
+            end
+
             # SQL QUERY WHICH ACCEPTS ARRAY OF PREVIOUS LEVEL ACTOR IDS AND RETURNS NEXT LEVEL OF ASSOCIATED ACTORS, also subtracting previous level of actors
             levels[:target_c_actors] = Actor.get_associated_actors_from_array(levels[:target_a_actors].map{|a| a.id}) - levels[:target_a_actors]
             
