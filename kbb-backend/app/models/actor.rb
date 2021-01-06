@@ -178,6 +178,7 @@ class Actor < ApplicationRecord
         # <----------------# THIS BEGINS THE THIRD-DEGREE SEARCH BRANCH----------->
 
         else
+            # CHECK IF EITHER TARGET HAS ZERO CONNECTIONS, RETURN MESSAGE IF SO
             if levels[:target_a_actors].length == 0
                 return { value: "Sorry, #{target_a.name} is not connected to any other actors."}
             end
