@@ -153,6 +153,7 @@ class Actor < ApplicationRecord
         # <----------------# THIS BEGINS THE SECOND-DEGREE SEARCH BRANCH----------->
         
         # put all target_a associated actors in first key of hash
+
         levels[:target_a_actors].concat(Actor.get_associated_actors(target_a))
 
         # put all target_b associated actors in second key of hash
@@ -229,7 +230,7 @@ class Actor < ApplicationRecord
                     levels[:target_e_actors] = Actor.get_associated_actors_from_array(levels[:target_c_actors].map{|a| a.id}) - levels[:target_c_actors]
                     target_f = (levels[:target_e_actors] & levels[:target_d_actors]).sample
 
-                    if target_e != nil
+                    if target_f != nil
                         target_d = Actor.search_back_one_level(target_f, levels[:target_b_actors].map{|a| a.id}).sample
                         results << Actor.first_degree_search(target_f, target_d)
                         results << Actor.first_degree_search(target_d, target_b)
