@@ -1,6 +1,7 @@
 import React from 'react';
 import { Result, Button, Space } from 'antd';
 import { Link } from 'react-router-dom';
+import StartingPoint from './StartingPoint';
 
 export default function SixDegreesChallenge() {
     return (
@@ -10,7 +11,7 @@ export default function SixDegreesChallenge() {
             <h1 style={{color: 'white'}}>Build the link between two actors:</h1>
             <Space size='large'>
             <div>
-                
+                <StartingPoint />
                 <h3 style={{color: 'white', marginRight: '50px'}}>Select starting point:</h3>
             </div>
             <div>
