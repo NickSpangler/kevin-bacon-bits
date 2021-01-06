@@ -12,7 +12,7 @@ export default function SixDegreesChallenge() {
             <Space size='large'>
             <div>
                 <StartingPoint />
-                <h3 style={{color: 'white', marginRight: '50px'}}>Select starting point:</h3>
+                {/* <h3 style={{color: 'white', marginRight: '50px'}}>Select starting point:</h3> */}
             </div>
             <div>
                 <h3 style={{color: 'white', marginLeft: '50px'}}>Select degree of difficulty:</h3>
