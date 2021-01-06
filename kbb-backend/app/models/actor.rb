@@ -187,12 +187,12 @@ class Actor < ApplicationRecord
             end
 
             # SQL QUERY WHICH ACCEPTS ARRAY OF PREVIOUS LEVEL ACTOR IDS AND RETURNS NEXT LEVEL OF ASSOCIATED ACTORS, also subtracting previous level of actors
-            levels[:target_c_actors] = Actor.get_associated_actors_from_array(levels[:target_a_actors].map{|a| a.id}) - levels[:target_a_actors]
+            levels[:target_c_actors] = Actor.get_associated_actors_from_array(levels[:target_a_actors].map{|a| a.id}) - levels[:target_a_actors] - [target_a]
             
             target_d = (levels[:target_b_actors] & levels[:target_c_actors]).sample
 
             if target_d != nil
-
+ 
                 results << Actor.first_degree_search(target_d, target_b)
 
                 # SQL QUERY WHICH ACCEPTS CURRENT TARGET AND ARRAY OF PREVIOUS LEVEL ACTORS AND RETURNS PREVIOUS TARGET
@@ -210,7 +210,7 @@ class Actor < ApplicationRecord
 
         # <----------------# THIS BEGINS THE FOURTH-DEGREE SEARCH BRANCH----------->
             else
-                levels[:target_d_actors] = Actor.get_associated_actors_from_array(levels[:target_b_actors].map{|a| a.id}) - levels[:target_b_actors]
+                levels[:target_d_actors] = Actor.get_associated_actors_from_array(levels[:target_b_actors].map{|a| a.id}) - levels[:target_b_actors] - [target_b]
 
                 target_e = (levels[:target_c_actors] & levels[:target_d_actors]).sample
 
@@ -235,7 +235,7 @@ class Actor < ApplicationRecord
 
         # <----------------# THIS BEGINS THE FIFTH-DEGREE SEARCH BRANCH----------->
                 else
-                    levels[:target_e_actors] = Actor.get_associated_actors_from_array(levels[:target_c_actors].map{|a| a.id}) - levels[:target_c_actors]
+                    levels[:target_e_actors] = Actor.get_associated_actors_from_array(levels[:target_c_actors].map{|a| a.id}) - levels[:target_c_actors] - levels[:target_a_actors] - [target_a]
                     target_f = (levels[:target_e_actors] & levels[:target_d_actors]).sample
 
                     if target_f != nil
@@ -261,7 +261,7 @@ class Actor < ApplicationRecord
 
         # <----------------# THIS BEGINS THE SIXTH-DEGREE SEARCH BRANCH----------->
                     else
-                        levels[:target_f_actors] = Actor.get_associated_actors_from_array(levels[:target_d_actors].map{|a| a.id}) - levels[:target_d_actors]
+                        levels[:target_f_actors] = Actor.get_associated_actors_from_array(levels[:target_d_actors].map{|a| a.id}) - levels[:target_d_actors] - levels[:target_b_actors] - [target_b]
                         target_g = (levels[:target_e_actors] & levels[:target_f_actors]).sample
 
                         if target_g != nil
