@@ -1,12 +1,11 @@
 function sixDegreesChallengeReducer(state = {
-    actor: 'not selected',
-    actor_movies: [],
-    current_movie: {},
-    possible_answers: [],
-    round_result: 'waiting',
-    history: [],
+    target_a: 'not selected',
+    target_b: 'not selected',
+    link: [],
+    link_result: [],
+    link_message: '',
+    showing_result: false,
     challenge_active: false,
-    total_history: 0
 }, action) {
 switch(action.type) {
 default:
