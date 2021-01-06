@@ -60,7 +60,7 @@ class Actor < ApplicationRecord
         ON
         target_actors.id = rest.actor_id
         WHERE
-        target.id IN (#{array.join(", ")})") - array
+        target.id IN (#{array.join(", ")})")
     end
 
     def self.search_back_one_level(target, array)
@@ -300,10 +300,6 @@ class Actor < ApplicationRecord
 
 
     end
-
-
-
-
 
 
 
