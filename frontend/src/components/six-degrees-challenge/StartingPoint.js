@@ -44,23 +44,6 @@ const StartingPoint = (props) => {
     }
   };
 
-//   const starting_point_photo = () => {
-//     if (source === '') {
-//         return (
-//             <img src={silhouette} height='100px'></img>
-//         )
-//     } else if (source === null) {
-//         return (
-//             <img src={silhouette} height='100px'></img>
-//             )
-//     } 
-//     else {
-//         return (
-//             <img src={`https://image.tmdb.org/t/p/w200${props.source}`} alt={silhouette} height='100px'></img>
-//             )
-//     }
-//   }
-
   const starting_point_photo = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
 
   return (
