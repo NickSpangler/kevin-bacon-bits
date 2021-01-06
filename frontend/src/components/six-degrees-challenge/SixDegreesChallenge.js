@@ -2,6 +2,7 @@ import React from 'react';
 import { Result, Button, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import StartingPoint from './StartingPoint';
+import SelectDegree from './SelectDegree';
 
 export default function SixDegreesChallenge() {
     return (
@@ -15,6 +16,7 @@ export default function SixDegreesChallenge() {
                 {/* <h3 style={{color: 'white', marginRight: '50px'}}>Select starting point:</h3> */}
             </div>
             <div>
+                <SelectDegree />
                 <h3 style={{color: 'white', marginLeft: '50px'}}>Select degree of difficulty:</h3>
             </div>
             </Space>
