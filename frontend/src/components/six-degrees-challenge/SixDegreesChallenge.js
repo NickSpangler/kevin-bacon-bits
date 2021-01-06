@@ -13,7 +13,6 @@ export default function SixDegreesChallenge() {
             <Space size='large' direction="vertical">
             <div className='slide-in-bottom'>
                 <StartingPoint />
-                {/* <h3 style={{color: 'white', marginRight: '50px'}}>Select starting point:</h3> */}
             </div>
             <div className='slide-in-top'>
                 <br></br>
