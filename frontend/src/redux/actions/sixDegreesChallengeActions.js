@@ -7,3 +7,11 @@ export const setTargetA = (actor_id) => {
         })
     };
 }
+
+export const setDegree = (degree) => {
+    return (
+        {
+            type: 'SET_DEGREE', degree: degree
+        }
+    )
+}
