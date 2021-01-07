@@ -292,16 +292,15 @@ class Actor < ApplicationRecord
                     end
                 end
             end
-
-        # FINAL END
         end
-
-
-
-
     end
 
-
+    def self.start_SDChallenge(target_a, degree)
+        if degree.to_i == 1
+            byebug
+            actors = Actor.get_associated_actors(target_a)
+        end
+    end
 
 
 
