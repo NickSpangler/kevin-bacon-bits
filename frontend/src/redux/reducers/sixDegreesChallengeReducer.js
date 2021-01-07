@@ -7,10 +7,16 @@ function sixDegreesChallengeReducer(state = {
     showing_result: false,
     challenge_active: false,
 }, action) {
+
 switch(action.type) {
-default:
-return state;
-}
+    case 'SET_TARGET_A':
+        return { 
+            ...state, 
+            target_a: action.actor, 
+            }    
+    default:
+        return state;
+    }
 }
 
 export default sixDegreesChallengeReducer;
