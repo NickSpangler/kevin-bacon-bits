@@ -1,5 +1,6 @@
 function sixDegreesChallengeReducer(state = {
     target_a: 'not selected',
+    degree: 'One Degree',
     target_b: 'not selected',
     link: [],
     link_result: [],
@@ -14,6 +15,11 @@ switch(action.type) {
             ...state, 
             target_a: action.actor, 
             }    
+    case 'SET_DEGREE':
+        return {
+            ...state,
+            degree: action.degree
+        }
     default:
         return state;
     }
