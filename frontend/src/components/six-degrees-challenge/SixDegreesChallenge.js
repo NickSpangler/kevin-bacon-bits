@@ -3,8 +3,11 @@ import { Button, Space } from 'antd';
 import StartingPoint from './StartingPoint';
 import SelectDegree from './SelectDegree';
 import { connect } from 'react-redux';
+import { setTargetA } from '../../redux/actions/sixDegreesChallengeActions'
 
 function SixDegreesChallenge(props) {
+
+    const challengeButton = props.target_a === '' ? (<></>) : (<Button type='primary'>Challenge Me!</Button>)
     return (
         <>
         <div className='challenge-container'>
@@ -12,13 +15,15 @@ function SixDegreesChallenge(props) {
             <h1 style={{color: 'white'}}>Build the link between two actors:</h1>
             <Space size='large' direction="vertical">
             <div className='slide-in-bottom'>
-                <StartingPoint />
+                <StartingPoint setTargetA={ props.setTargetA }/>
             </div>
             <div className='slide-in-top'>
                 <br></br>
                 <h3 style={{color: 'white'}}>Select degree of difficulty:</h3>
                 <SelectDegree />
             </div>
+            <br></br>
+            {challengeButton}
             </Space>
         </div>
         </div>
@@ -39,4 +44,4 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
     }
 }
 
-export default connect(mapStateToProps)(SixDegreesChallenge)
+export default connect(mapStateToProps, { setTargetA })(SixDegreesChallenge)
