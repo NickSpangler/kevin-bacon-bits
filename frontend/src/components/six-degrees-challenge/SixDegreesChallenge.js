@@ -1,10 +1,10 @@
 import React from 'react';
-import { Result, Button, Space } from 'antd';
-import { Link } from 'react-router-dom';
+import { Button, Space } from 'antd';
 import StartingPoint from './StartingPoint';
 import SelectDegree from './SelectDegree';
+import { connect } from 'react-redux';
 
-export default function SixDegreesChallenge() {
+function SixDegreesChallenge(props) {
     return (
         <>
         <div className='challenge-container'>
@@ -25,3 +25,18 @@ export default function SixDegreesChallenge() {
         </>
     )
 }
+
+const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
+    return {
+        target_a: sixDegreesChallenge.target_a,
+        target_b: sixDegreesChallenge.target_b,
+        link: sixDegreesChallenge.link,
+        link_result: sixDegreesChallenge.link_result,
+        link_message: sixDegreesChallenge.link_message,
+        showing_result: sixDegreesChallenge.showing_result,
+        challenge_active: sixDegreesChallenge.challenge_active,
+        sound: settings.sound
+    }
+}
+
+export default connect(mapStateToProps)(SixDegreesChallenge)
