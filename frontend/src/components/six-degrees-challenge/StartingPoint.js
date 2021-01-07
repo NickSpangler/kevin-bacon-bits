@@ -31,8 +31,7 @@ const StartingPoint = (props) => {
     fetch(`http://localhost:3000/actors/get_photo?input=${data.props.actor_id}`)
     .then(resp => resp.json())
     .then(data => {
-      debugger
-      setValue(data.name)
+      setValue (data.name)
       setSource(data.profile_path)
       props.setTargetA(data.id) 
     })

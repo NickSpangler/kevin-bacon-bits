@@ -1,6 +1,6 @@
 function sixDegreesChallengeReducer(state = {
     target_a: 'not selected',
-    degree: 'One Degree',
+    degree: 1,
     target_b: 'not selected',
     link: [],
     link_result: [],
