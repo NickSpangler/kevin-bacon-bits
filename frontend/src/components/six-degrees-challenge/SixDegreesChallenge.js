@@ -7,7 +7,7 @@ import { setTargetA } from '../../redux/actions/sixDegreesChallengeActions'
 
 function SixDegreesChallenge(props) {
 
-    const challengeButton = props.target_a === '' ? (<></>) : (<Button type='primary'>Challenge Me!</Button>)
+    const challengeButton = props.target_a === 'not selected' ? (<></>) : (<Button type='primary'>Challenge Me!</Button>)
     return (
         <>
         <div className='challenge-container'>
