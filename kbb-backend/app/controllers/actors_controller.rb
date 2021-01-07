@@ -27,6 +27,8 @@ class ActorsController < ApplicationController
     end
 
     def start_SDChallenge
+        target_a = Actor.find(params[:actor_id])
+        degree = params[:degree]
         byebug
     end
 
