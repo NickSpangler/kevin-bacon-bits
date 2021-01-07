@@ -15,3 +15,13 @@ export const setDegree = (degree) => {
         }
     )
 }
+
+export const startChallenge = (actor_id, degree) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/actors/movie_list?actor_id=${actor_id}&degree=${degree}`)
+        .then(res => res.json())
+        .then(data => {
+            debugger
+        })
+    }
+}
