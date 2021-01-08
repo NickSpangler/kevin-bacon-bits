@@ -19,8 +19,7 @@ function SixDegreesChallenge(props) {
             </div>
             <div className='slide-in-top'>
                 <br></br>
-                <h3 style={{color: 'white'}}>Select degree of difficulty:</h3>
-                <SelectDegree setDegree={props.setDegree} />
+                <SelectDegree setDegree={props.setDegree} loading={props.loading} challenge_active={props.challenge_active} />
             </div>
             <br></br>
             {challengeButton}
