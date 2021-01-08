@@ -3,6 +3,8 @@ import { RightCircleTwoTone } from '@ant-design/icons';
 import { Row, Col, Divider, Typography } from 'antd';
 import silhouette from './silhouette.png'
 
+const { Text } = Typography
+
 export default function LevelOneChallenge(props) {
     // const degrees = props.degree === 1 ? "Degree" : "Degrees"
     const target_a_path = props.target_a.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_a.profile_path}`)
@@ -11,7 +13,7 @@ export default function LevelOneChallenge(props) {
     const level_class = 'slide-in-right'
     return (
         <div className={`${level_class} level-tier`}>
-            {/* <Divider orientation="center">{`${props.degree} ${degrees}`}</Divider> */}
+            <Divider orientation="center"></Divider>
             <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row" span={4} offset={4}>
                     <div>
