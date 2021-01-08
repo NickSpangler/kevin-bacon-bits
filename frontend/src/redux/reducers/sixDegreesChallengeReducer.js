@@ -15,11 +15,26 @@ switch(action.type) {
         return { 
             ...state, 
             target_a: action.actor, 
-            }    
+        }    
     case 'SET_DEGREE':
         return {
             ...state,
             degree: action.degree
+        }
+    case 'TOGGLE_LOADING':
+        return {
+            ...state,
+            loading: !state.loading
+        }
+    case 'TOGGLE_CHALLENGE_ACTIVE':
+        return {
+            ...state,
+            challenge_active: !state.challenge_active
+        }
+    case 'SET_TARGET_B':
+        return {
+            ...state,
+            target_b: action.target_b
         }
     default:
         return state;
