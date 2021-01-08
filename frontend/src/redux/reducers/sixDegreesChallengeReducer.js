@@ -2,7 +2,11 @@ function sixDegreesChallengeReducer(state = {
     target_a: 'not selected',
     degree: 1,
     target_b: 'not selected',
-    first_degree_link: {},
+    first_degree_link: {
+        target_a: '',
+        movie: '',
+        target_b: ''
+    },
     link_result: [],
     link_message: '',
     showing_result: false,
@@ -41,7 +45,10 @@ switch(action.type) {
                 target_a: 'not selected',
                 degree: 1,
                 target_b: 'not selected',
-                first_degree_link: {},
+                first_degree_link: {
+                    target_a: '',
+                    movie: '',
+                    target_b: ''},
                 link_result: [],
                 link_message: '',
                 showing_result: false,

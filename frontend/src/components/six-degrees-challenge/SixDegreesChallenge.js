@@ -24,7 +24,7 @@ function SixDegreesChallenge(props) {
                 <SelectDegree setDegree={props.setDegree} loading={props.loading} challenge_active={props.challenge_active} />
             </div>
             <Loading loading={props.loading} />
-            <ChallengeOptionsContainer degree={props.degree} target_a={props.target_a} target_b={props.target_b} />
+            <ChallengeOptionsContainer degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} />
             <br></br>
             {challengeButton}
             </Space>
@@ -39,7 +39,7 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
         target_a: sixDegreesChallenge.target_a,
         degree: sixDegreesChallenge.degree,
         target_b: sixDegreesChallenge.target_b,
-        link: sixDegreesChallenge.link,
+        first_degree_link: sixDegreesChallenge.first_degree_link,
         link_result: sixDegreesChallenge.link_result,
         link_message: sixDegreesChallenge.link_message,
         showing_result: sixDegreesChallenge.showing_result,

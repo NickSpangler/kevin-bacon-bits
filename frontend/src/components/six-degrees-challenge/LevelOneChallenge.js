@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RightCircleTwoTone } from '@ant-design/icons';
-import { Row, Col, Divider, Typography, AutoComplete } from 'antd';
+import { Row, Col, Divider, Typography, AutoComplete, Button } from 'antd';
 import silhouette from './silhouette.png'
 
 const { Text } = Typography
@@ -57,7 +57,7 @@ export default function LevelOneChallenge(props) {
     };
 
     const movie_poster = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
-
+    const button_or_no = props.first_degree_link.movie === '' ? (<></>) : (<Button type='primary' onClick={() => alert('Thats my Guess!')}>Submit Answer</Button>)
     
     return (
         <div className={`${level_class} challenge-level-tier`}>
