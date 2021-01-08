@@ -4,6 +4,8 @@ import StartingPoint from './StartingPoint';
 import SelectDegree from './SelectDegree';
 import { connect } from 'react-redux';
 import { setTargetA, setDegree, startChallenge, resetChallenge } from '../../redux/actions/sixDegreesChallengeActions'
+import Loading from './Loading'
+import ChallengeOptionsContainer from './ChallengeOptionsContainer'
 
 function SixDegreesChallenge(props) {
 
@@ -21,6 +23,8 @@ function SixDegreesChallenge(props) {
                 <br></br>
                 <SelectDegree setDegree={props.setDegree} loading={props.loading} challenge_active={props.challenge_active} />
             </div>
+            <Loading loading={props.loading} />
+            <ChallengeOptionsContainer degree={props.degree} target_a={props.target_a} target_b={props.target_b} />
             <br></br>
             {challengeButton}
             </Space>
