@@ -1,7 +1,9 @@
 import React from 'react'
 import LevelOneChallenge from './LevelOneChallenge'
+import { Button } from 'antd'
 
 export default function ChallengeOptionsContainer(props) {
+    const button_or_no = props.first_degree_link.movie_id === '' ? (<></>) : (<Button type='primary' onClick={() => alert('Thats my Guess!')}>Submit Answer</Button>)
     if (props.target_b === 'not selected') {
         return (
         <></>
@@ -10,7 +12,9 @@ export default function ChallengeOptionsContainer(props) {
         return (
             <>
                 <h3 style={{color: 'white'}}>Your challenge is to connect {props.target_a.name} to {props.target_b.name}:</h3>
-                <LevelOneChallenge degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} updateFistDegreeLink={props.updateFistDegreeLink} />
+                <LevelOneChallenge degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} updateFirstDegreeLink={props.updateFirstDegreeLink} />
+                <br></br>
+                {button_or_no}
             </>
             )
     } else if (props.target_b !== 'not selected' && props.degree === 2) {

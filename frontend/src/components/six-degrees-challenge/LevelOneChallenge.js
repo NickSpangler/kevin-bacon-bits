@@ -54,11 +54,10 @@ export default function LevelOneChallenge(props) {
     const onSelect = (data) => {
         setValue(data.props.title)
         setSource(data.props.poster_path)
-        props.updateFirstDegreeLink(props.target_a, data.props.movie_id, props.target_b)
+        props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
     };
 
     const movie_poster = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
-    const button_or_no = props.first_degree_link.movie === '' ? (<></>) : (<Button type='primary' onClick={() => alert('Thats my Guess!')}>Submit Answer</Button>)
     
     return (
         <div className={`${level_class} challenge-level-tier`}>
