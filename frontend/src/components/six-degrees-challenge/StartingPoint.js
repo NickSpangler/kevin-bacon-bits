@@ -48,7 +48,7 @@ const StartingPoint = (props) => {
   const starting_point_photo = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
 
   const input_or_buttons = props.challenge_active ? (
-    <ResetButtons resetChallenge={props.resetChallenge} />
+    <ResetButtons resetChallenge={props.resetChallenge} setSource={setSource} setValue={setValue}/>
   ) : (
     <AutoComplete
         value={value}
