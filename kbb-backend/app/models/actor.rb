@@ -296,7 +296,7 @@ class Actor < ApplicationRecord
     end
 
     
-    def self.get_top_ten(target)
+    def self.get_top_ten(target, num)
         (Actor.find_by_sql("
             SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at,target_actors.movie_actors_count
             FROM
@@ -320,18 +320,24 @@ class Actor < ApplicationRecord
             WHERE
             target.id = #{target.id}
             ORDER BY
-            target_actors.movie_actors_count DESC") - [target])[0...10]
-            # top_ten = actors.sort{|a,b| a.movie_actors.size <=> b.movie_actors.size}[0...10]
+            target_actors.movie_actors_count DESC") - [target])[0...num]
         end
         
         def self.start_SDChallenge(target_a, degree)
             if degree.to_i == 1
-                target_b = Actor.get_top_ten(target_a).sample
-                return {
-                    target_a: target_a,
-                    target_b: target_b
-                }
+                target_b = Actor.get_top_ten(target_a, 30).sample
+            elsif degree.to_i == 2
+                first = Actor.get_top_ten(target_a, 30).sample 
+                target_b = (Actor.get_top_ten(first, 30) - Actor.get_associated_actors(target_a)).sample
+            elsif degree.to_i == 3
+                first = Actor.get_top_ten(target_a, 30).sample
+                second = (Actor.get_top_ten(first, 40) - Actor.get_associated_actors(target_a)).sample
+                target_b = (Actor.get_top_ten(second, 100) - Actor.get_associated_actors(target_a) - Actor.get_associated_actors_from_array(Actor.get_associated_actors(target_a).map{|a| a.id})).sample
             end
+            return {
+                target_a: target_a,
+                target_b: target_b
+            }
         end
         
 
