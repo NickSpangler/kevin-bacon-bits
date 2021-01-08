@@ -18,10 +18,14 @@ export const setDegree = (degree) => {
 
 export const startChallenge = (actor_id, degree) => {
     return (dispatch) => {
+        dispatch({type: 'TOGGLE_LOADING'})
+        dispatch({type: 'TOGGLE_CHALLENGE_ACTIVE'})
         fetch(`http://localhost:3000/actors/start_SDChallenge?actor_id=${actor_id}&degree=${degree}`)
         .then(res => res.json())
         .then(data => {
+            dispatch({type: 'SET_TARGET_B', target_b: data.target_b})
             alert(data.target_b.name)
+            dispatch({type: 'TOGGLE_LOADING'})
         })
     }
 }
