@@ -294,45 +294,105 @@ class Actor < ApplicationRecord
             end
         end
     end
+        # <----------------THIS ENDS SEARCH FUNCTIONS ----------------->
+
+        # <----------------# THIS BEGINS CHALLENGE FUNCTIONS----------->
 
     
-    def self.get_top_ten(target, num)
+    def self.get_top_N(target, num)
         (Actor.find_by_sql("
-            SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at,target_actors.movie_actors_count
-            FROM
-            actors target
-            JOIN
-            movie_actors target_movies
-            ON
-            target.id = actor_id
-            JOIN
-            movies movies
-            ON
-            movies.id = target_movies.movie_id
-            JOIN
-            movie_actors rest
-            ON
-            rest.movie_id = target_movies.movie_id
-            JOIN
-            actors target_actors
-            ON
-            target_actors.id = rest.actor_id
-            WHERE
-            target.id = #{target.id}
-            ORDER BY
-            target_actors.movie_actors_count DESC") - [target])[0...num]
-        end
+        SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at,target_actors.movie_actors_count
+        FROM
+        actors target
+        JOIN
+        movie_actors target_movies
+        ON
+        target.id = actor_id
+        JOIN
+        movies movies
+        ON
+        movies.id = target_movies.movie_id
+        JOIN
+        movie_actors rest
+        ON
+        rest.movie_id = target_movies.movie_id
+        JOIN
+        actors target_actors
+        ON
+        target_actors.id = rest.actor_id
+        WHERE
+        target.id = #{target.id}
+        ORDER BY
+        target_actors.movie_actors_count DESC") - [target])[0...num]
+    end
+
+    def self.get_sorted_associated_actors(target)
+        Actor.find_by_sql("
+        SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at, target_actors.movie_actors_count
+        FROM
+        actors target
+        JOIN
+        movie_actors target_movies
+        ON
+        target.id = actor_id
+        JOIN
+        movies movies
+        ON
+        movies.id = target_movies.movie_id
+        JOIN
+        movie_actors rest
+        ON
+        rest.movie_id = target_movies.movie_id
+        JOIN
+        actors target_actors
+        ON
+        target_actors.id = rest.actor_id
+        WHERE
+        target.id = #{target.id}
+        ORDER BY
+        target_actors.movie_actors_count DESC") - [target]
+    end
+
+    def self.get_sorted_associated_actors_from_array(array)
+        Actor.find_by_sql("
+        SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at, target_actors.movie_actors_count
+        FROM
+        actors target
+        JOIN
+        movie_actors target_movies
+        ON
+        target.id = actor_id
+        JOIN
+        movies movies
+        ON
+        movies.id = target_movies.movie_id
+        JOIN
+        movie_actors rest
+        ON
+        rest.movie_id = target_movies.movie_id
+        JOIN
+        actors target_actors
+        ON
+        target_actors.id = rest.actor_id
+        WHERE
+        target.id IN (#{array.join(", ")})
+        ORDER BY
+        target_actors.movie_actors_count DESC")
+    end
         
         def self.start_SDChallenge(target_a, degree)
             if degree.to_i == 1
-                target_b = Actor.get_top_ten(target_a, 30).sample
+                target_b = Actor.get_top_N(target_a, 30).sample
             elsif degree.to_i == 2
-                first = Actor.get_top_ten(target_a, 30).sample 
-                target_b = (Actor.get_top_ten(first, 30) - Actor.get_associated_actors(target_a)).sample
-            elsif degree.to_i == 3
-                first = Actor.get_top_ten(target_a, 30).sample
-                second = (Actor.get_top_ten(first, 40) - Actor.get_associated_actors(target_a)).sample
-                target_b = (Actor.get_top_ten(second, 100) - Actor.get_associated_actors(target_a) - Actor.get_associated_actors_from_array(Actor.get_associated_actors(target_a).map{|a| a.id})).sample
+                first_level = Actor.get_associated_actors(target_a)
+                first_link = Actor.get_top_N(target_a, 5).sample
+                uniq_second_level = (Actor.get_sorted_associated_actors(first_link) - first_level - [target_a])
+                target_b = uniq_second_level[0...5].sample
+            else
+                return {
+                    target_a: 'LEVEL THREE',
+                    target_b: {name: 'LEVEL THREE'}
+                }
             end
             return {
                 target_a: target_a,
@@ -340,8 +400,20 @@ class Actor < ApplicationRecord
             }
         end
         
+        def self.get_first(target)
+            first = Actor.get_associated_actors(target)
+        end
 
+        def self.get_second(target)
+            first = Actor.get_associated_actors(target)
+            second = Actor.get_associated_actors_from_array(first.map{|a| a.id}) - first - [target]
+        end
 
+        def self.get_third(target)
+            first = Actor.get_associated_actors(target)
+            second = Actor.get_associated_actors_from_array(first.map{|a| a.id}) - first - [target]
+            third = Actor.get_associated_actors_from_array(second.map{|a| a.id}) - second - first - [target]
+        end
 
 
 
