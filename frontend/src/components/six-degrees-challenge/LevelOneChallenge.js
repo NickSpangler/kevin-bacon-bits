@@ -51,6 +51,13 @@ export default function LevelOneChallenge(props) {
     })
   };
 
+    const onSelect = (data) => {
+        setValue(data.props.title)
+        setSource(data.props.poster_path)
+    };
+
+    const movie_poster = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
+
     
     return (
         <div className={`${level_class} challenge-level-tier`}>
@@ -68,7 +75,8 @@ export default function LevelOneChallenge(props) {
                 </Col>
                 <Col className="gutter-row" span={4}>
                     <div>
-                    <img src={silhouette} height='200px'></img>
+                    {/* <img src={silhouette} height='200px'></img> */}
+                    {movie_poster}
                     </div>
                 </Col>
                 <Col className="gutter-row" span={1}>
@@ -91,6 +99,7 @@ export default function LevelOneChallenge(props) {
                 }}
                 onChange={onChange}
                 onSearch={onSearch}
+                onSelect={onSelect}
                 placeholder="Select a Movie..."
             />
             <br></br>
