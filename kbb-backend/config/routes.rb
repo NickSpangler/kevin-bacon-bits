@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/actors/start_SDChallenge', to: 'actors#start_SDChallenge'
 
   get '/movies/possible_movies', to: 'movies#possible_movies'
+  get '/movies/auto_complete', to: 'movies#auto_complete'
   
   resources :movie_actors
   resources :actors

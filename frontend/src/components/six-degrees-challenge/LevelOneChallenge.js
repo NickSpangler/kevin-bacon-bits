@@ -55,12 +55,12 @@ export default function LevelOneChallenge(props) {
     .then(resp => resp.json())
     .then(data => {
       setOptions(
-      !searchText ? [] : data.map(person => (
+      !searchText ? target_a_movies : data.map(movie => (
         { value: 
-            <div className='autocomplete-container' actor_id={person.id} profile_path={person.profile_path} name={person.name}>
-              <div className='autocomplete-one'>{person.name}</div>
+            <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
+              <div className='autocomplete-one'>{movie.title}</div>
               <div className='autocomplete-two'>
-                <img src={person.profile_path ? `https://image.tmdb.org/t/p/w200${person.profile_path}` : silhouette } height='50px'></img>
+                <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
               </div>
             </div>
             }
