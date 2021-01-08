@@ -29,3 +29,11 @@ export const startChallenge = (actor_id, degree) => {
         })
     }
 }
+
+export const resetChallenge = () => {
+    return (
+        {
+            type: 'RESET_CHALLENGE'
+        }
+    )
+}

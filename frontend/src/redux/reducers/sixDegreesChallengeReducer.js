@@ -36,6 +36,18 @@ switch(action.type) {
             ...state,
             target_b: action.target_b
         }
+    case 'RESET_CHALLENGE':
+        return {
+                target_a: 'not selected',
+                degree: 1,
+                target_b: 'not selected',
+                link: [],
+                link_result: [],
+                link_message: '',
+                showing_result: false,
+                challenge_active: false,
+                loading: false
+        }
     default:
         return state;
     }
