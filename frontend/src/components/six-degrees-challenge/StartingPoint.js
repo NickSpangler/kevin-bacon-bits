@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AutoComplete, Space } from 'antd';
 import silhouette from './silhouette.png'
+import ResetButtons from './ResetButtons'
 
 const StartingPoint = (props) => {
 
@@ -46,11 +47,10 @@ const StartingPoint = (props) => {
 
   const starting_point_photo = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
 
-  return (
-    <>
-      <Space direction="vertical">
-      {starting_point_photo}
-      <AutoComplete
+  const input_or_buttons = props.challenge_active ? (
+    <ResetButtons />
+  ) : (
+    <AutoComplete
         value={value}
         options={options}
         style={{
@@ -61,7 +61,25 @@ const StartingPoint = (props) => {
         onChange={onChange}
         placeholder="Select a Starting Point..."
       />
-      
+  )
+
+  return (
+    <>
+      <Space direction="vertical">
+      {starting_point_photo}
+      {/* <AutoComplete
+        value={value}
+        options={options}
+        style={{
+          width: 200,
+        }}
+        onSelect={onSelect}
+        onSearch={onSearch}
+        onChange={onChange}
+        placeholder="Select a Starting Point..."
+      />
+      <ResetButtons /> */}
+      {input_or_buttons}
       </Space>
     </>
   );

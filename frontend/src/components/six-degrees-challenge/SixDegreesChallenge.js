@@ -15,7 +15,7 @@ function SixDegreesChallenge(props) {
             <h1 style={{color: 'white'}}>Build the link between two actors:</h1>
             <Space size='large' direction="vertical">
             <div className='slide-in-bottom'>
-                <StartingPoint setTargetA={ props.setTargetA }/>
+                <StartingPoint setTargetA={props.setTargetA} challenge_active={props.challenge_active} />
             </div>
             <div className='slide-in-top'>
                 <br></br>
