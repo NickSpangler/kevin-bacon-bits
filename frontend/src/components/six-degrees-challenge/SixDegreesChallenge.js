@@ -7,7 +7,7 @@ import { setTargetA, setDegree, startChallenge } from '../../redux/actions/sixDe
 
 function SixDegreesChallenge(props) {
 
-    const challengeButton = props.target_a === 'not selected' ? (<></>) : (<Button type='primary' onClick={() => props.startChallenge(props.target_a.id, props.degree)}>Challenge Me!</Button>)
+    const challengeButton = props.target_a === 'not selected' || props.loading === true || props.challenge_active === true ? (<></>) : (<Button type='primary' onClick={() => props.startChallenge(props.target_a.id, props.degree)}>Challenge Me!</Button>)
     return (
         <>
         <div className='challenge-container'>
