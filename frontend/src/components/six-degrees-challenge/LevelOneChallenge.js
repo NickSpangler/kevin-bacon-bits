@@ -1,37 +1,95 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { RightCircleTwoTone } from '@ant-design/icons';
-import { Row, Col, Divider, Typography } from 'antd';
+import { Row, Col, Divider, Typography, AutoComplete } from 'antd';
 import silhouette from './silhouette.png'
 
 const { Text } = Typography
 
 export default function LevelOneChallenge(props) {
-    // const degrees = props.degree === 1 ? "Degree" : "Degrees"
     const target_a_path = props.target_a.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_a.profile_path}`)
     const target_b_path = props.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_b.profile_path}`)
-    // const level_class = props.degree % 2 === 0 ? 'slide-in-right' : 'slide-in-left'
+    
     const level_class = 'slide-in-right'
+
+   
+
+    // const onChange = (data) => {
+    //     if (typeof data !== 'object') {
+    //     setValue(data);
+    //     }
+    // };
+    
+    // const onSelect = (data) => {
+    //     fetch(`http://localhost:3000/actors/get_photo?input=${data.props.actor_id}`)
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //       setValue (data.name)
+    //       setSource(data.profile_path)
+    //       props.setTargetA(data.id) 
+    //     })
+    // };
+
+    const target_a_movies = props.target_a.movies.map(movie => (
+        {value:
+            <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
+              <div className='autocomplete-one'>{movie.title}</div>
+              <div className='autocomplete-two'>
+                <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
+              </div>
+            </div>
+        }
+    ))
+
+    const [value, setValue] = useState('');
+    const [options, setOptions] = useState(target_a_movies);
+    const [source, setSource] = useState('')
+
+    const onChange = (data) => {
+        if (typeof data !== 'object') {
+        setValue(data);
+        }
+      };
+
+    const onSearch = (searchText) => {
+    fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
+    .then(resp => resp.json())
+    .then(data => {
+      setOptions(
+      !searchText ? [] : data.map(person => (
+        { value: 
+            <div className='autocomplete-container' actor_id={person.id} profile_path={person.profile_path} name={person.name}>
+              <div className='autocomplete-one'>{person.name}</div>
+              <div className='autocomplete-two'>
+                <img src={person.profile_path ? `https://image.tmdb.org/t/p/w200${person.profile_path}` : silhouette } height='50px'></img>
+              </div>
+            </div>
+            }
+        ))
+      )
+    })
+  };
+
+    
     return (
-        <div className={`${level_class} level-tier`}>
-            <Divider orientation="center"></Divider>
-            <Row gutter={20} type="flex" align="middle">
-                <Col className="gutter-row" span={4} offset={4}>
+        <div className={`${level_class} challenge-level-tier`}>
+            <Divider orientation="center">1 Degree</Divider>
+            <Row gutter={100} type="flex" align="middle">
+                <Col className="gutter-row" span={4} offset={3}>
                     <div>
                     <img src={target_a_path} height='200px'></img>
                     </div>
                 </Col>
-                <Col className="gutter-row" span={2}>
+                <Col className="gutter-row" span={1}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
                 </Col>
                 <Col className="gutter-row" span={4}>
                     <div>
-                    {/* <img src={`https://image.tmdb.org/t/p/w200${props.data.movie.poster_path}`} height='200px'></img> */}
-                    <p>placeholder</p>
+                    <img src={silhouette} height='200px'></img>
                     </div>
                 </Col>
-                <Col className="gutter-row" span={2}>
+                <Col className="gutter-row" span={1}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
@@ -42,6 +100,18 @@ export default function LevelOneChallenge(props) {
                     </div>
                 </Col>
             </Row>
+            <br></br>
+            <AutoComplete
+                value={value}
+                options={options}
+                style={{
+                width: 300,
+                }}
+                onChange={onChange}
+                onSearch={onSearch}
+                placeholder="Select a Movie..."
+            />
+            <br></br>
             <br></br>
             <p sytle='text-align: center'><Text keyboard>{`${props.target_a.name}`}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
         </div>

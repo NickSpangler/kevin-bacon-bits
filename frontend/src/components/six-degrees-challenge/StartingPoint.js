@@ -67,18 +67,6 @@ const StartingPoint = (props) => {
     <>
       <Space direction="vertical">
       {starting_point_photo}
-      {/* <AutoComplete
-        value={value}
-        options={options}
-        style={{
-          width: 200,
-        }}
-        onSelect={onSelect}
-        onSearch={onSearch}
-        onChange={onChange}
-        placeholder="Select a Starting Point..."
-      />
-      <ResetButtons /> */}
       {input_or_buttons}
       </Space>
     </>
