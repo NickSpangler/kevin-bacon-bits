@@ -32,8 +32,8 @@ export default function LevelOneChallenge(props) {
     const target_a_movies = props.target_a.movies.map(movie => (
         {value:
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-              <div className='autocomplete-one'>{movie.title}</div>
-              <div className='autocomplete-two'>
+              <div className='challenge-autocomplete-one'>{movie.title}</div>
+              <div className='challenge-autocomplete-two'>
                 <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
               </div>
             </div>
@@ -58,8 +58,8 @@ export default function LevelOneChallenge(props) {
       !searchText ? target_a_movies : data.map(movie => (
         { value: 
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-              <div className='autocomplete-one'>{movie.title}</div>
-              <div className='autocomplete-two'>
+              <div className='challenge-autocomplete-one'>{movie.title}</div>
+              <div className='challenge-autocomplete-two'>
                 <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
               </div>
             </div>
