@@ -36,3 +36,15 @@ export const resetChallenge = () => {
         }
     )
 }
+
+export const updateFirstDegreeLink = (target_a_id, movie_id, target_b_id) => {
+    return (
+        {
+            type: 'UPDATE_FIRST_DEGREE_LINK', payload: {
+                target_a_id: target_a_id,
+                movie_id: movie_id,
+                target_b_id: target_b_id
+            }
+        }
+    )
+}

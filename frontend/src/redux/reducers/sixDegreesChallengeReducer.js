@@ -55,6 +55,11 @@ switch(action.type) {
                 challenge_active: false,
                 loading: false
         }
+    case 'UPDATE_FIRST_DEGREE_LINK':
+        return {
+            ...state,
+            first_degree_link: action.payload
+        }
     default:
         return state;
     }
