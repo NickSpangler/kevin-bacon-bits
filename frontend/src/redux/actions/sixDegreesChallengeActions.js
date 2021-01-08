@@ -23,7 +23,6 @@ export const startChallenge = (actor_id, degree) => {
         .then(res => res.json())
         .then(data => {
             dispatch({type: 'SET_TARGET_B', target_b: data.target_b})
-            alert(data.target_b.name)
             dispatch({type: 'TOGGLE_LOADING'})
             dispatch({type: 'TOGGLE_CHALLENGE_ACTIVE'})
         })
