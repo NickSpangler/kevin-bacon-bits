@@ -75,7 +75,6 @@ export default function LevelOneChallenge(props) {
                 </Col>
                 <Col className="gutter-row" span={4}>
                     <div>
-                    {/* <img src={silhouette} height='200px'></img> */}
                     {movie_poster}
                     </div>
                 </Col>
