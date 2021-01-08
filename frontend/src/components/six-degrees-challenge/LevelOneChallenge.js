@@ -54,6 +54,7 @@ export default function LevelOneChallenge(props) {
     const onSelect = (data) => {
         setValue(data.props.title)
         setSource(data.props.poster_path)
+        props.updateFirstDegreeLink(props.target_a, data.props.movie_id, props.target_b)
     };
 
     const movie_poster = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
