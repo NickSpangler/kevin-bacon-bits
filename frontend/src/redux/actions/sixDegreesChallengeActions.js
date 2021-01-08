@@ -21,7 +21,7 @@ export const startChallenge = (actor_id, degree) => {
         fetch(`http://localhost:3000/actors/start_SDChallenge?actor_id=${actor_id}&degree=${degree}`)
         .then(res => res.json())
         .then(data => {
-            debugger
+            alert(data.target_b.name)
         })
     }
 }
