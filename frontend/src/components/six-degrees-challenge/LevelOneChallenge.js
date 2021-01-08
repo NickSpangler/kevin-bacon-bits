@@ -51,7 +51,7 @@ export default function LevelOneChallenge(props) {
       };
 
     const onSearch = (searchText) => {
-    fetch(`http://localhost:3000/actors/auto_complete?input=${searchText}`)
+    fetch(`http://localhost:3000/movies/auto_complete?input=${searchText}&actor_id=${props.target_a.id}`)
     .then(resp => resp.json())
     .then(data => {
       setOptions(
