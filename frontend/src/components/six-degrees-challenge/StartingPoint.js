@@ -36,7 +36,6 @@ const StartingPoint = (props) => {
       setSource(data.profile_path)
       props.setTargetA(data.id) 
     })
-
   };
 
   const onChange = (data) => {

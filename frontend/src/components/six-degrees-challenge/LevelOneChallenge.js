@@ -11,24 +11,6 @@ export default function LevelOneChallenge(props) {
     
     const level_class = 'slide-in-right'
 
-   
-
-    // const onChange = (data) => {
-    //     if (typeof data !== 'object') {
-    //     setValue(data);
-    //     }
-    // };
-    
-    // const onSelect = (data) => {
-    //     fetch(`http://localhost:3000/actors/get_photo?input=${data.props.actor_id}`)
-    //     .then(resp => resp.json())
-    //     .then(data => {
-    //       setValue (data.name)
-    //       setSource(data.profile_path)
-    //       props.setTargetA(data.id) 
-    //     })
-    // };
-
     const target_a_movies = props.target_a.movies.map(movie => (
         {value:
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
