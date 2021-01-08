@@ -295,14 +295,45 @@ class Actor < ApplicationRecord
         end
     end
 
-    def self.start_SDChallenge(target_a, degree)
-        if degree.to_i == 1
-            byebug
-            actors = Actor.get_associated_actors(target_a)
+    
+    def self.get_top_ten(target)
+        (Actor.find_by_sql("
+            SELECT DISTINCT target_actors.id, target_actors.tmdb_id, target_actors.name, target_actors.profile_path, target_actors.gender, target_actors.created_at, target_actors.updated_at,target_actors.movie_actors_count
+            FROM
+            actors target
+            JOIN
+            movie_actors target_movies
+            ON
+            target.id = actor_id
+            JOIN
+            movies movies
+            ON
+            movies.id = target_movies.movie_id
+            JOIN
+            movie_actors rest
+            ON
+            rest.movie_id = target_movies.movie_id
+            JOIN
+            actors target_actors
+            ON
+            target_actors.id = rest.actor_id
+            WHERE
+            target.id = #{target.id}
+            ORDER BY
+            target_actors.movie_actors_count DESC") - [target])[0...10]
+            # top_ten = actors.sort{|a,b| a.movie_actors.size <=> b.movie_actors.size}[0...10]
         end
-    end
-
-
+        
+        def self.start_SDChallenge(target_a, degree)
+            if degree.to_i == 1
+                target_b = Actor.get_top_ten(target_a).sample
+                return {
+                    target_a: target_a,
+                    target_b: target_b
+                }
+            end
+        end
+        
 
 
 

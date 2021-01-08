@@ -29,7 +29,8 @@ class ActorsController < ApplicationController
     def start_SDChallenge
         target_a = Actor.find(params[:actor_id])
         degree = params[:degree]
-        Actor.start_SDChallenge(target_a, degree)
+        results = Actor.start_SDChallenge(target_a, degree)
+        render json: results
     end
 
 end
