@@ -8,7 +8,7 @@ export default function ChallengeOptionsContainer(props) {
     } else if (props.target_b !== 'not selected' && props.degree === 1) {
         return (
             <>
-                <h1 style={{color: 'white'}}>Your challenge is to connect {props.target_a.name} to {props.target_b.name}:</h1>
+                <h3 style={{color: 'white'}}>Your challenge is to connect {props.target_a.name} to {props.target_b.name}:</h3>
             </>
             )
     } else if (props.target_b !== 'not selected' && props.degree === 2) {
