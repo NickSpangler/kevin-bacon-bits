@@ -7,6 +7,7 @@ function sixDegreesChallengeReducer(state = {
     link_message: '',
     showing_result: false,
     challenge_active: false,
+    loading: false
 }, action) {
 
 switch(action.type) {
