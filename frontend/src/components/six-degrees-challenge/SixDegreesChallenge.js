@@ -41,6 +41,7 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
         link_message: sixDegreesChallenge.link_message,
         showing_result: sixDegreesChallenge.showing_result,
         challenge_active: sixDegreesChallenge.challenge_active,
+        loading: sixDegreesChallenge.loading,
         sound: settings.sound
     }
 }
