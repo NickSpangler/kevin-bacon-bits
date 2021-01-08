@@ -388,11 +388,14 @@ class Actor < ApplicationRecord
                 first_link = Actor.get_top_N(target_a, 5).sample
                 uniq_second_level = (Actor.get_sorted_associated_actors(first_link) - first_level - [target_a])
                 target_b = uniq_second_level[0...5].sample
-            else
-                return {
-                    target_a: 'LEVEL THREE',
-                    target_b: {name: 'LEVEL THREE'}
-                }
+            elsif degree.to_i == 3
+                first_level = Actor.get_associated_actors(target_a)
+                second_level = Actor.get_associated_actors_from_array(first_level.map{|a| a.id})
+                first_link = Actor.get_top_N(target_a, 5).sample
+                uniq_second_level = (Actor.get_sorted_associated_actors(first_link) - first_level - [target_a])
+                second_link = uniq_second_level[0...5].sample
+                uniq_third_level = (Actor.get_sorted_associated_actors(second_link) - second_level - first_level - [target_a])
+                target_b = uniq_third_level[0...3].sample
             end
             return {
                 target_a: target_a,
