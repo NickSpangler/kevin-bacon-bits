@@ -60,6 +60,12 @@ switch(action.type) {
             ...state,
             first_degree_link: action.payload
         }
+    case 'UPDATE_FIRST_DEGREE_RESULT':
+        return {
+            ...state,
+            first_degree_result: action.payload,
+            showing_result: true
+        }
     default:
         return state;
     }

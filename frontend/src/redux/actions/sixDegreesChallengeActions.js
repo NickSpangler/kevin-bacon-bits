@@ -48,3 +48,13 @@ export const updateFirstDegreeLink = (target_a_id, movie_id, target_b_id) => {
         }
     )
 }
+
+export const checkAnswer = (degree, first_degree_link) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/movies/check_answer?degree=${degree}&first_degree_target_a=${first_degree_link.target_a_id}&first_degree_target_b=${first_degree_link.target_b_id}&first_degree_movie=${first_degree_link.movie_id}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({type: 'UPDATE_FIRST_DEGREE_RESULT', payload: data})
+        })
+    }   
+}

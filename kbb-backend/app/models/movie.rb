@@ -6,9 +6,9 @@ class Movie < ApplicationRecord
     scope :auto_complete, -> (query) { where("title ILIKE (?)", "#{query}%" )}
 
     def self.check_first_degree_answer(target_a_id, movie_id, target_b_id)
-        target_a = Actor.find(target_a_id)
-        target_b = Actor.find(target_b_id)
-        movie = Movie.find(movie_id)
+        target_a = Actor.find(target_a_id.to_i)
+        target_b = Actor.find(target_b_id.to_i)
+        movie = Movie.find(movie_id.to_i)
         if movie.actors.include?(target_a) && movie.actors.include?(target_b)
             return {result: true, message: 'Yay! You are correct!'}
         else

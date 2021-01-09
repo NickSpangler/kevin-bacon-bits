@@ -3,7 +3,17 @@ import LevelOneChallenge from './LevelOneChallenge'
 import { Button } from 'antd'
 
 export default function ChallengeOptionsContainer(props) {
-    const button_or_no = props.first_degree_link.movie_id === '' ? (<></>) : (<Button type='primary' onClick={() => alert('Thats my Guess!')}>Submit Answer</Button>)
+
+    const { degree, first_degree_link } = props
+
+    const submit_answer = () => {
+        props.checkAnswer(degree, first_degree_link)
+    }
+
+    const button_or_no = props.first_degree_link.movie_id === '' ? (<></>) : (<Button type='primary' onClick={submit_answer}>Submit Answer</Button>)
+
+
+
     if (props.target_b === 'not selected') {
         return (
         <></>
