@@ -7,7 +7,7 @@ function sixDegreesChallengeReducer(state = {
         movie_id: '',
         target_b_id: ''
     },
-    link_result: [],
+    first_degree_result: {},
     link_message: '',
     showing_result: false,
     challenge_active: false,
@@ -49,7 +49,7 @@ switch(action.type) {
                     target_a_id: '',
                     movie_id: '',
                     target_b_id: ''},
-                link_result: [],
+                first_degree_result: {},
                 link_message: '',
                 showing_result: false,
                 challenge_active: false,

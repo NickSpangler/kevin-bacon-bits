@@ -40,7 +40,7 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
         degree: sixDegreesChallenge.degree,
         target_b: sixDegreesChallenge.target_b,
         first_degree_link: sixDegreesChallenge.first_degree_link,
-        link_result: sixDegreesChallenge.link_result,
+        first_degree_result: sixDegreesChallenge.link_result,
         link_message: sixDegreesChallenge.link_message,
         showing_result: sixDegreesChallenge.showing_result,
         challenge_active: sixDegreesChallenge.challenge_active,
