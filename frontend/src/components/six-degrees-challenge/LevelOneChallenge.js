@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { RightCircleTwoTone } from '@ant-design/icons';
 import { Row, Col, Divider, Typography, AutoComplete, Button } from 'antd';
 import silhouette from './silhouette.png'
+import poster_silhouette from './poster_silhouette.png'
 
 const { Text } = Typography
 
@@ -57,7 +58,7 @@ export default function LevelOneChallenge(props) {
         props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
     };
 
-    const movie_poster = source === '' || source === null ? (<img src={silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={silhouette} height='200px'></img>)
+    const movie_poster = source === '' || source === null ? (<img src={poster_silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={poster_silhouette} height='200px'></img>)
     
     return (
         <div className={`${level_class} challenge-level-tier`}>
