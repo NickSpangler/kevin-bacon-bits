@@ -189,6 +189,18 @@
   padding: 0px 0px 1px 0px;
 }
 
+.wrong-answer {
+  background-color: rgba(250, 70, 70, 0.6);
+  border-radius: 25px;
+  padding: 0px 0px 1px 0px;
+}
+
+.right-answer {
+  background-color: rgba(115, 252, 115, 0.6);
+  border-radius: 25px;
+  padding: 0px 0px 1px 0px;
+}
+
 .challenge-autocomplete-one {
   float: left;
   margin-top: 8%;
@@ -199,6 +211,10 @@
 .challenge-autocomplete-two {
   float: right;
   height: 50px;
+}
+
+.result-message {
+  color: black;
 }
 
 .slide-in-bottom{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both}

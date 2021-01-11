@@ -11,6 +11,7 @@ export default function LevelOneChallenge(props) {
     const target_b_path = props.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_b.profile_path}`)
     
     const level_class = 'slide-in-right'
+    const background_class = props.showing_result === false ? ('challenge-level-tier') : (props.first_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
 
     const target_a_movies = props.target_a.movies.map(movie => (
         {value:
@@ -59,9 +60,30 @@ export default function LevelOneChallenge(props) {
     };
 
     const movie_poster = source === '' || source === null ? (<img src={poster_silhouette} height='200px'></img>) : (<img src={`https://image.tmdb.org/t/p/w200${source}`} alt={poster_silhouette} height='200px'></img>)
-    
+    const message = props.showing_result !== true ? (
+      <p sytle='text-align: center'><Text keyboard>{`${props.target_a.name}`}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
+    ) : (
+      <p className='result-message' >{props.first_degree_result.message}</p>
+    )
+    const auto_complete_or_nothing = props.showing_result === true ? (
+      <><br></br></>
+    ) : (
+      <AutoComplete
+                value={value}
+                options={options}
+                style={{
+                width: 300,
+                marginBottom: '12px'
+                }}
+                onChange={onChange}
+                onSearch={onSearch}
+                onSelect={onSelect}
+                placeholder="Select a Movie..."
+            />
+    )
+
     return (
-        <div className={`${level_class} challenge-level-tier`}>
+        <div className={`${level_class} ${background_class}`}>
             <Divider orientation="center">1 Degree</Divider>
             <Row gutter={100} type="flex" align="middle">
                 <Col className="gutter-row" span={4} offset={3}>
@@ -91,20 +113,10 @@ export default function LevelOneChallenge(props) {
                 </Col>
             </Row>
             <br></br>
-            <AutoComplete
-                value={value}
-                options={options}
-                style={{
-                width: 300,
-                }}
-                onChange={onChange}
-                onSearch={onSearch}
-                onSelect={onSelect}
-                placeholder="Select a Movie..."
-            />
+            {auto_complete_or_nothing}
             <br></br>
             <br></br>
-            <p sytle='text-align: center'><Text keyboard>{`${props.target_a.name}`}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
+            { message }    
         </div>
     )
 }
