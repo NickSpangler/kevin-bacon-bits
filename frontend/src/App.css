@@ -124,9 +124,7 @@
 
 .search-container {
   background-image: url(./images/actor_collage.jpg);
-  /* height: 150vh; */
   height: 300vh;
-  /* background-position: center; */
   background-size: auto;
   background-repeat: repeat;
   background-size: contain;
@@ -222,6 +220,7 @@
 
 .slide-in-top{-webkit-animation:slide-in-top .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-top .5s cubic-bezier(.25,.46,.45,.94) both}
 @-webkit-keyframes slide-in-top{0%{-webkit-transform:translateY(-1000px);transform:translateY(-1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}@keyframes slide-in-top{0%{-webkit-transform:translateY(-1000px);transform:translateY(-1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}
+
 /* <-----------------------FILMOGRAPHY COMPONENTS---------------> */
 
 .filmography-container {
