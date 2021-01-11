@@ -12,6 +12,8 @@ export default function LevelOneChallenge(props) {
     const target_b_path = props.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_b.profile_path}`)
     const level_class = 'slide-in-right'
     const background_class = props.showing_result === false ? ('challenge-level-tier') : (props.first_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
+
+    // <----------------LEVEL ONE MOVIE SELECTION ------------------>
     const target_a_movies = props.target_a.movies.map(movie => (
         {value:
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
@@ -57,13 +59,14 @@ export default function LevelOneChallenge(props) {
         props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
     };
 
-    const movie_poster = l1Msource === '' || l1Msource === null ? (<img class='with-auto-complete' src={poster_silhouette} height='200px'></img>) : (<img class='with-auto-complete' src={`https://image.tmdb.org/t/p/w200${l1Msource}`} alt={poster_silhouette} height='200px'></img>)
-    const message = props.showing_result !== true ? (
-      <p sytle='text-align: center'><Text keyboard>{`${props.target_a.name}`}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
+    const l1movie_poster = l1Msource === '' || l1Msource === null ? (<img class='with-auto-complete' src={poster_silhouette} height='200px'></img>) : (<img class='with-auto-complete' src={`https://image.tmdb.org/t/p/w200${l1Msource}`} alt={poster_silhouette} height='200px'></img>)
+    
+    const l1message = props.showing_result !== true ? (
+      <p sytle='text-align: center'><Text keyboard>{`${props.target_a.name}`}</Text>{` was in what movie with what actor?`}</p>
     ) : (
       <p className='result-message' >{props.first_degree_result.message}</p>
     )
-    const auto_complete_or_nothing = props.showing_result === true ? (
+    const l1Mauto_complete_or_nothing = props.showing_result === true ? (
       <><br></br></>
     ) : (
       <AutoComplete
@@ -78,6 +81,9 @@ export default function LevelOneChallenge(props) {
                 placeholder="Select a Movie..."
             />
     )
+
+    // <----------------LEVEL ONE ACTOR SELECTION ------------------>
+   
 
     const search_results_or_nothing = props.showing_result === true && props.first_degree_result.result === false ? (<SearchResults results={props.first_degree_result.results} loading={props.loading} />) : (<></>)
 
@@ -98,9 +104,9 @@ export default function LevelOneChallenge(props) {
                 </Col>
                 <Col className="gutter-row" span={4}>
                     <div>
-                    {movie_poster}
+                    {l1movie_poster}
                     <br></br>
-                    {auto_complete_or_nothing}
+                    {l1Mauto_complete_or_nothing}
                     </div>
                 </Col>
                 <Col className="gutter-row adjust-for-auto-complete" span={2}>
@@ -114,11 +120,8 @@ export default function LevelOneChallenge(props) {
                     </div>
                 </Col>
             </Row>
-            {/* <br></br> */}
-            {/* {auto_complete_or_nothing} */}
-            {/* <br></br> */}
             <br></br>
-            { message }    
+            { l1message }    
         </div>
         {search_results_or_nothing}
         </>
