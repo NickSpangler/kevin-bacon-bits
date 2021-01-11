@@ -21,7 +21,7 @@ export default function ChallengeOptionsContainer(props) {
         return (
             <>
                 <h3 style={{color: 'white'}}>Your challenge is to connect {props.target_a.name} to {props.target_b.name}:</h3>
-                <LevelOneChallenge degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} updateFirstDegreeLink={props.updateFirstDegreeLink} showing_result={props.showing_result} first_degree_result={props.first_degree_result} />
+                <LevelOneChallenge degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} updateFirstDegreeLink={props.updateFirstDegreeLink} showing_result={props.showing_result} first_degree_result={props.first_degree_result} loaading={props.loading}/>
                 <br></br>
                 {button_or_no}
             </>

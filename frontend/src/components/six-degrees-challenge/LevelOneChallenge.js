@@ -83,7 +83,10 @@ export default function LevelOneChallenge(props) {
             />
     )
 
+    const search_results_or_nothing = props.showing_result === true && props.first_degree_result.result === false ? (<SearchResults results={props.first_degree_result.results} loading={props.loading} />) : (<></>)
+
     return (
+        <>
         <div className={`${level_class} ${background_class}`}>
             <Divider orientation="center">1 Degree</Divider>
             <Row gutter={100} type="flex" align="middle">
@@ -119,5 +122,7 @@ export default function LevelOneChallenge(props) {
             <br></br>
             { message }    
         </div>
+        {search_results_or_nothing}
+        </>
     )
 }
