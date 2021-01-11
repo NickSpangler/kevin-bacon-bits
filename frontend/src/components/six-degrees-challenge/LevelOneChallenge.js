@@ -90,12 +90,12 @@ export default function LevelOneChallenge(props) {
         <div className={`${level_class} ${background_class}`}>
             <Divider orientation="center">1 Degree</Divider>
             <Row gutter={100} type="flex" align="middle">
-                <Col className="gutter-row" span={4} offset={3}>
+                <Col className="gutter-row" span={4} offset={4}>
                     <div>
                     <img src={target_a_path} height='200px'></img>
                     </div>
                 </Col>
-                <Col className="gutter-row" span={1}>
+                <Col className="gutter-row" span={2}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
@@ -105,7 +105,7 @@ export default function LevelOneChallenge(props) {
                     {movie_poster}
                     </div>
                 </Col>
-                <Col className="gutter-row" span={1}>
+                <Col className="gutter-row" span={2}>
                     <div>
                     <RightCircleTwoTone style= {{fontSize: '50px'}} />
                     </div>
