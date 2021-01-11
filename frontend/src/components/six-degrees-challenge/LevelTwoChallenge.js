@@ -10,10 +10,8 @@ const { Text } = Typography
 export default function LevelOneChallenge(props) {
     const target_a_path = props.target_a.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_a.profile_path}`)
     const target_b_path = props.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_b.profile_path}`)
-    
     const level_class = 'slide-in-right'
     const background_class = props.showing_result === false ? ('challenge-level-tier') : (props.first_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
-
     const target_a_movies = props.target_a.movies.map(movie => (
         {value:
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
@@ -71,10 +69,9 @@ export default function LevelOneChallenge(props) {
       <AutoComplete
                 value={l1Mvalue}
                 options={l1Moptions}
-                // style={{
-                // width: 250,
-                // // marginBottom: '12px'
-                // }}
+                style={{   
+                width: 200,
+                }}
                 onChange={l1MonChange}
                 onSearch={l1MonSearch}
                 onSelect={l1MonSelect}
@@ -102,6 +99,7 @@ export default function LevelOneChallenge(props) {
                 <Col className="gutter-row" span={4}>
                     <div>
                     {movie_poster}
+                    <br></br>
                     {auto_complete_or_nothing}
                     </div>
                 </Col>
