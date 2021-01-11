@@ -382,7 +382,7 @@ class Actor < ApplicationRecord
         
         def self.start_SDChallenge(target_a, degree)
             if degree.to_i == 1
-                target_b = Actor.get_top_N(target_a, 30).sample
+                target_b = Actor.get_top_N(target_a, 100).sample
             elsif degree.to_i == 2
                 first_level = Actor.get_associated_actors(target_a)
                 first_link = Actor.get_top_N(target_a, 5).sample
