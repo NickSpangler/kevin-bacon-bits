@@ -37,6 +37,14 @@ export const resetChallenge = () => {
     )
 }
 
+export const tryAgain = () => {
+    return (
+        {
+            type: 'TRY_AGAIN'
+        }
+    )
+}
+
 export const updateFirstDegreeLink = (target_a_id, movie_id, target_b_id) => {
     return (
         {
