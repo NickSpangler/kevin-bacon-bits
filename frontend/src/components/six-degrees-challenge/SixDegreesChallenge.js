@@ -3,14 +3,14 @@ import { Button, Space } from 'antd';
 import StartingPoint from './StartingPoint';
 import SelectDegree from './SelectDegree';
 import { connect } from 'react-redux';
-import { setTargetA, setDegree, startChallenge, resetChallenge, updateFirstDegreeLink, checkAnswer } from '../../redux/actions/sixDegreesChallengeActions'
+import { setTargetA, setDegree, startChallenge, resetChallenge, updateFirstDegreeLink, checkAnswer, tryAgain } from '../../redux/actions/sixDegreesChallengeActions'
 import Loading from './Loading'
 import ChallengeOptionsContainer from './ChallengeOptionsContainer'
 
 function SixDegreesChallenge(props) {
 
     const challengeButton = props.target_a === 'not selected' || props.loading === true || props.challenge_active === true ? (<></>) : (<Button type='primary' onClick={() => props.startChallenge(props.target_a.id, props.degree)}>Challenge Me!</Button>)
-    const tryAgainButton = props.showing_result === true ? (<Button type='primary'>{`Try again with ${props.target_a.name}`}</Button>) : (<></>)
+    const tryAgainButton = props.showing_result === true ? (<Button type='primary' onClick={props.tryAgain} >{`Try again with ${props.target_a.name}`}</Button>) : (<></>)
     return (
         <>
         <div className='challenge-container'>
@@ -49,4 +49,4 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
     }
 }
 
-export default connect(mapStateToProps, { setTargetA, setDegree, startChallenge, resetChallenge, updateFirstDegreeLink, checkAnswer })(SixDegreesChallenge)
+export default connect(mapStateToProps, { setTargetA, setDegree, startChallenge, resetChallenge, updateFirstDegreeLink, checkAnswer, tryAgain })(SixDegreesChallenge)

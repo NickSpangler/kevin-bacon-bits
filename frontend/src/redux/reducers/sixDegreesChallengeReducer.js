@@ -55,7 +55,7 @@ switch(action.type) {
                 challenge_active: false,
                 loading: false
         }
-    case 'RESET_CHALLENGE':
+    case 'TRY_AGAIN':
         return {
                 ...state,
                 degree: 1,
