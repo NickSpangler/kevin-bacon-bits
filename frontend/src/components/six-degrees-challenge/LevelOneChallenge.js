@@ -3,6 +3,7 @@ import { RightCircleTwoTone } from '@ant-design/icons';
 import { Row, Col, Divider, Typography, AutoComplete, Button } from 'antd';
 import silhouette from './silhouette.png'
 import poster_silhouette from './poster_silhouette.png'
+import SearchResults from '../six-degrees-search/SearchResults'
 
 const { Text } = Typography
 
