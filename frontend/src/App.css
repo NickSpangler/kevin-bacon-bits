@@ -217,8 +217,28 @@
   height: 50px;
 }
 
+.small-challenge-autocomplete-one {
+  float: left;
+  margin-top: 8%;
+  overflow: scroll;
+  width: 230px;
+}
+
+.small-challenge-autocomplete-two {
+  float: right;
+  height: 50px;
+}
+
 .result-message {
   color: black;
+}
+
+.with-auto-complete {
+  margin-bottom: 30px;
+}
+
+.adjust-for-auto-complete {
+  margin-bottom: 74px;
 }
 
 .slide-in-bottom{-webkit-animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-bottom .5s cubic-bezier(.25,.46,.45,.94) both}

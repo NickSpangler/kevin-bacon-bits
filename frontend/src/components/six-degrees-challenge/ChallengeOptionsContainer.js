@@ -1,5 +1,6 @@
 import React from 'react'
 import LevelOneChallenge from './LevelOneChallenge'
+import LevelTwoChallenge from './LevelTwoChallenge'
 import { Button } from 'antd'
 
 export default function ChallengeOptionsContainer(props) {
@@ -29,8 +30,11 @@ export default function ChallengeOptionsContainer(props) {
     } else if (props.target_b !== 'not selected' && props.degree === 2) {
         return (
             <>
-                <h1 style={{color: 'white'}}>Two Degree Challenge</h1>
-            </>
+                <h3 style={{color: 'white'}}>Your challenge is to connect {props.target_a.name} to {props.target_b.name}:</h3>
+                <LevelTwoChallenge degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} updateFirstDegreeLink={props.updateFirstDegreeLink} showing_result={props.showing_result} first_degree_result={props.first_degree_result} loaading={props.loading}/>
+                <br></br>
+                {button_or_no}
+        </>
             )
     } else if (props.target_b !== 'not selected' && props.degree === 3) {
         return (
