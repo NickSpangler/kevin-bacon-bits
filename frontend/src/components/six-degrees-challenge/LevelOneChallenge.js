@@ -89,7 +89,7 @@ export default function LevelOneChallenge(props) {
         <>
         <div className={`${level_class} ${background_class}`}>
             <Divider orientation="center">1 Degree</Divider>
-            <Row gutter={100} type="flex" align="middle">
+            <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row" span={4} offset={4}>
                     <div>
                     <img src={target_a_path} height='200px'></img>

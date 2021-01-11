@@ -193,12 +193,16 @@
   background-color: rgba(250, 70, 70, 0.6);
   border-radius: 25px;
   padding: 0px 0px 1px 0px;
+  width: 60%;
+  margin: auto;
 }
 
 .right-answer {
   background-color: rgba(115, 252, 115, 0.6);
   border-radius: 25px;
   padding: 0px 0px 1px 0px;
+  width: 60%;
+  margin: auto;
 }
 
 .challenge-autocomplete-one {
