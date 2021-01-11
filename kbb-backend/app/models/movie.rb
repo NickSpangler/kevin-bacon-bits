@@ -16,10 +16,11 @@ class Movie < ApplicationRecord
         else
             link = Actor.first_degree_search(target_a, target_b)
             return {result: false, 
-                    message: "Sorry, that's incorrect. #{link[:target_a][:name]} was actually in #{link[:movie][:title]} with #{link[:target_b][:name]}."
-                    results: target_a: {name: target_a.name, profile_path: target_a.profile_path, character: target_a_chacter},
+                    message: "Sorry, that's incorrect. #{link[:target_a][:name]} was actually in #{link[:movie][:title]} with #{link[:target_b][:name]}.",
+                    results: {target_a: {name: target_a.name, profile_path: target_a.profile_path, character: target_a_chacter},
                             movie: {title: movie.title, poster_path: movie.poster_path},
                             target_b: {name: target_b.name, profile_path: target_b.profile_path, character: target_b_chacter}
+                            }
                     }
         end
     end
