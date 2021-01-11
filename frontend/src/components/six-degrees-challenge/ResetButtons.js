@@ -12,7 +12,7 @@ export default function ResetButtons(props) {
         <div>
             <Space>
             <Button type='primary' onClick={handleReset} >Select New Actor</Button>
-            <Button type='primary' onClick={() => alert('I give up!')}>I Give Up!</Button>
+            {/* <Button type='primary' onClick={() => alert('I give up!')}>I Give Up!</Button> */}
             </Space>
         </div>
     )
