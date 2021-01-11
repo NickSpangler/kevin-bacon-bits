@@ -9,7 +9,7 @@ export default function ChallengeOptionsContainer(props) {
         props.checkAnswer(degree, first_degree_link)
     }
 
-    const button_or_no = props.first_degree_link.movie_id === '' ? (<></>) : (<Button type='primary' onClick={submit_answer}>Submit Answer</Button>)
+    const button_or_no = props.first_degree_link.movie_id === '' || props.showing_result === true ? (<></>) : (<Button type='primary' onClick={submit_answer}>Submit Answer</Button>)
 
 
 
