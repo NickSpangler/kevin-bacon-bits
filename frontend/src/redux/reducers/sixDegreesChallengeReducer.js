@@ -55,6 +55,21 @@ switch(action.type) {
                 challenge_active: false,
                 loading: false
         }
+    case 'RESET_CHALLENGE':
+        return {
+                ...state,
+                degree: 1,
+                target_b: 'not selected',
+                first_degree_link: {
+                    target_a_id: '',
+                    movie_id: '',
+                    target_b_id: ''},
+                first_degree_result: {message: ''},
+                link_message: '',
+                showing_result: false,
+                challenge_active: false,
+                loading: false
+        }
     case 'UPDATE_FIRST_DEGREE_LINK':
         return {
             ...state,
