@@ -15,7 +15,7 @@ function SixDegreesChallenge(props) {
         <div className='challenge-container'>
         <div className='challenge-content'>
             <h1 style={{color: 'white'}}>Build the link between two actors:</h1>
-            <Space size='large' direction="vertical">
+            {/* <Space size='large' direction="vertical"> */}
             <div className='slide-in-bottom'>
                 <StartingPoint setTargetA={props.setTargetA} challenge_active={props.challenge_active} resetChallenge={props.resetChallenge} />
             </div>
@@ -27,7 +27,7 @@ function SixDegreesChallenge(props) {
             <ChallengeOptionsContainer degree={props.degree} target_a={props.target_a} target_b={props.target_b} first_degree_link={props.first_degree_link} updateFirstDegreeLink={props.updateFirstDegreeLink} checkAnswer={props.checkAnswer} showing_result={props.showing_result} first_degree_result={props.first_degree_result} loading={props.loading}/>
             <br></br>
             {challengeButton}
-            </Space>
+            {/* </Space> */}
         </div>
         </div>
         </>
