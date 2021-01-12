@@ -48,4 +48,12 @@ class MoviesController < ApplicationController
         render json: results
     end
 
+    def check_answer2
+        byebug
+        # if params[:degree].to_i == 1
+        #     results = Movie.check_first_degree_answer(params[:first_degree_target_a], params[:first_degree_movie], params[:first_degree_target_b])
+        # end
+        # render json: results
+    end
+
 end

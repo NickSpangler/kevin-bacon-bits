@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/movies/possible_movies', to: 'movies#possible_movies'
   get '/movies/auto_complete', to: 'movies#auto_complete'
   get '/movies/check_answer', to: 'movies#check_answer'
+  get '/movies/check_answer2', to: 'movies#check_answer2'
   
   resources :movie_actors
   resources :actors
