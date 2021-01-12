@@ -35,6 +35,7 @@ function SixDegreesChallenge(props) {
             checkAnswer2={props.checkAnswer2} 
             showing_result={props.showing_result} 
             first_degree_result={props.first_degree_result} 
+            second_degree_result={props.second_degree_result} 
             loading={props.loading}/>
             <br></br>
             {challengeButton}
@@ -53,6 +54,7 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
         first_degree_link: sixDegreesChallenge.first_degree_link,
         second_degree_link: sixDegreesChallenge.second_degree_link,
         first_degree_result: sixDegreesChallenge.first_degree_result,
+        second_degree_result: sixDegreesChallenge.second_degree_result,
         link_message: sixDegreesChallenge.link_message,
         showing_result: sixDegreesChallenge.showing_result,
         challenge_active: sixDegreesChallenge.challenge_active,

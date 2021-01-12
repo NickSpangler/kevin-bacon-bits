@@ -12,6 +12,7 @@ export default function LevelOneChallenge(props) {
     const target_b_path = props.target_b.profile_path === null ? silhouette : (`https://image.tmdb.org/t/p/w200${props.target_b.profile_path}`)
     const level_class = 'slide-in-right'
     const background_class = props.showing_result === false ? ('challenge-level-tier') : (props.first_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
+    const background_class2 = props.showing_result === false ? ('challenge-level-tier') : (props.second_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
 
     const [answer, setAnswer] = useState({
         target_a_id: '',
@@ -22,7 +23,7 @@ export default function LevelOneChallenge(props) {
     });
 
     const submitAnswer = () => {
-        debugger
+        props.checkAnswer2(answer)
     }
     const submit_button = answer.target_a_id === '' ||
                           answer.movie_one_id === '' ||
@@ -231,10 +232,11 @@ export default function LevelOneChallenge(props) {
     const l2message = props.showing_result !== true ? (
         <p sytle='text-align: center'><Text keyboard>{target_c_name}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
       ) : (
-        <p className='result-message' >{props.first_degree_result.message}</p>
+        <p className='result-message' >{props.second_degree_result.message}</p>
       )
 
-    const search_results_or_nothing = props.showing_result === true && props.first_degree_result.result === false ? (<SearchResults results={props.first_degree_result.results} loading={props.loading} />) : (<></>)
+    const search_results_or_nothing = (props.showing_result === true && props.first_degree_result.result === false) ||
+    (props.showing_result === true && props.second_degree_result.result === false)  ? (<SearchResults results={props.second_degree_result.results} loading={props.loading} />) : (<></>)
 
     return (
         <>
@@ -275,7 +277,7 @@ export default function LevelOneChallenge(props) {
             { l1message }    
         </div>
 
-        <div className={`slide-in-right ${background_class}`}>
+        <div className={`slide-in-right ${background_class2}`}>
             <Divider orientation="center">2 Degrees</Divider>
             <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row adjust-for-auto-complete" span={4} offset={4}>

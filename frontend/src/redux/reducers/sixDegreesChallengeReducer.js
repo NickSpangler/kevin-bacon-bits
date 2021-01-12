@@ -13,6 +13,7 @@ function sixDegreesChallengeReducer(state = {
         target_b_id: ''
     },
     first_degree_result: {message: ''},
+    second_degree_result: {message: ''},
     link_message: '',
     showing_result: false,
     challenge_active: false,
@@ -61,6 +62,7 @@ switch(action.type) {
                     target_b_id: ''
                 },
                 first_degree_result: {message: ''},
+                second_degree_result: {message: ''},
                 link_message: '',
                 showing_result: false,
                 challenge_active: false,
@@ -82,6 +84,7 @@ switch(action.type) {
                     target_b_id: ''
                 },
                 first_degree_result: {message: ''},
+                second_degree_result: {message: ''},
                 link_message: '',
                 showing_result: false,
                 challenge_active: false,
@@ -96,6 +99,13 @@ switch(action.type) {
         return {
             ...state,
             first_degree_result: action.payload,
+            showing_result: true
+        }
+    case 'UPDATE_FIRST_AND_SECOND_DEGREE_RESULT':
+        return {
+            ...state,
+            first_degree_result: action.payload.first_degree_result,
+            second_degree_result: action.payload.second_degree_result,
             showing_result: true
         }
     default:

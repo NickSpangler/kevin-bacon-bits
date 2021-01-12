@@ -49,11 +49,8 @@ class MoviesController < ApplicationController
     end
 
     def check_answer2
-        byebug
-        # if params[:degree].to_i == 1
-        #     results = Movie.check_first_degree_answer(params[:first_degree_target_a], params[:first_degree_movie], params[:first_degree_target_b])
-        # end
-        # render json: results
+        results = Movie.check_second_degree_answer(params[:target_a_id], params[:movie_one_id], params[:target_c_id], params[:movie_two_id], params[:target_b_id])
+        render json: results
     end
 
 end
