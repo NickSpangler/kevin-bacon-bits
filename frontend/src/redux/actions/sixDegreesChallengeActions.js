@@ -66,3 +66,13 @@ export const checkAnswer = (degree, first_degree_link) => {
         })
     }   
 }
+
+export const checkAnswer2 = (answer) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/movies/check_answer2?target_a_id=${answer.target_a_id}&movie_one_id=${answer.movie_one_id}&target_c_id=${answer.tarfget_c_id}&movie_two_id=${answer.target_c_id}&target_b_id=${answer.tarfget_b_id}`)
+        .then(res => res.json())
+        .then(data => {
+            // dispatch({type: 'UPDATE_FIRST_DEGREE_RESULT', payload: data})
+        })
+    }   
+}

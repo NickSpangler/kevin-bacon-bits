@@ -21,6 +21,16 @@ export default function LevelOneChallenge(props) {
         target_b_id: ''
     });
 
+    const submitAnswer = () => {
+        debugger
+    }
+    const submit_button = answer.target_a_id === '' ||
+                          answer.movie_one_id === '' ||
+                          answer.target_c_id === '' ||
+                          answer.movie_two_id === '' ||
+                          answer.target_b_id === '' ||
+                          props.showing_result === true ? (<></>) : (<Button type='primary' onClick={submitAnswer}>Submit Answer</Button>)
+
 
     // <----------------LEVEL ONE MOVIE SELECTION ------------------>
     const target_a_movies = props.target_a.movies.map(movie => (
@@ -66,7 +76,7 @@ export default function LevelOneChallenge(props) {
         l1MsetValue(data.props.title)
         l1MsetSource(data.props.poster_path)
         // props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
-        setAnswer({...answer, target_a_id: props.target_a.id, movie_one_id: data.props.id})
+        setAnswer({...answer, target_a_id: props.target_a.id, movie_one_id: data.props.movie_id})
     };
 
     const l1movie_poster = l1Msource === '' || l1Msource === null ? (<img class='with-auto-complete' src={poster_silhouette} height='200px'></img>) : (<img class='with-auto-complete' src={`https://image.tmdb.org/t/p/w200${l1Msource}`} alt={poster_silhouette} height='200px'></img>)
@@ -195,7 +205,7 @@ export default function LevelOneChallenge(props) {
     const l2MonSelect = (data) => {
         l2MsetValue(data.props.title)
         l2MsetSource(data.props.poster_path)
-        setAnswer({...answer, movie_two_id: data.props.id, target_b_id: props.target_b.id})
+        setAnswer({...answer, movie_two_id: data.props.movie_id, target_b_id: props.target_b.id})
         // props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
     };
 
@@ -298,8 +308,10 @@ export default function LevelOneChallenge(props) {
             </Row>
             { l2message }    
         </div>
-
+        
         {search_results_or_nothing}
+        <br></br>
+        {submit_button}
         </>
     )
 }
