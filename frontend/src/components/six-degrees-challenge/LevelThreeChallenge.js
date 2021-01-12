@@ -41,7 +41,7 @@ export default function LevelOneChallenge(props) {
     const target_a_movies = props.target_a.movies.map(movie => (
         {value:
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-              <div className='challenge-autocomplete-one'>{movie.title}</div>
+              <div className='small-challenge-autocomplete-one'>{movie.title}</div>
               <div className='challenge-autocomplete-two'>
                 <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
               </div>
@@ -67,7 +67,7 @@ export default function LevelOneChallenge(props) {
         !searchText ? target_a_movies : data.map(movie => (
             { value: 
                 <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-                <div className='challenge-autocomplete-one'>{movie.title}</div>
+                <div className='small-challenge-autocomplete-one'>{movie.title}</div>
                 <div className='challenge-autocomplete-two'>
                     <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
                 </div>
@@ -98,7 +98,9 @@ export default function LevelOneChallenge(props) {
                 value={l1Mvalue}
                 options={l1Moptions}
                 style={{   
-                width: 200,
+                width: 230,
+                marginTop: '10px',
+                marginBottom: '10px'
                 }}
                 onChange={l1MonChange}
                 onSearch={l1MonSearch}
@@ -155,8 +157,10 @@ export default function LevelOneChallenge(props) {
                   value={l1Avalue}
                   options={l1Aoptions}
                   style={{   
-                  width: 200,
-                  }}
+                width: 230,
+                marginTop: '10px',
+                marginBottom: '10px'
+                }}
                   onChange={l1AonChange}
                   onSearch={l1AonSearch}
                   onSelect={l1AonSelect}
@@ -187,7 +191,7 @@ export default function LevelOneChallenge(props) {
         !searchText ? [] : data.map(movie => (
             { value: 
                 <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-                <div className='challenge-autocomplete-one'>{movie.title}</div>
+                <div className='small-challenge-autocomplete-one'>{movie.title}</div>
                 <div className='challenge-autocomplete-two'>
                     <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
                 </div>
@@ -213,7 +217,9 @@ export default function LevelOneChallenge(props) {
                 value={l2Mvalue}
                 options={l2Moptions}
                 style={{   
-                width: 200,
+                width: 230,
+                marginTop: '10px',
+                marginBottom: '10px'
                 }}
                 onChange={l2MonChange}
                 onSearch={l2MonSearch}
@@ -272,8 +278,10 @@ export default function LevelOneChallenge(props) {
                   value={l2Avalue}
                   options={l2Aoptions}
                   style={{   
-                  width: 200,
-                  }}
+                    width: 230,
+                    marginTop: '10px',
+                    marginBottom: '10px'
+                    }}
                   onChange={l2AonChange}
                   onSearch={l2AonSearch}
                   onSelect={l2AonSelect}
@@ -298,7 +306,7 @@ export default function LevelOneChallenge(props) {
     const target_b_movies = props.target_b.movies.map(movie => (
         {value:
             <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-              <div className='challenge-autocomplete-one'>{movie.title}</div>
+              <div className='small-challenge-autocomplete-one'>{movie.title}</div>
               <div className='challenge-autocomplete-two'>
                 <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
               </div>
@@ -324,7 +332,7 @@ export default function LevelOneChallenge(props) {
         !searchText ? target_b_movies : data.map(movie => (
             { value: 
                 <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-                <div className='challenge-autocomplete-one'>{movie.title}</div>
+                <div className='small-challenge-autocomplete-one'>{movie.title}</div>
                 <div className='challenge-autocomplete-two'>
                     <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
                 </div>
@@ -350,7 +358,9 @@ export default function LevelOneChallenge(props) {
                 value={l3Mvalue}
                 options={l3Moptions}
                 style={{   
-                width: 200,
+                width: 230,
+                marginTop: '10px',
+                marginBottom: '10px'
                 }}
                 onChange={l3MonChange}
                 onSearch={l3MonSearch}
@@ -388,8 +398,8 @@ export default function LevelOneChallenge(props) {
                 <Col className="gutter-row" span={4}>
                     <div>
                         {l1movie_poster}
-                    <br></br>
-                        {l1Mauto_complete_or_nothing}
+                    {/* <br></br>
+                        {l1Mauto_complete_or_nothing} */}
                     </div>
                 </Col>
                 <Col className="gutter-row adjust-for-auto-complete" span={2}>
@@ -400,12 +410,24 @@ export default function LevelOneChallenge(props) {
                 <Col className="gutter-row" span={4}>
                     <div>
                         {l1actor_image}
-                        <br></br>
-                        {l1Aauto_complete_or_nothing}
+                        {/* <br></br>
+                        {l1Aauto_complete_or_nothing} */}
                     </div>
                 </Col>
             </Row>
-            <br></br>
+
+            <Row gutter={21} type="flex" align="middle">
+                <Col span={6} offset={3}>
+                </Col>
+                <Col span={6}>
+                {l1Mauto_complete_or_nothing}
+                </Col>
+                <Col span={6}>
+                {l1Aauto_complete_or_nothing}
+                </Col>
+            </Row>
+
+            {/* <br></br> */}
             { l1message }    
         </div>
 
@@ -427,8 +449,8 @@ export default function LevelOneChallenge(props) {
                 <Col className="gutter-row with-auto-complete" span={4}>
                     <div>
                     {l2movie_poster}
-                    <br></br>
-                    {l2Mauto_complete_or_nothing}
+                    {/* <br></br>
+                    {l2Mauto_complete_or_nothing} */}
                     </div>
                 </Col>
                 <Col className="gutter-row adjust-for-auto-complete" span={2}>
@@ -439,11 +461,23 @@ export default function LevelOneChallenge(props) {
                 <Col className="gutter-row with-auto-complete" span={4}>
                     <div>
                         {l2actor_image2}
-                        <br></br>
-                        {l2Aauto_complete_or_nothing}
+                        {/* <br></br>
+                        {l2Aauto_complete_or_nothing} */}
                     </div>
                 </Col>
             </Row>
+
+            <Row gutter={21} type="flex" align="middle">
+                <Col span={6} offset={3}>
+                </Col>
+                <Col span={6}>
+                {l2Mauto_complete_or_nothing}
+                </Col>
+                <Col span={6}>
+                {l2Aauto_complete_or_nothing}
+                </Col>
+            </Row>
+
             { l2message }    
         </div>
 
@@ -465,8 +499,8 @@ export default function LevelOneChallenge(props) {
                 <Col className="gutter-row with-auto-complete" span={4}>
                     <div>
                     {l3movie_poster}
-                    <br></br>
-                    {l3Mauto_complete_or_nothing}
+                    {/* <br></br> */}
+                    {/* {l3Mauto_complete_or_nothing} */}
                     </div>
                 </Col>
                 <Col className="gutter-row adjust-for-auto-complete" span={2}>
@@ -476,10 +510,21 @@ export default function LevelOneChallenge(props) {
                 </Col>
                 <Col className="gutter-row adjust-for-auto-complete" span={4}>
                     <div>
-                        <img style={{marginBottom: '30px'}} src={target_b_path} height='200px'></img>
+                        <img src={target_b_path} height='200px'></img>
                     </div>
                 </Col>
             </Row>
+
+            <Row gutter={21} type="flex" align="middle">
+                <Col span={6} offset={3}>
+                </Col>
+                <Col span={6}>
+                {l3Mauto_complete_or_nothing}
+                </Col>
+                <Col span={6}>
+                </Col>
+            </Row>
+
             { l3message }    
         </div>
         

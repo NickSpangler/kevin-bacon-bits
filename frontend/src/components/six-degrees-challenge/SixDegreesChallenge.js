@@ -9,8 +9,13 @@ import ChallengeOptionsContainer from './ChallengeOptionsContainer'
 
 function SixDegreesChallenge(props) {
 
+    const tryAgain = () => {
+        props.tryAgain()
+        document.documentElement.scrollTop = 0;
+    }
+
     const challengeButton = props.target_a === 'not selected' || props.loading === true || props.challenge_active === true ? (<></>) : (<Button type='primary' onClick={() => props.startChallenge(props.target_a.id, props.degree)}>Challenge Me!</Button>)
-    const tryAgainButton = props.showing_result === true ? (<Button type='primary' onClick={props.tryAgain} >{`Try again with ${props.target_a.name}`}</Button>) : (<></>)
+    const tryAgainButton = props.showing_result === true ? (<Button type='primary' onClick={tryAgain} >{`Try again with ${props.target_a.name}`}</Button>) : (<></>)
     return (
         <>
         <div className='challenge-container'>
@@ -41,9 +46,10 @@ function SixDegreesChallenge(props) {
             loading={props.loading} 
             loading_answer={props.loading_answer}
             />
+            {tryAgainButton}
             <br></br>
             {challengeButton}
-            {tryAgainButton}
+            
         </div>
         </div>
         </>
