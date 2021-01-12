@@ -30,7 +30,7 @@ class ActorsController < ApplicationController
         target_a = Actor.find(params[:actor_id])
         degree = params[:degree]
         results = Actor.start_SDChallenge(target_a, degree)
-        render json: results
+        render json: results, :include => [:movies, :movie_actors]
     end
 
 end

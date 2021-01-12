@@ -7,6 +7,11 @@ function sixDegreesChallengeReducer(state = {
         movie_id: '',
         target_b_id: ''
     },
+    second_degree_link: {
+        target_a_id: '',
+        movie_id: '',
+        target_b_id: ''
+    },
     first_degree_result: {message: ''},
     link_message: '',
     showing_result: false,
@@ -48,7 +53,13 @@ switch(action.type) {
                 first_degree_link: {
                     target_a_id: '',
                     movie_id: '',
-                    target_b_id: ''},
+                    target_b_id: ''
+                },
+                second_degree_link: {
+                    target_a_id: '',
+                    movie_id: '',
+                    target_b_id: ''
+                },
                 first_degree_result: {message: ''},
                 link_message: '',
                 showing_result: false,
@@ -63,7 +74,13 @@ switch(action.type) {
                 first_degree_link: {
                     target_a_id: '',
                     movie_id: '',
-                    target_b_id: ''},
+                    target_b_id: ''
+                },
+                second_degree_link: {
+                    target_a_id: '',
+                    movie_id: '',
+                    target_b_id: ''
+                },
                 first_degree_result: {message: ''},
                 link_message: '',
                 showing_result: false,
