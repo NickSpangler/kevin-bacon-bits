@@ -65,7 +65,8 @@ export default function LevelOneChallenge(props) {
     const l1MonSelect = (data) => {
         l1MsetValue(data.props.title)
         l1MsetSource(data.props.poster_path)
-        props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
+        // props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
+        setAnswer({...answer, target_a_id: props.target_a.id, movie_one_id: data.props.id})
     };
 
     const l1movie_poster = l1Msource === '' || l1Msource === null ? (<img class='with-auto-complete' src={poster_silhouette} height='200px'></img>) : (<img class='with-auto-complete' src={`https://image.tmdb.org/t/p/w200${l1Msource}`} alt={poster_silhouette} height='200px'></img>)
@@ -122,6 +123,7 @@ export default function LevelOneChallenge(props) {
         .then(data => {
             l1AsetValue (data.name)
             l1AsetSource(data.profile_path)
+            setAnswer({...answer, target_c_id: data.id})
         })
     };
 
@@ -193,6 +195,7 @@ export default function LevelOneChallenge(props) {
     const l2MonSelect = (data) => {
         l2MsetValue(data.props.title)
         l2MsetSource(data.props.poster_path)
+        setAnswer({...answer, movie_two_id: data.props.id, target_b_id: props.target_b.id})
         // props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
     };
 
