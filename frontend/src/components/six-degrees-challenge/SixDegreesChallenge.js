@@ -38,7 +38,9 @@ function SixDegreesChallenge(props) {
             first_degree_result={props.first_degree_result} 
             second_degree_result={props.second_degree_result} 
             third_degree_result={props.third_degree_result} 
-            loading={props.loading}/>
+            loading={props.loading} 
+            loading_answer={props.loading_answer}
+            />
             <br></br>
             {challengeButton}
             {tryAgainButton}
@@ -61,6 +63,7 @@ const mapStateToProps = ({ sixDegreesChallenge, settings }) => {
         showing_result: sixDegreesChallenge.showing_result,
         challenge_active: sixDegreesChallenge.challenge_active,
         loading: sixDegreesChallenge.loading,
+        loading_answer: sixDegreesChallenge.loading_answer,
         sound: settings.sound
     }
 }

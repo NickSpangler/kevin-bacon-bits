@@ -4,6 +4,8 @@ import { Row, Col, Divider, Typography, AutoComplete, Button } from 'antd';
 import silhouette from './silhouette.png'
 import poster_silhouette from './poster_silhouette.png'
 import SearchResults from '../six-degrees-search/SearchResults'
+import LoadingAnswer from './LoadingAnswer'
+import Loading from './Loading';
 
 const { Text } = Typography
 
@@ -30,7 +32,8 @@ export default function LevelOneChallenge(props) {
                           answer.movie_one_id === '' ||
                           answer.target_c_id === '' ||
                           answer.movie_two_id === '' ||
-                          answer.target_b_id === '' ||
+                          answer.target_b_id === '' || 
+                          props.loading_answer === true || 
                           props.showing_result === true ? (<></>) : (<Button type='primary' onClick={submitAnswer}>Submit Answer</Button>)
 
 
@@ -483,6 +486,7 @@ export default function LevelOneChallenge(props) {
         {search_results_or_nothing}
         <br></br>
         {submit_button}
+        <LoadingAnswer loading_answer={props.loading_answer} />
         </>
     )
 }

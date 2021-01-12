@@ -13,7 +13,8 @@ function sixDegreesChallengeReducer(state = {
     link_message: '',
     showing_result: false,
     challenge_active: false,
-    loading: false
+    loading: false,
+    loading_answer: false
 }, action) {
 
 switch(action.type) {
@@ -31,6 +32,11 @@ switch(action.type) {
         return {
             ...state,
             loading: !state.loading
+        }
+    case 'TOGGLE_LOADING_ANSWER':
+        return {
+            ...state,
+            loading_answer: !state.loading_answer
         }
     case 'TOGGLE_CHALLENGE_ACTIVE':
         return {
@@ -58,7 +64,8 @@ switch(action.type) {
                 link_message: '',
                 showing_result: false,
                 challenge_active: false,
-                loading: false
+                loading: false,
+                loading_answer: false
         }
     case 'TRY_AGAIN':
         return {
@@ -76,7 +83,8 @@ switch(action.type) {
                 link_message: '',
                 showing_result: false,
                 challenge_active: false,
-                loading: false
+                loading: false,
+                loading_answer: false
         }
     case 'UPDATE_FIRST_DEGREE_LINK':
         return {

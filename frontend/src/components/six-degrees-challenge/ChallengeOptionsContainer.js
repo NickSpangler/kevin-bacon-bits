@@ -71,6 +71,7 @@ export default function ChallengeOptionsContainer(props) {
                 second_degree_result={props.second_degree_result} 
                 third_degree_result={props.third_degree_result} 
                 loading={props.loading} 
+                loading_answer={props.loading_answer} 
                 checkAnswer3={props.checkAnswer3}
                 />
                 <br></br>
