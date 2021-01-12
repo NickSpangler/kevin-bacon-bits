@@ -76,3 +76,13 @@ export const checkAnswer2 = (answer) => {
         })
     }   
 }
+
+export const checkAnswer3 = (answer) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/movies/check_answer3?target_a_id=${answer.target_a_id}&movie_one_id=${answer.movie_one_id}&target_c_id=${answer.target_c_id}&movie_two_id=${answer.movie_two_id}&target_d_id=${answer.target_d_id}&movie_three_id=${answer.movie_three_id}&target_b_id=${answer.target_b_id}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({type: 'UPDATE_FIRST_AND_SECOND_AND_THIRD_DEGREE_RESULT', payload: data})
+        })
+    }   
+}

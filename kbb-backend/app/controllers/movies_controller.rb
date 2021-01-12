@@ -36,8 +36,12 @@ class MoviesController < ApplicationController
     end
 
     def auto_complete
-        actor = Actor.find(params[:actor_id])
-        movies = actor.movies.auto_complete(params[:input])
+        if params[:actor_id]
+            actor = Actor.find(params[:actor_id])
+            movies = actor.movies.auto_complete(params[:input])
+        else
+            movies = Movie.auto_complete(params[:input]).limit(10)
+        end
         render json: movies
     end
 

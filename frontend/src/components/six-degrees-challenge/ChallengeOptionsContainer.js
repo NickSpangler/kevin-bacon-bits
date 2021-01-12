@@ -70,7 +70,7 @@ export default function ChallengeOptionsContainer(props) {
                 first_degree_result={props.first_degree_result} 
                 second_degree_result={props.second_degree_result} 
                 loading={props.loading} 
-                checkAnswer2={props.checkAnswer2}
+                checkAnswer3={props.checkAnswer3}
                 />
                 <br></br>
                 {button_or_no}
