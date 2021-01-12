@@ -162,21 +162,21 @@ export default function LevelOneChallenge(props) {
 
     const l1actor_image = l1Asource === '' || l1Msource === null ? (<img class='with-auto-complete' src={silhouette} height='200px'></img>) : (<img class='with-auto-complete' src={`https://image.tmdb.org/t/p/w200${l1Asource}`} alt={silhouette} height='200px'></img>)
     const l2actor_image = l1Asource === '' || l1Msource === null ? (<img class='adjust-auto-complete' src={silhouette} height='200px'></img>) : (<img class='adjust-for-auto-complete' src={`https://image.tmdb.org/t/p/w200${l1Asource}`} alt={silhouette} height='200px'></img>)
-    // <----------------LEVEL TWO MOVIE SELECTION ------------------>
     
-    const target_b_movies = props.target_b.movies.map(movie => (
-        {value:
-            <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
-              <div className='challenge-autocomplete-one'>{movie.title}</div>
-              <div className='challenge-autocomplete-two'>
-                <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
-              </div>
-            </div>
-        }
-    ))
+    // <----------------LEVEL TWO MOVIE SELECTION ------------------>
+    // const target_b_movies = props.target_b.movies.map(movie => (
+    //     {value:
+    //         <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
+    //           <div className='challenge-autocomplete-one'>{movie.title}</div>
+    //           <div className='challenge-autocomplete-two'>
+    //             <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
+    //           </div>
+    //         </div>
+    //     }
+    // ))
 
     const [l2Mvalue, l2MsetValue] = useState('');
-    const [l2Moptions, l2MsetOptions] = useState(target_b_movies);
+    const [l2Moptions, l2MsetOptions] = useState([]);
     const [l2Msource, l2MsetSource] = useState('')
 
     const l2MonChange = (data) => {
@@ -206,7 +206,7 @@ export default function LevelOneChallenge(props) {
     const l2MonSelect = (data) => {
         l2MsetValue(data.props.title)
         l2MsetSource(data.props.poster_path)
-        setAnswer({...answer, movie_two_id: data.props.movie_id, target_b_id: props.target_b.id})
+        setAnswer({...answer, movie_two_id: data.props.movie_id})
         // props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
     };
 
@@ -230,6 +230,79 @@ export default function LevelOneChallenge(props) {
 
     const target_c_name = l1Avalue === '' ? ('Who') : (l1Avalue)
     const l2message = props.showing_result !== true ? (
+        <p sytle='text-align: center'><Text keyboard>{target_c_name}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
+      ) : (
+        <p className='result-message' >{props.second_degree_result.message}</p>
+      )
+
+    // <----------------LEVEL THREE MOVIE SELECTION ------------------>
+    
+    const target_b_movies = props.target_b.movies.map(movie => (
+        {value:
+            <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
+              <div className='challenge-autocomplete-one'>{movie.title}</div>
+              <div className='challenge-autocomplete-two'>
+                <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
+              </div>
+            </div>
+        }
+    ))
+
+    const [l3Mvalue, l3MsetValue] = useState('');
+    const [l3Moptions, l3MsetOptions] = useState(target_b_movies);
+    const [l3Msource, l3MsetSource] = useState('')
+
+    const l3MonChange = (data) => {
+        if (typeof data !== 'object') {
+            l3MsetValue(data);
+        }
+      };
+
+    const l3MonSearch = (searchText) => {
+        fetch(`http://localhost:3000/movies/auto_complete?input=${searchText}&actor_id=${props.target_b.id}`)
+        .then(resp => resp.json())
+        .then(data => {
+            l3MsetOptions(
+        !searchText ? target_b_movies : data.map(movie => (
+            { value: 
+                <div className='autocomplete-container' movie_id={movie.id} poster_path={movie.poster_path} title={movie.title}>
+                <div className='challenge-autocomplete-one'>{movie.title}</div>
+                <div className='challenge-autocomplete-two'>
+                    <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : silhouette } height='50px'></img>
+                </div>
+                </div>
+                }
+            )))
+        })
+    };
+
+    const l3MonSelect = (data) => {
+        l3MsetValue(data.props.title)
+        l3MsetSource(data.props.poster_path)
+        setAnswer({...answer, movie_three_id: data.props.movie_id, target_b_id: props.target_b.id})
+        // props.updateFirstDegreeLink(props.target_a.id, data.props.movie_id, props.target_b.id)
+    };
+
+    const l3movie_poster = l3Msource === '' || l3Msource === null ? (<img class='with-auto-complete' src={poster_silhouette} height='200px'></img>) : (<img class='with-auto-complete' src={`https://image.tmdb.org/t/p/w200${l3Msource}`} alt={poster_silhouette} height='200px'></img>)
+
+    const l3Mauto_complete_or_nothing = props.showing_result === true ? (
+      <><br></br></>
+    ) : (
+      <AutoComplete
+                value={l3Mvalue}
+                options={l3Moptions}
+                style={{   
+                width: 200,
+                }}
+                onChange={l3MonChange}
+                onSearch={l3MonSearch}
+                onSelect={l3MonSelect}
+                placeholder="Select a Movie..."
+            />
+    )
+
+    // const target_c_name = l1Avalue === '' ? ('Who') : (l1Avalue)
+    const l3message = props.showing_result !== true ? (
         <p sytle='text-align: center'><Text keyboard>{target_c_name}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
       ) : (
         <p className='result-message' >{props.second_degree_result.message}</p>
@@ -277,6 +350,8 @@ export default function LevelOneChallenge(props) {
             { l1message }    
         </div>
 
+
+
         <div className={`slide-in-right ${background_class2}`}>
             <Divider orientation="center">2 Degrees</Divider>
             <Row gutter={20} type="flex" align="middle">
@@ -292,9 +367,9 @@ export default function LevelOneChallenge(props) {
                 </Col>
                 <Col className="gutter-row with-auto-complete" span={4}>
                     <div>
-                    {l2movie_poster}
+                    {l3movie_poster}
                     <br></br>
-                    {l2Mauto_complete_or_nothing}
+                    {l3Mauto_complete_or_nothing}
                     </div>
                 </Col>
                 <Col className="gutter-row adjust-for-auto-complete" span={2}>
@@ -308,7 +383,43 @@ export default function LevelOneChallenge(props) {
                     </div>
                 </Col>
             </Row>
-            { l2message }    
+            { l3message }    
+        </div>
+
+
+
+        <div className={`slide-in-left ${background_class2}`}>
+            <Divider orientation="center">3 Degrees</Divider>
+            <Row gutter={20} type="flex" align="middle">
+                <Col className="gutter-row adjust-for-auto-complete" span={4} offset={4}>
+                    <div>
+                        {l1actor_image}
+                    </div>
+                </Col>
+                <Col className="gutter-row adjust-for-auto-complete" span={2}>
+                    <div>
+                    <RightCircleTwoTone style= {{fontSize: '50px'}} />
+                    </div>
+                </Col>
+                <Col className="gutter-row with-auto-complete" span={4}>
+                    <div>
+                    {l3movie_poster}
+                    <br></br>
+                    {l3Mauto_complete_or_nothing}
+                    </div>
+                </Col>
+                <Col className="gutter-row adjust-for-auto-complete" span={2}>
+                    <div>
+                    <RightCircleTwoTone style= {{fontSize: '50px'}} />
+                    </div>
+                </Col>
+                <Col className="gutter-row adjust-for-auto-complete" span={4}>
+                    <div>
+                        <img style={{marginBottom: '30px'}} src={target_b_path} height='200px'></img>
+                    </div>
+                </Col>
+            </Row>
+            { l3message }    
         </div>
         
         {search_results_or_nothing}

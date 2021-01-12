@@ -1,6 +1,7 @@
 import React from 'react'
 import LevelOneChallenge from './LevelOneChallenge'
 import LevelTwoChallenge from './LevelTwoChallenge'
+import LevelThreeChallenge from './LevelThreeChallenge'
 import { Button } from 'antd'
 
 export default function ChallengeOptionsContainer(props) {
@@ -58,8 +59,22 @@ export default function ChallengeOptionsContainer(props) {
     } else if (props.target_b !== 'not selected' && props.degree === 3) {
         return (
             <>
-                <h1 style={{color: 'white'}}>THIRD Degree Challenge</h1>
-            </>
+                <h3 style={{color: 'white'}}>Your challenge is to connect {props.target_a.name} to {props.target_b.name}:</h3>
+                <LevelThreeChallenge 
+                degree={props.degree} 
+                target_a={props.target_a} 
+                target_b={props.target_b} 
+                first_degree_link={props.first_degree_link} 
+                updateFirstDegreeLink={props.updateFirstDegreeLink} 
+                showing_result={props.showing_result} 
+                first_degree_result={props.first_degree_result} 
+                second_degree_result={props.second_degree_result} 
+                loading={props.loading} 
+                checkAnswer2={props.checkAnswer2}
+                />
+                <br></br>
+                {button_or_no}
+        </>
             )
     }
 }
