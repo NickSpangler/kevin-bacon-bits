@@ -83,7 +83,7 @@ export default function LevelOneChallenge(props) {
             />
     )
 
-    const search_results_or_nothing = props.showing_result === true && props.first_degree_result.result === false ? (<SearchResults results={props.first_degree_result.results} loading={props.loading} />) : (<></>)
+    const search_results_or_nothing = props.showing_result === true && props.first_degree_result.result === false ? (<><Divider orientation="center" style={{color: 'white'}}>HERE'S ONE POSSIBLE LINK:</Divider><SearchResults results={props.first_degree_result.results} loading={props.loading} /></>) : (<></>)
 
     return (
         <>
