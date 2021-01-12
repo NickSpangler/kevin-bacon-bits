@@ -13,6 +13,7 @@ export default function LevelOneChallenge(props) {
     const level_class = 'slide-in-right'
     const background_class = props.showing_result === false ? ('challenge-level-tier') : (props.first_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
     const background_class2 = props.showing_result === false ? ('challenge-level-tier') : (props.second_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
+    const background_class3 = props.showing_result === false ? ('challenge-level-tier') : (props.third_degree_result.result === false ? ('wrong-answer') : ('right-answer'))
 
     const [answer, setAnswer] = useState({
         target_a_id: '',
@@ -359,7 +360,7 @@ export default function LevelOneChallenge(props) {
     const l3message = props.showing_result !== true ? (
         <p sytle='text-align: center'><Text keyboard>{target_d_name}</Text>{` was in what movie with `}<Text keyboard>{`${props.target_b.name}`}</Text>?</p>
       ) : (
-        <p className='result-message' >{props.second_degree_result.message}</p>
+        <p className='result-message' >{props.third_degree_result.message}</p>
       )
 
     const search_results_or_nothing = (props.showing_result === true && props.first_degree_result.result === false) ||
@@ -445,7 +446,7 @@ export default function LevelOneChallenge(props) {
 
 
 
-        <div className={`slide-in-left ${background_class2}`}>
+        <div className={`slide-in-left ${background_class3}`}>
             <Divider orientation="center">3 Degrees</Divider>
             <Row gutter={20} type="flex" align="middle">
                 <Col className="gutter-row adjust-for-auto-complete" span={4} offset={4}>

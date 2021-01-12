@@ -37,6 +37,7 @@ function SixDegreesChallenge(props) {
             showing_result={props.showing_result} 
             first_degree_result={props.first_degree_result} 
             second_degree_result={props.second_degree_result} 
+            third_degree_result={props.third_degree_result} 
             loading={props.loading}/>
             <br></br>
             {challengeButton}
