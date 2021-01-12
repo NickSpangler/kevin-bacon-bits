@@ -57,4 +57,9 @@ class MoviesController < ApplicationController
         render json: results
     end
 
+    def check_answer3
+        results = Movie.check_third_degree_answer(params[:target_a_id], params[:movie_one_id], params[:target_c_id], params[:movie_two_id], params[:target_d_id], params[:movie_three_id], params[:target_b_id])
+        render json: results
+    end
+
 end
