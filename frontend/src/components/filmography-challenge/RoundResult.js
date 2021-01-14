@@ -12,7 +12,7 @@ const RoundResult = (props) => {
 
     const nextRound = () => {
         // if (props.sound === true) whoosh();
-        props.getPossibleMovies(props.current_movie.id, props.actor.id, whoosh);
+        props.getPossibleMovies(props.current_movie.id, props.actor.id, whoosh, props.sound);
     }
 
     if (props.round_result === false) {
