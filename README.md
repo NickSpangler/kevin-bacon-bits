@@ -2,6 +2,7 @@
 # Kevin Bacon Bits
 
 View a video demo: https://www.youtube.com/watch?v=BkAbYDmhoOw&feature=youtu.be
+
 View the app live: http://my-playbill-vault.herokuapp.com/
 
 Welcome to Kevin Bacon Bits, a suite of film/actor trivia and entertainment.
