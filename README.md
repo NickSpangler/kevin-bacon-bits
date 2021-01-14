@@ -1,9 +1,7 @@
 
 # Kevin Bacon Bits
 
-View a video demo: https://www.youtube.com/watch?v=BkAbYDmhoOw&feature=youtu.be
-
-View the app live: http://my-playbill-vault.herokuapp.com/
+View a video demo: https://youtu.be/UxJodWEFbUk
 
 Welcome to Kevin Bacon Bits, a suite of film/actor trivia and entertainment.
 Curious about what other actors a particular celebrity has worked with? You're in the right place! Curious about how well you know your favorite actor's career? You're in the right place! Explore and have fun!
