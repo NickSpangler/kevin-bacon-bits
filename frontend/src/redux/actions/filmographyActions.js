@@ -8,12 +8,13 @@ export const setActor = (selectedActor) => {
     };
 };
 
-export const getPossibleMovies = (currentMovieId, actor_id) => {
+export const getPossibleMovies = (currentMovieId, actor_id, whoosh) => {
     return (dispatch) => {
         fetch(`http://localhost:3000/movies/possible_movies?current_movie=${currentMovieId}&actor_id=${actor_id}`)
         .then(resp => resp.json())
         .then(movies => {
-            dispatch({type: 'GET_POSSIBLE_MOVIES', movies: movies })
+            dispatch({type: 'GET_POSSIBLE_MOVIES', movies: movies });
+            whoosh();
         })
     }
 }
